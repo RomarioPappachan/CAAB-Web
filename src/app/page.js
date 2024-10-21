@@ -1,101 +1,74 @@
+"use client";
+import React from "react";
+import Navbar from "./components/Navbar";
 import Image from "next/image";
+import Features from "./components/Home/Features";
 
-export default function Home() {
+const Home = () => {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.js
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <div className="w-screen h-screen m-0 p-0 overflow-x-hidden">
+      <div className="w-full min-h-[630px] m-0 p-0 px-24 bg-home-page">
+        <Navbar />
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+        {/* Hero Section  */}
+        <div className="w-full p-0 m-0 mt-14 flex">
+          <div className="w-1/2 text-left">
+            <p className="text-[#404753] font-bold text-5xl leading-[64px]">
+              Discover, <br />
+              Compare & Analyse <br />
+              Financial Products and <br />
+              Services with <br />
+              Comprehensive Ratings
+            </p>
+          </div>
+          <div className="w-1/2 relative">
             <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+              className="absolute -bottom-2/4 left-1/4"
+              width="323"
+              height="403"
+              src="/hero-image.svg"
+              alt="hero-image"
             />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
+      </div>
+
+      {/* Section  */}
+      <div className="w-full h-[528px] m-0 px-24 flex">
+        <div className="w-2/5 m-0 p-0">
+          <img
+            className="size-[528px]"
+            src="/office-management.svg"
+            alt="hero-image"
           />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+        </div>
+        <div className="w-3/5 ps-44 m-0 pe-5 py-28">
+          <h2 className="text-[#181c22] font-medium text-5xl leading-[64px]">
+            Improve Your Financial <br />
+            Rating
+          </h2>
+          <p className="my-5 w-[510px] text-[#404753] text-base font-normal leading-6">
+            A strong financial rating is essential for attracting investors and
+            securing favorable loan terms. Implement effective financial
+            management strategies to improve your firm's bottom line and enhance
+            its overall financial health.
+          </p>
+          <button className="w-[188px] h-10 bg-[#782A99] text-white text-base font-semibold rounded-2xl">
+            Improve Your Rating
+          </button>
+        </div>
+      </div>
+
+      {/* Features Section  */}
+      <Features/>
+
+
+      {/* Footer Section  */}
+      <div className="w-full h-[312px] bg-[#2D3137] text-white flex justify-center items-center">
+        <span>© { new Date().getFullYear() } CorpRank Advice & Audit body. All right reserved.</span>
+      </div>
     </div>
   );
-}
+};
+
+export default Home;
