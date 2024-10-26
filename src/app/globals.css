@@ -4,12 +4,15 @@
 
 
 * {
-  font-family: "Inter", sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
-
+body {
+  margin: 0;
+  padding: 0;
+}
 .bg-home-page {
-  background-image: url("/bg-home.svg");
+  background-image: url("/hero-bg-image.svg");
   background-repeat: no-repeat;
   background-size: cover; /* Ensures the image covers the entire container */
   background-position: center; /* Centers the image */
