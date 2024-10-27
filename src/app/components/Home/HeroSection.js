@@ -3,7 +3,7 @@ import React from 'react'
 
 function HeroSection() {
   return (
-    <div className='w-full h-[560px] bg-home-page flex flex-col md:flex-row px-4 md:px-8 lg:px-20 xl:px-24'>
+    <div className='w-full h-[560px] bg-home-page flex flex-col md:flex-row px-4 md:px-8 lg:px-[72px]'>
       <div className='w-full md:w-3/5 pt-24'>
         <div className='w-auto md:w-[800px] h-[120px] md:h-[150px] lg:h-[200px] xl:h-[296px] flex flex-col justify-between'>
           <h1 className='text-[#003E82]  sm:ps-20 md:ps-0 w-auto text-2xl lg:text-5xl md:text-3xl font-bold leading-8 md:leading-[30px]'>

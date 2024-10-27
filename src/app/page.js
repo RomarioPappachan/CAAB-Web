@@ -14,9 +14,12 @@ import Footer from "./components/Footer";
 const HomeOld = () => {
   return (
     <div className="w-screen h-screen m-0 p-0">
-      <Navbar />
-
-      <HeroSection/>
+      <div className="m-0 p-0 w-full">
+        <Navbar />
+      </div>
+      <div className="mt-[100px] md:mt-[130px] xl:mt-[152px]">
+        <HeroSection/>
+      </div>
 
       <IntroSection/>
 
