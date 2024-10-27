@@ -11,13 +11,13 @@ import OurTeamSection from "./components/Home/OurTeamSection";
 import FeatureSection from "./components/Home/FeatureSection";
 import Footer from "./components/Footer";
 
-const HomeOld = () => {
+const Home = () => {
   return (
     <div className="w-screen h-screen m-0 p-0">
       <div className="m-0 p-0 w-full">
         <Navbar />
       </div>
-      <div className="mt-[100px] md:mt-[130px] xl:mt-[152px]">
+      <div className="p-0 mt-[100px] md:mt-[130px] xl:mt-[152px]">
         <HeroSection/>
       </div>
 
@@ -33,14 +33,8 @@ const HomeOld = () => {
 
       <Footer/>
 
-      {/* Footer Section  */}
-      {/* <div className="w-full h-[312px] bg-[#2D3137] text-white flex justify-center items-center">
-        <span>© { new Date().getFullYear() } CorpRank Advice & Audit body. All right reserved.</span>
-      </div> */}
-
-
     </div>
   );
 };
 
-export default HomeOld;
+export default Home;

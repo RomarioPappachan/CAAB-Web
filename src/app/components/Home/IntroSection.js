@@ -3,19 +3,19 @@ import React from "react";
 
 function IntroSection() {
   return (
-    <div className="w-full py-28 px-4 md:px-8 lg:px-20 xl:px-24">
-      <div className=" w-full  h-auto flex md:flex-row  flex-col">
-        <div className=" md:w-[40%] w-full px-4  flex justify-center items-center">
-          <img src="intro-section-image.jpg" alt="section2-img" className="w-96 " />
+    <div className="w-full py-20 px-4 md:px-8 lg:px-[72px]">
+      <div className="w-full h-auto flex flex-col lg:flex-row">
+        <div className="w-full lg:w-1/3 flex justify-center items-center gap-x-11">
+          <img src="intro-section-image.jpg" alt="section2-img" className="w-96" />
         </div>
-        <div className="md:w-[60%] w-full">
-          <p className="w-full py-2 text-[#191C21] text-xl ">
+        <div className="w-full lg:w-2/3 py-4">
+          <p className="w-full text-[#191C21] text-xl leading-10">
             Welcome to{" "}
             <span className="text-[#2262B7]">
               CAAB, CorpRank Advice and Audit Body (P) Ltd,
             </span>{" "}
             your trusted partner for comprehensive corporate compliance
-            solutions and <span className="text-[#2262B7]">CAABScore</span> . We
+            solutions and <span className="text-[#2262B7]">CAABScore</span>. We
             are dedicated to help businesses of all sizes navigate the complex
             regulatory landscape and achieve lasting success. Our expert TEAM
             lies in providing customized solutions and needs of all enforcement

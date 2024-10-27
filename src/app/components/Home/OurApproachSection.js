@@ -3,7 +3,7 @@ import React from 'react'
 
 function OurApproachSection() {
   return (
-    <div className='px-4 md:px-8 lg:px-20 xl:px-24 pt-20 pb-11'>
+    <div className='px-4 md:px-8 lg:px-[72px] pt-20 pb-11'>
 
         {/* Our approach & Expert Guidance & Advice  */}
         <div className='m-0 grid grid-cols-1 xl:grid-cols-2 gap-y-10 gap-x-8'>

@@ -3,7 +3,7 @@ import React from 'react'
 
 function FeatureSection() {
   return (
-    <div className='px-4 md:px-8 lg:px-20 xl:px-24 py-11'>
+    <div className='px-4 md:px-8 lg:px-[72px] py-11'>
         <div className='flex flex-col xl:flex-row gap-6'>
             <div className='w-full xl:w-2/3 py-[68px]'>
                 {/* grid */}
