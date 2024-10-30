@@ -12,7 +12,7 @@ function OurApproachSection() {
                 <h1 className='h-10 text-center font-medium text-[#191C21] text-[32px]'>Our Approach</h1>
                 <div className='grid grid-cols-1 sm:grid-cols-2 gap-6 mt-10'>
                     
-                    <div className='w-full p-4 rounded-2xl border-[#C2C6D4] border-[1px] flex justify-center items-start'>
+                    <div className='w-full p-4 rounded-2xl border-[#C2C6D4] border-[1px] flex justify-center items-start shadow drop-shadow-sm'>
                         <div className='w-1/5 h-full'>
                             <img 
                                 src="/assessment.svg" 
@@ -26,7 +26,7 @@ function OurApproachSection() {
                         </div>
                     </div>
 
-                    <div className='w-full p-4 rounded-2xl border-[#C2C6D4] border-[1px] flex justify-center items-start'>
+                    <div className='w-full p-4 rounded-2xl border-[#C2C6D4] border-[1px] flex justify-center items-start shadow drop-shadow-sm'>
                         <div className='w-1/5 h-full'>
                             <img 
                                 src="/planning.svg" 
@@ -40,7 +40,7 @@ function OurApproachSection() {
                         </div>
                     </div>
 
-                    <div className='w-full p-4 rounded-2xl border-[#C2C6D4] border-[1px] flex justify-center items-start'>
+                    <div className='w-full p-4 rounded-2xl border-[#C2C6D4] border-[1px] flex justify-center items-start shadow drop-shadow-sm'>
                         <div className='w-1/5 h-full'>
                             <img 
                                 src="/implementation.svg" 
@@ -54,7 +54,7 @@ function OurApproachSection() {
                         </div>
                     </div>
 
-                    <div className='w-full p-4 rounded-2xl border-[#C2C6D4] border-[1px] flex justify-center items-start'>
+                    <div className='w-full p-4 rounded-2xl border-[#C2C6D4] border-[1px] flex justify-center items-start shadow drop-shadow-sm'>
                         <div className='w-1/5 h-full'>
                             <img 
                                 src="/monitoring.svg" 
@@ -75,7 +75,7 @@ function OurApproachSection() {
 
             <div className=''>
                 <h1 className='xl:h-10 text-center font-medium text-[#191C21] text-[32px]'>Expert Guidance and Advice</h1>
-                <p className='leading-10 mt-10'>Our team of experienced compliance professionals provides tailored solutions to meet your specific needs. We leverage cutting-edge technology to streamline compliance processes and minimize risks.<br/>
+                <p className='text-base font-normal text-[#424752] leading-10 mt-10'>Our team of experienced compliance professionals provides tailored solutions to meet your specific needs. We leverage cutting-edge technology to streamline compliance processes and minimize risks.<br/>
                     CAAB is more than just a corporate compliance service provider. We are a trusted advisor and partner committed to your long-term success. We understand that compliance is not a one-size-fits-all approach, and we tailor our solutions to meet your unique needs. Let us guide you towards a more compliant and confident future in your corporate navigation.
                 </p>
             </div>
@@ -88,7 +88,7 @@ function OurApproachSection() {
 
             <div className=''>
                 <h1 className='xl:h-10 text-center font-medium text-[#191C21] text-[32px]'>Data Analytics and Reporting</h1>
-                <p className='leading-10 mt-10'>
+                <p className='text-base font-normal text-[#424752] leading-10 mt-10'>
                     'CAABScore' gain valuable insights into your compliance performance through comprehensive data visualization and reporting tools. Therefore, the 'CAABScore' shall used by the stakeholders to rate your corporate compliance attitudes and commitment to Corporate Compliance Social Responsibility.
                 </p>
             </div>
@@ -97,7 +97,7 @@ function OurApproachSection() {
                 <h1 className='h-10 text-center font-medium text-[#191C21] text-[32px]'>Our Values</h1>
                 <div className='grid grid-cols-1 sm:grid-cols-2 gap-6 mt-10'>
                     
-                    <div className='w-full p-4 rounded-2xl border-[#C2C6D4] border-[1px] flex justify-center items-start'>
+                    <div className='w-full p-4 rounded-2xl border-[#C2C6D4] border-[1px] flex justify-center items-start shadow drop-shadow-sm'>
                         <div className='w-1/5 h-full'>
                             <img 
                                 src="/transparency.svg" 
@@ -111,7 +111,7 @@ function OurApproachSection() {
                         </div>
                     </div>
 
-                    <div className='w-full p-4 rounded-2xl border-[#C2C6D4] border-[1px] flex justify-center items-start'>
+                    <div className='w-full p-4 rounded-2xl border-[#C2C6D4] border-[1px] flex justify-center items-start shadow drop-shadow-sm'>
                         <div className='w-1/5 h-full'>
                             <img 
                                 src="/integrity.svg" 
@@ -125,7 +125,7 @@ function OurApproachSection() {
                         </div>
                     </div>
 
-                    <div className='w-full p-4 rounded-2xl border-[#C2C6D4] border-[1px] flex justify-center items-start'>
+                    <div className='w-full p-4 rounded-2xl border-[#C2C6D4] border-[1px] flex justify-center items-start shadow drop-shadow-sm'>
                         <div className='w-1/5 h-full'>
                             <img 
                                 src="/innovation.svg" 
@@ -139,7 +139,7 @@ function OurApproachSection() {
                         </div>
                     </div>
 
-                    <div className='w-full p-4 rounded-2xl border-[#C2C6D4] border-[1px] flex justify-center items-start'>
+                    <div className='w-full p-4 rounded-2xl border-[#C2C6D4] border-[1px] flex justify-center items-start shadow drop-shadow-sm'>
                         <div className='w-1/5 h-full'>
                             <img 
                                 src="/partnership.svg" 

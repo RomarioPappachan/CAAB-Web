@@ -1,6 +1,6 @@
 "use client";
 import Link from 'next/link';
-import React from 'react'
+import React, { useState } from 'react'
 import { BiLogoFacebookSquare, BiLogoInstagram, BiLogoLinkedinSquare } from "react-icons/bi";
 import { MdLocationOn, MdMail, MdPhone } from "react-icons/md";
 import { BsTwitterX } from "react-icons/bs";
@@ -8,6 +8,12 @@ import { BsTwitterX } from "react-icons/bs";
 
 
 function Footer() {
+    const [isFacebookHovered, setIsFacebookHovered] = useState(false);
+    const [isInstagramHovered, setIsInstagramHovered] = useState(false);
+    const [isLinkedInHovered, setIsLinkedInHovered] = useState(false);
+    const [isTwitterHovered, setIsTwitterHovered] = useState(false);
+
+
   return (
     <footer className='px-4 md:px-8 lg:px-[72px] py-[72px] text-white bg-gradient-to-b from-[#191C21] to-[#667387]'>
         {/* Grid  */}
@@ -39,17 +45,61 @@ function Footer() {
                         </div>
                     </div>
                     <div className='flex items-center gap-6'>
-                        <a href="/" className='size-[30px]'>
-                            <BiLogoFacebookSquare className='m-0 text-3xl hover:text-[#3D5A98] hover:bg-white' />   
-                        </a>
-                        <Link href="/">
-                            <BiLogoInstagram className='text-3xl' />   
+                        <Link 
+                            href="/"
+                            title='Facebook'
+                            onMouseOver={() => {setIsFacebookHovered(true)}}
+                            onMouseOut={() => {setIsFacebookHovered(false)}}
+                        >
+                            {
+                                isFacebookHovered ? 
+                                <img className='size-6' src="/facebook-icon-hover.svg" alt="Facebook Hover" />
+                                :
+                                <img className='size-6' src="/facebook-icon-footer.svg" alt="Facebook Icon" />
+                            }
+                            {/* <BiLogoFacebookSquare className='m-0 text-3xl hover:text-[#3D5A98] hover:bg-white' />    */}
                         </Link>
-                        <Link href="/">
-                            <BiLogoLinkedinSquare className='text-3xl hover:text-[#0A66C2] hover:bg-white' />   
+                        <Link 
+                            href="/"
+                            title='Instagram'
+                            onMouseOver={() => {setIsInstagramHovered(true)}}
+                            onMouseOut={() => {setIsInstagramHovered(false)}}
+                        >
+                            {
+                                isInstagramHovered ? 
+                                <img className='size-6' src="/instagram-icon-hover.svg" alt="Instagram Hover" />
+                                :
+                                <img className='size-6' src="/instagram-icon-footer.svg" alt="Instagram Icon" />
+                            }
+                            {/* <BiLogoInstagram className='text-3xl' />    */}
                         </Link>
-                        <Link href="/">
-                            <BsTwitterX className='text-xl' />   
+                        <Link 
+                            href="/"
+                            title='LinkedIn'
+                            onMouseOver={() => {setIsLinkedInHovered(true)}}
+                            onMouseOut={() => {setIsLinkedInHovered(false)}}
+                        >
+                            {
+                                isLinkedInHovered ? 
+                                <img className='size-6' src="/linkedin-icon-hover.svg" alt="LinkedIn Hover" />
+                                :
+                                <img className='size-6' src="/linkedin-icon-footer.svg" alt="LinkedIn Icon" />
+                            }
+                            {/* <BiLogoLinkedinSquare className='text-3xl hover:text-[#0A66C2] hover:bg-white' />    */}
+                        </Link>
+                        <Link 
+                            href="/"
+                            title='X'
+                            onMouseOver={() => {setIsTwitterHovered(true)}}
+                            onMouseOut={() => {setIsTwitterHovered(false)}}
+                        >
+                            {
+                                isTwitterHovered ? 
+                                <img className='size-6' src="/twitter-icon-hover.svg" alt="X Hover" />
+                                :
+                                <img className='size-6' src="/twitter-icon-footer.svg" alt="X Icon" />
+                            }
+                            {/* <BsTwitterX className='text-xl' />    */}
                         </Link>
                     </div>
                 </div>

@@ -8,7 +8,7 @@ function FeatureSection() {
             <div className='w-full xl:w-2/3 py-[68px]'>
                 {/* grid */}
                 <div className='grid sm:grid-cols-2 xl:grid-rows-4 xl:grid-cols-6 gap-10'>  
-                    <div className='xl:row-start-1 xl:row-span-2 xl:col-start-1 xl:col-span-2 w-full p-4 rounded-2xl border-[#C2C6D4] border-[1px] flex justify-center items-center'>
+                    <div className='xl:row-start-1 xl:row-span-2 xl:col-start-1 xl:col-span-2 w-full p-4 rounded-2xl border-[#C2C6D4] border-[1px] flex justify-center items-center shadow drop-shadow-sm'>
                         <div className='w-full flex flex-col items-center gap-2'>
                             <h3 className='h-6 font-medium text-xl text-[#191C21]'>Integrity</h3>
                             <p className='text-[#424752] text-sm leading-6 text-center'>
@@ -16,7 +16,7 @@ function FeatureSection() {
                             </p>
                         </div>
                     </div>
-                    <div className='xl:row-start-1 xl:row-span-2 xl:col-start-3 xl:col-span-2 w-full p-4 rounded-2xl border-[#C2C6D4] border-[1px] flex justify-center items-center'>
+                    <div className='xl:row-start-1 xl:row-span-2 xl:col-start-3 xl:col-span-2 w-full p-4 rounded-2xl border-[#C2C6D4] border-[1px] flex justify-center items-center shadow drop-shadow-sm'>
                         <div className='w-full flex flex-col items-center gap-2'>
                             <h3 className='h-6 font-medium text-xl text-[#191C21]'>Growth</h3>
                             <p className='text-[#424752] text-sm leading-6 text-center'>
@@ -24,7 +24,7 @@ function FeatureSection() {
                             </p>
                         </div>
                     </div>
-                    <div className='xl:row-start-2 xl:row-span-2 xl:col-start-5 xl:col-span-2 w-full p-4 rounded-2xl border-[#C2C6D4] border-[1px] flex justify-center items-center'>
+                    <div className='xl:row-start-2 xl:row-span-2 xl:col-start-5 xl:col-span-2 w-full p-4 rounded-2xl border-[#C2C6D4] border-[1px] flex justify-center items-center shadow drop-shadow-sm'>
                         <div className='w-full flex flex-col items-center gap-2'>
                             <h3 className='h-6 font-medium text-xl text-[#191C21]'>Our Mission</h3>
                             <p className='text-[#424752] text-sm leading-6 text-center'>
@@ -32,7 +32,7 @@ function FeatureSection() {
                             </p>
                         </div>
                     </div>
-                    <div className='xl:row-start-3 xl:row-span-2 xl:col-start-1 xl:col-span-2 w-full p-4 rounded-2xl border-[#C2C6D4] border-[1px] flex justify-center items-center'>
+                    <div className='xl:row-start-3 xl:row-span-2 xl:col-start-1 xl:col-span-2 w-full p-4 rounded-2xl border-[#C2C6D4] border-[1px] flex justify-center items-center shadow drop-shadow-sm'>
                         <div className='w-full flex flex-col items-center gap-2'>
                             <h3 className='h-6 font-medium text-xl text-[#191C21]'>Client-Focused</h3>
                             <p className='text-[#424752] text-sm leading-6 text-center'>
@@ -40,7 +40,7 @@ function FeatureSection() {
                             </p>
                         </div>
                     </div>
-                    <div className='xl:row-start-3 xl:row-span-2 xl:col-start-3 xl:col-span-2 w-full p-4 rounded-2xl border-[#C2C6D4] border-[1px] flex justify-center items-center'>
+                    <div className='xl:row-start-3 xl:row-span-2 xl:col-start-3 xl:col-span-2 w-full p-4 rounded-2xl border-[#C2C6D4] border-[1px] flex justify-center items-center shadow drop-shadow-sm'>
                         <div className='w-full flex flex-col items-center gap-2'>
                             <h3 className='h-6 font-medium text-xl text-[#191C21]'>Empowerment</h3>
                             <p className='text-[#424752] text-sm leading-6 text-center'>

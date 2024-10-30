@@ -1,9 +1,33 @@
 "use client";
-import React from 'react'
+import React, {useState, useEffect } from 'react'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer';
 
 function ScoreEvaluation() {
+  const [isLoading, setIsLoading] = useState(true);
+   
+  useEffect(() => {
+      const timer = setTimeout(() => setIsLoading(false), 1000);
+
+      return () => clearTimeout(timer);
+  }, []);
+
+
+  if(isLoading) {
+    return (
+      <div className="w-screen h-screen flex justify-center items-center bg-[#000000c1]">
+        <div className="size-24 rounded-full animate-spin">
+            <img 
+              src="/caab-score-icon.jpg" 
+              alt="Logo"
+              className='w-full object-cover rounded-full'
+            />
+        </div>
+      </div>
+    )
+  }
+
+
   return (
     <div className="w-screen h-screen m-0 p-0">
         <Navbar/>
@@ -50,49 +74,49 @@ function ScoreEvaluation() {
             <div className='w-full lg:px-6 py-10'>
               <div className='grid grid-cols-1 md:grid-cols-2 gap-8 xl:gap-[72px]'>
 
-                <div className='p-4 flex flex-col gap-6 border-[#BFCAB3] border-2 rounded-lg'>
-                  <h2 className='text-[32px] font-semibold leading-10 text-[#406926]'>CAAB Score Evaluation Criteria</h2>
+                <div className='p-4 flex flex-col gap-6 text-[#404A38] bg-white border-[#BFCAB3] border-[1px] rounded-lg group transition-all duration-500 hover:bg-[#406926] hover:text-white transform hover:scale-105 hover:ease-in hover:duration-300'>
+                  <h2 className='text-[32px] font-semibold leading-10 text-[#406926] group-hover:text-white'>CAAB Score Evaluation Criteria</h2>
                   <div>
-                    <p className='text-base font-normal leading-10 text-[#404A38]'>1. Compliance with laws and regulations.</p>
-                    <p className='text-base font-normal leading-10 text-[#404A38]'>2. Ethics and business conduct.</p>
-                    <p className='text-base font-normal leading-10 text-[#404A38]'>3. Social responsibility and community engagement.</p>
-                    <p className='text-base font-normal leading-10 text-[#404A38]'>4. Environmental sustainability.</p>
-                    <p className='text-base font-normal leading-10 text-[#404A38]'>5. Human rights and labor practices.</p>
-                    <p className='text-base font-normal leading-10 text-[#404A38]'>6. Transparency and accountability.</p>
+                    <p className='text-base font-normal leading-10'>1. Compliance with laws and regulations.</p>
+                    <p className='text-base font-normal leading-10'>2. Ethics and business conduct.</p>
+                    <p className='text-base font-normal leading-10'>3. Social responsibility and community engagement.</p>
+                    <p className='text-base font-normal leading-10'>4. Environmental sustainability.</p>
+                    <p className='text-base font-normal leading-10'>5. Human rights and labor practices.</p>
+                    <p className='text-base font-normal leading-10'>6. Transparency and accountability.</p>
                   </div>
                 </div>
 
-                <div className='p-4 flex flex-col gap-6 bg-[#CBDBFF] border-[#2262B7] border-2 rounded-lg'>
-                  <h2 className='text-[32px] font-semibold leading-10 text-[#003E82]'>CAAB Score supports CCSR</h2>
+                <div className='p-4 flex flex-col gap-6 text-[#404A38] bg-[#CBDBFF] border-[#2262B7] border-[1px] rounded-lg group transition-all duration-500 hover:bg-[#003E82] hover:text-white transform hover:scale-105 hover:ease-in hover:duration-300'>
+                  <h2 className='text-[32px] font-semibold leading-10 text-[#003E82] group-hover:text-white'>CAAB Score supports CCSR</h2>
                   <div>
-                    <p className='text-base font-normal leading-10 text-[#404A38]'>1. Evaluating compliance risks and vulnerabilities</p>
-                    <p className='text-base font-normal leading-10 text-[#404A38]'>2. Providing transparency and accountability.</p>
-                    <p className='text-base font-normal leading-10 text-[#404A38]'>3. Encouraging ethical business practices.</p>
-                    <p className='text-base font-normal leading-10 text-[#404A38]'>4. Promoting regulatory compliance.</p>
-                    <p className='text-base font-normal leading-10 text-[#404A38]'>5. Enhancing reputation and stakeholder trust.</p>
+                    <p className='text-base font-normal leading-10'>1. Evaluating compliance risks and vulnerabilities</p>
+                    <p className='text-base font-normal leading-10'>2. Providing transparency and accountability.</p>
+                    <p className='text-base font-normal leading-10'>3. Encouraging ethical business practices.</p>
+                    <p className='text-base font-normal leading-10'>4. Promoting regulatory compliance.</p>
+                    <p className='text-base font-normal leading-10'>5. Enhancing reputation and stakeholder trust.</p>
                   </div>
                 </div>
 
-                <div className='p-4 flex flex-col gap-6 bg-[#CBDBFF] border-[#2262B7] border-2 rounded-lg'>
-                  <h2 className='text-[32px] font-semibold leading-10 text-[#003E82]'>Role of CorpRank</h2>
+                <div className='p-4 flex flex-col gap-6 text-[#404A38] bg-[#CBDBFF] border-[#2262B7] border-[1px] rounded-lg group transition-all duration-500 hover:bg-[#003E82] hover:text-white transform hover:scale-105 hover:ease-in hover:duration-300'>
+                  <h2 className='text-[32px] font-semibold leading-10 text-[#003E82] group-hover:text-white'>Role of CorpRank</h2>
                   <div>
-                    <p className='text-base font-normal leading-10 text-[#404A38]'>CorpRank through CAABScore, plays a crucial role in promoting CCSR by.</p>
-                    <p className='text-base font-normal leading-10 text-[#404A38]'>1. Providing a compliance benchmarking framework.</p>
-                    <p className='text-base font-normal leading-10 text-[#404A38]'>2. Offering risk assessment and mitigation strategies.</p>
-                    <p className='text-base font-normal leading-10 text-[#404A38]'>3. Enhancing transparency and accountability.</p>
-                    <p className='text-base font-normal leading-10 text-[#404A38]'>4. Supporting regulatory compliance and reporting.</p>
-                    <p className='text-base font-normal leading-10 text-[#404A38]'>5. Recognizing and rewarding compliant companies.</p>
+                    <p className='text-base font-normal leading-10'>CorpRank through CAABScore, plays a crucial role in promoting CCSR by.</p>
+                    <p className='text-base font-normal leading-10'>1. Providing a compliance benchmarking framework.</p>
+                    <p className='text-base font-normal leading-10'>2. Offering risk assessment and mitigation strategies.</p>
+                    <p className='text-base font-normal leading-10'>3. Enhancing transparency and accountability.</p>
+                    <p className='text-base font-normal leading-10'>4. Supporting regulatory compliance and reporting.</p>
+                    <p className='text-base font-normal leading-10'>5. Recognizing and rewarding compliant companies.</p>
                   </div>
                 </div>
 
-                <div className='p-4 flex flex-col gap-6 border-[#BFCAB3] border-2 rounded-lg'>
-                  <h2 className='text-[32px] font-semibold leading-10 text-[#406926]'>Benefits of CAAB Score to CCSR</h2>
+                <div className='p-4 flex flex-col gap-6 text-[#404A38] border-[#BFCAB3] border-[1px] rounded-lg group transition-all duration-500 hover:bg-[#406926] hover:text-white transform hover:scale-105 hover:ease-in hover:duration-300'>
+                  <h2 className='text-[32px] font-semibold leading-10 text-[#406926] group-hover:text-white'>Benefits of CAAB Score to CCSR</h2>
                   <div>
-                    <p className='text-base font-normal leading-10 text-[#404A38]'>1. Improved compliance and risk mitigation management.</p>
-                    <p className='text-base font-normal leading-10 text-[#404A38]'>2. Enhanced reputation and stakeholder trust.</p>
-                    <p className='text-base font-normal leading-10 text-[#404A38]'>3. Increased transparency and accountability.</p>
-                    <p className='text-base font-normal leading-10 text-[#404A38]'>4. Better informed decision-making and strategic planning.</p>
-                    <p className='text-base font-normal leading-10 text-[#404A38]'>5. Reduced regulatory risks and costs.</p>
+                    <p className='text-base font-normal leading-10'>1. Improved compliance and risk mitigation management.</p>
+                    <p className='text-base font-normal leading-10'>2. Enhanced reputation and stakeholder trust.</p>
+                    <p className='text-base font-normal leading-10'>3. Increased transparency and accountability.</p>
+                    <p className='text-base font-normal leading-10'>4. Better informed decision-making and strategic planning.</p>
+                    <p className='text-base font-normal leading-10'>5. Reduced regulatory risks and costs.</p>
                   </div>
                 </div>
 

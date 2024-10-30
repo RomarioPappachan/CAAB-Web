@@ -1,6 +1,5 @@
 "use client";
-import React from 'react'
-import Image from 'next/image';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { BiLogoFacebookSquare, BiLogoInstagram, BiLogoLinkedinSquare } from "react-icons/bi";
 import { IoCloseOutline, IoMenuOutline } from "react-icons/io5";
@@ -9,16 +8,20 @@ import { MdMail, MdPhone } from "react-icons/md";
 import { usePathname } from 'next/navigation';
 
 const Navbar = () => {
+    const [isFacebookHovered, setIsFacebookHovered] = useState(false);
+    const [isInstagramHovered, setIsInstagramHovered] = useState(false);
+    const [isLinkedInHovered, setIsLinkedInHovered] = useState(false);
+    const [isTwitterHovered, setIsTwitterHovered] = useState(false);
+
 
     const pathName = usePathname();
-
 
     function handleCloseDrawer() {
         document.getElementById("my-drawer-4").checked = false;
     };
 
   return (
-    <nav className='w-full m-0 px-4 md:px-8 lg:px-[72px] bg-white border-[#C2C6D4] border-b-2 fixed top-0 z-10'>
+    <nav className='w-full m-0 px-4 md:px-8 lg:px-[72px] bg-white border-[#C2C6D4] border-b-[1px] fixed top-0 z-10'>
 
         {/* Nav with logo  */}
         <div className='w-full h-[100px] md:h-[130px] xl:h-[152px] flex justify-between items-center'>
@@ -48,7 +51,7 @@ const Navbar = () => {
                 <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
                 <div className="drawer-content">
                   {/* Page content here */}
-                  <label htmlFor="my-drawer-4" className="drawer-button text-right text-4xl sm:text-5xl">
+                  <label htmlFor="my-drawer-4" className="drawer-button text-right text-4xl sm:text-5xl text-[#003E82]">
                     <IoMenuOutline />
                   </label>
                 </div>
@@ -121,26 +124,30 @@ const Navbar = () => {
                             <p className='flex items-center gap-2 font-medium text-xs sm:text-sm'><MdPhone className='text-xl text-[#424752]'/> <span className='text-[#191C21]'>+91 7736634226</span></p>
                             <p className='flex items-center gap-2 font-medium text-xs sm:text-sm'><MdMail className='text-xl text-[#424752]'/> <span className='text-[#191C21]'>info@caabscore.com</span></p>
                         </div>
-                        <div className='mt-4 flex justify-start items-center gap-2'>
-                            <Link href="">
+                        <div className='mt-4 flex justify-start items-center gap-4'>
+                            <Link href="" >
                                 <span>
-                                    <BiLogoFacebookSquare className='text-3xl' />
+                                    <img className='size-6' src="/facebook-icon-navbar.svg" alt="Facebook Icon" />
+                                    {/* <BiLogoFacebookSquare className='text-3xl' /> */}
                                 </span>
                             </Link>
                             <Link href="">
                                 <span>
-                                    <BiLogoInstagram className='text-3xl' />
+                                    <img className='size-6' src="/instagram-icon-navbar.svg" alt="Instagram Icon" />
+                                    {/* <BiLogoInstagram className='text-3xl' /> */}
                                 </span>
                             </Link>
                                 
                             <Link href="">
                                 <span>
-                                    <BiLogoLinkedinSquare className='text-3xl' />
+                                    <img className='size-6' src="/linkedin-icon-navbar.svg" alt="LinkedIn Icon" />
+                                    {/* <BiLogoLinkedinSquare className='text-3xl' /> */}
                                 </span>
                             </Link>
                             <Link href="">
                                 <span>
-                                    <BsTwitterX className='text-2xl' />
+                                    <img className='size-6' src="/twitter-icon-navbar.svg" alt="X Icon" />
+                                    {/* <BsTwitterX className='text-2xl' /> */}
                                 </span>
                             </Link>
                         </div>
@@ -163,25 +170,68 @@ const Navbar = () => {
                         <p className='flex items-center gap-2 font-medium text-xs sm:text-sm'><MdMail className='text-xl text-[#424752]'/> <span className='text-[#191C21]'>info@caabscore.com</span></p>
                     </div>
                     <ul className='mt-2 sm:m-0 sm:w-2/6 flex justify-end gap-4 lg:gap-8 items-center'>
-                        <Link href="">
+                        <Link 
+                            href=""
+                            title='Facebook'
+                            onMouseOver={() => {setIsFacebookHovered(true)}}
+                            onMouseOut={() => {setIsFacebookHovered(false)}}
+                        >
                             <li>
-                                <BiLogoFacebookSquare className='text-xl sm:text-3xl' />
+                                {
+                                    isFacebookHovered ? 
+                                    <img className='size-6' src="/facebook-icon-hover.svg" alt="Facebook Hover" />
+                                    :
+                                    <img className='size-6' src="/facebook-icon-navbar.svg" alt="Facebook Icon" />
+                                }
+                                {/* <BiLogoFacebookSquare className='text-xl sm:text-3xl' /> */}
                             </li>
                         </Link>
-                        <Link href="">
+                        <Link 
+                            href=""
+                            title='Instagram'
+                            onMouseOver={() => {setIsInstagramHovered(true)}}
+                            onMouseOut={() => {setIsInstagramHovered(false)}}
+                        >
                             <li>
-                                <BiLogoInstagram className='text-xl sm:text-3xl' />
+                                {
+                                    isInstagramHovered ? 
+                                    <img className='size-6' src="/instagram-icon-hover.svg" alt="Instagram Hover" />
+                                    :
+                                    <img className='size-6' src="/instagram-icon-navbar.svg" alt="Instagram Icon" />
+                                }
+                                {/* <BiLogoInstagram className='text-xl sm:text-3xl' /> */}
                             </li>
                         </Link>
-                        
-                        <Link href="">
+                        <Link 
+                            href=""
+                            title='LinkedIn'
+                            onMouseOver={() => {setIsLinkedInHovered(true)}}
+                            onMouseOut={() => {setIsLinkedInHovered(false)}}
+                        >
                             <li>
-                                <BiLogoLinkedinSquare className='text-xl sm:text-3xl' />
+                                {
+                                    isLinkedInHovered ? 
+                                    <img className='size-6' src="/linkedin-icon-hover.svg" alt="LinkedIn Hover" />
+                                    :
+                                    <img className='size-6' src="/linkedin-icon-navbar.svg" alt="LinkedIn Icon" />
+                                }
+                                {/* <BiLogoLinkedinSquare className='text-xl sm:text-3xl' /> */}
                             </li>
                         </Link>
-                        <Link href="">
+                        <Link 
+                            href=""
+                            title='X'
+                            onMouseOver={() => {setIsTwitterHovered(true)}}
+                            onMouseOut={() => {setIsTwitterHovered(false)}}
+                        >
                             <li>
-                                <BsTwitterX className='text-lg sm:text-2xl' />
+                                {
+                                    isTwitterHovered ? 
+                                    <img className='size-6' src="/twitter-icon-hover.svg" alt="X Hover" />
+                                    :
+                                    <img className='size-6' src="/twitter-icon-navbar.svg" alt="X Icon" />
+                                }
+                                {/* <BsTwitterX className='text-lg sm:text-2xl' /> */}
                             </li>
                         </Link>
                     </ul>

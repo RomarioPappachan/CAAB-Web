@@ -1,11 +1,34 @@
 "use client";
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Navbar from '../components/Navbar';
 import { MdLocationOn, MdMail, MdPhone } from "react-icons/md";
 import Footer from '../components/Footer';
 
 
 function ContactUs() {
+  const [isLoading, setIsLoading] = useState(true);
+   
+  useEffect(() => {
+      const timer = setTimeout(() => setIsLoading(false), 1000);
+
+      return () => clearTimeout(timer);
+  }, []);
+
+
+  if(isLoading) {
+    return (
+      <div className="w-screen h-screen flex justify-center items-center bg-[#000000c1]">
+        <div className="size-24 rounded-full animate-spin">
+            <img 
+              src="/caab-score-icon.jpg" 
+              alt="Logo"
+              className='w-full object-cover rounded-full'
+            />
+        </div>
+      </div>
+    )
+  }
+
   return (
     <div className="w-screen h-screen m-0 p-0">
         <Navbar/>
@@ -27,35 +50,35 @@ function ContactUs() {
                   name="name" 
                   id="" 
                   placeholder="Your Name"
-                  className='px-2 h-14 text-base text-[#404753] leading-6 rounded-lg outline-none border-[#707784] border-2 placeholder:text-[#707784]'
+                  className='px-2 h-14 text-base text-[#404753] leading-6 rounded-lg outline-none border-[#707784] border-[1px] placeholder:text-[#707784]'
                 />
                 <input 
                   type="text" 
                   name="phoneNumber" 
                   id="" 
                   placeholder="Your Phone No."
-                  className='px-2 h-14 text-base text-[#404753] leading-6 rounded-lg outline-none border-[#707784] border-2 placeholder:text-[#707784]'
+                  className='px-2 h-14 text-base text-[#404753] leading-6 rounded-lg outline-none border-[#707784] border-[1px] placeholder:text-[#707784]'
                 />
                 <input 
                   type="text" 
                   name="email" 
                   id="" 
                   placeholder="Your Email"
-                  className='px-2 h-14 text-base text-[#404753] leading-6 rounded-lg outline-none border-[#707784] border-2 placeholder:text-[#707784]'
+                  className='px-2 h-14 text-base text-[#404753] leading-6 rounded-lg outline-none border-[#707784] border-[1px] placeholder:text-[#707784]'
                 />
                 <input 
                   type="text" 
                   name="subject" 
                   id="" 
                   placeholder="Subject"
-                  className='px-2 h-14 text-base text-[#404753] leading-6 rounded-lg outline-none border-[#707784] border-2 placeholder:text-[#707784]'
+                  className='px-2 h-14 text-base text-[#404753] leading-6 rounded-lg outline-none border-[#707784] border-[1px] placeholder:text-[#707784]'
                 />
                 <textarea 
                   name="message" 
                   id="" 
                   placeholder="Message"
                   rows="6"
-                  className='p-2 pt-4 text-base text-[#404753] leading-6 rounded-lg outline-none border-[#707784] border-2 placeholder:text-[#707784]'
+                  className='p-2 pt-4 text-base text-[#404753] leading-6 rounded-lg outline-none border-[#707784] border-[1px] placeholder:text-[#707784]'
                 ></textarea>
                 <button 
                   type="submit"
