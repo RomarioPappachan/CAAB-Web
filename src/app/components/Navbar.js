@@ -14,6 +14,7 @@ const Navbar = () => {
     const [isTwitterHovered, setIsTwitterHovered] = useState(false);
 
 
+
     const pathName = usePathname();
 
     function handleCloseDrawer() {
@@ -44,7 +45,12 @@ const Navbar = () => {
 
             {/* this div is only displayed for width upto 768px (md:)  */}
             <div className='w-3/4 md:w-4/5 md:hidden h-full flex justify-end items-center gap-4'>
-              <button className='h-7 sm:h-10 px-4 py-2 bg-[#74CE3A] text-white text-[10px] sm:text-base font-semibold rounded-2xl flex justify-center items-center'>
+              <button 
+                className='h-7 sm:h-10 px-4 py-2 bg-[#74CE3A] text-white text-[10px] sm:text-base font-semibold rounded-2xl flex justify-center items-center'
+                onClick={() => {
+                    alert("Website under development.");
+                }}
+              >
                 Login / SignUp
               </button>
               <div className="drawer drawer-end w-10">
@@ -288,7 +294,12 @@ const Navbar = () => {
                             </ul>
                         </div>
                         <div className='w-1/4 lg:w-1/5 flex items-center justify-end'>
-                            <button className='h-8 lg:h-10 px-4 lg:py-2 bg-[#74CE3A] text-white text-sm lg:text-base font-semibold rounded-2xl'>Login / SignUp</button>
+                            <button 
+                                className='h-8 lg:h-10 px-4 lg:py-2 bg-[#74CE3A] text-white text-sm lg:text-base font-semibold rounded-2xl'
+                                onClick={() => {
+                                    alert("Website under development.");
+                                }}
+                            >Login / SignUp</button>
                         </div>
                         
                     </nav>
@@ -296,9 +307,8 @@ const Navbar = () => {
 
             </div>
 
-
-
         </div>
+        
     </nav>
   )
 }

@@ -32,7 +32,7 @@ function AboutUs() {
         <Navbar/>
 
         {/* About us section  */}
-        <div className="w-full mt-[100px] md:mt-[130px] xl:mt-[152px] m-0 px-4 md:px-8 lg:px-[72px] py-20">
+        <div className="w-full mt-[100px] md:mt-[130px] xl:mt-[152px] m-0 px-4 md:px-8 lg:px-[72px] py-20 bg-white">
           <h1 className='text-center text-4xl font-semibold leading-10 text-[#191C21]'>About Us</h1>
           <div className='mt-5'>
             <p className='text-justify text-base leading-10 font-normal text-[#424752]'>
@@ -51,7 +51,7 @@ function AboutUs() {
             </p>
           </div>
 
-          <div className='w-full p-0 pt-5 md:pe-20 xl:pe-40 flex justify-center md:justify-end'>
+          <div className='w-full p-0 pt-5 md:pe-20 xl:pe-40 flex justify-center md:justify-end bg-white'>
             <img 
               src="/about-us-image.svg" 
               alt="About Us"

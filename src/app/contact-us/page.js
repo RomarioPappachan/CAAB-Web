@@ -30,7 +30,7 @@ function ContactUs() {
   }
 
   return (
-    <div className="w-screen h-screen m-0 p-0">
+    <div className="w-screen h-screen m-0 p-0 bg-white">
         <Navbar/>
 
         {/* contact us section  */}
@@ -44,50 +44,55 @@ function ContactUs() {
               <form 
                 action=""
                 className='mt-6 flex flex-col gap-6'
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  alert("Website under development.");
+                }}
               >
                 <input 
                   type="text" 
                   name="name" 
                   id="" 
                   placeholder="Your Name"
-                  className='px-2 h-14 text-base text-[#404753] leading-6 rounded-lg outline-none border-[#707784] border-[1px] placeholder:text-[#707784] focus:border-[#003E82] focus:border-2'
+                  className='px-2 h-14 bg-white text-base text-[#404753] leading-6 rounded-lg outline-none border-[#707784] border-[1px] placeholder:text-[#707784] focus:border-[#003E82] focus:border-2'
                 />
                 <input 
                   type="text" 
                   name="phoneNumber" 
                   id="" 
                   placeholder="Your Phone No."
-                  className='px-2 h-14 text-base text-[#404753] leading-6 rounded-lg outline-none border-[#707784] border-[1px] placeholder:text-[#707784] focus:border-[#003E82] focus:border-2'
+                  className='px-2 h-14 bg-white text-base text-[#404753] leading-6 rounded-lg outline-none border-[#707784] border-[1px] placeholder:text-[#707784] focus:border-[#003E82] focus:border-2'
                 />
                 <input 
                   type="text" 
                   name="email" 
                   id="" 
                   placeholder="Your Email"
-                  className='px-2 h-14 text-base text-[#404753] leading-6 rounded-lg outline-none border-[#707784] border-[1px] placeholder:text-[#707784] focus:border-[#003E82] focus:border-2'
+                  className='px-2 h-14 bg-white text-base text-[#404753] leading-6 rounded-lg outline-none border-[#707784] border-[1px] placeholder:text-[#707784] focus:border-[#003E82] focus:border-2'
                 />
                 <input 
                   type="text" 
                   name="subject" 
                   id="" 
                   placeholder="Subject"
-                  className='px-2 h-14 text-base text-[#404753] leading-6 rounded-lg outline-none border-[#707784] border-[1px] placeholder:text-[#707784] focus:border-[#003E82] focus:border-2'
+                  className='px-2 h-14 bg-white text-base text-[#404753] leading-6 rounded-lg outline-none border-[#707784] border-[1px] placeholder:text-[#707784] focus:border-[#003E82] focus:border-2'
                 />
                 <textarea 
                   name="message" 
                   id="" 
                   placeholder="Message"
                   rows="6"
-                  className='p-2 pt-4 text-base text-[#404753] leading-6 rounded-lg outline-none border-[#707784] border-[1px] placeholder:text-[#707784] focus:border-[#003E82] focus:border-2'
+                  className='p-2 pt-4 bg-white text-base text-[#404753] leading-6 rounded-lg outline-none border-[#707784] border-[1px] placeholder:text-[#707784] focus:border-[#003E82] focus:border-2'
                 ></textarea>
                 <button 
                   type="submit"
                   className='mt-2 px-6 py-4 h-[4.5rem] rounded-2xl text-base font-semibold leading-6 text-white bg-[#2F6C00] hover:bg-[#2c8835]'
+
                 >SEND NOW</button>
               </form>
             </div>
 
-            <div className='w-full lg:w-1/2 pt-20 lg:pt-3'>
+            <div className='w-full lg:w-1/2 pt-20 lg:pt-3 bg-white'>
               <div className="w-full grid grid-cols-1 sm:grid-cols-2 gap-6">
 
                 <div className='p-6 bg-[#CBDBFF] rounded-2xl flex flex-col justify-center items-center gap-y-2 drop-shadow-md'>

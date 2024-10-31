@@ -1,8 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Navbar from "./components/Navbar";
-import Image from "next/image";
-import Features from "./components/Home/Features";
 import HeroSection from "./components/Home/HeroSection";
 import IntroSection from "./components/Home/IntroSection";
 import RoleSection from "./components/Home/RoleSection";

@@ -3,7 +3,7 @@ import React from 'react'
 
 function OurTeamSection() {
   return (
-    <div className='px-4 md:px-8 lg:px-[72px] py-11 block-animation'>
+    <div className='px-4 md:px-8 lg:px-[72px] py-11 bg-white block-animation'>
         <div className='flex flex-col xl:flex-row gap-6'>
             <div className='w-full xl:w-2/3 px-6 py-4 bg-[#CBDBFF] rounded-2xl flex flex-col gap-y-10'>
                 <h1 className='text-[32px] text-[#003E82] font-medium leading-10'>OUR TEAM</h1>

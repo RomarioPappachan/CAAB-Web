@@ -32,7 +32,7 @@ function ScoreEvaluation() {
     <div className="w-screen h-screen m-0 p-0">
         <Navbar/>
 
-        <div className='w-full mt-[100px] md:mt-[130px] xl:mt-[152px] m-0 px-4 md:px-8 lg:px-[72px] py-[72px]'>
+        <div className='w-full mt-[100px] md:mt-[130px] xl:mt-[152px] m-0 px-4 md:px-8 lg:px-[72px] py-[72px] bg-white'>
 
             <div className='w-full flex flex-col lg:flex-row gap-6'>
               <div className='w-full flex justify-center items-center lg:inline-block lg:w-1/2 lg:relative'>
@@ -42,7 +42,7 @@ function ScoreEvaluation() {
                   className='w-2/3 lg:w-full lg:absolute lg:right-0 xl:-top-14'
                 />
               </div>
-              <div className='w-full lg:w-1/2 flex flex-col gap-6'>
+              <div className='w-full lg:w-1/2 flex flex-col gap-6 bg-white'>
                 <h1 className='text-4xl font-semibold text-[#191C21] leading-10'>CAAB Score</h1>
                 <div className='w-full flex flex-col gap-10'>
                   <p className='text-[#424752] text-base leading-10'>
@@ -71,7 +71,7 @@ function ScoreEvaluation() {
               </p>
             </div>
 
-            <div className='w-full lg:px-6 py-10 block-animation'>
+            <div className='w-full lg:px-6 py-10 bg-white block-animation'>
               <div className='grid grid-cols-1 md:grid-cols-2 gap-8 xl:gap-[72px]'>
 
                 <div className='p-4 flex flex-col gap-6 text-[#404A38] bg-white border-[#BFCAB3] border-[1px] rounded-lg group transition-all duration-500 hover:bg-[#406926] hover:text-white transform hover:scale-105 hover:ease-in hover:duration-300'>
@@ -123,7 +123,7 @@ function ScoreEvaluation() {
               </div>
             </div>
 
-            <div className='text-base font-normal leading-10 text-[#424752]'>
+            <div className='text-base font-normal leading-10 text-[#424752] bg-white'>
               By connecting CCSR with CAAB Score, CorpRank encourages companies to prioritize compliance, ethics, 
               and social responsibility, ultimately contributing to sustainable business growth and a better success. 
               The <span className='font-semibold text-[#003E82]'>'CAAB Score' framework</span> assesses four key dimensions of corporate compliance: 
