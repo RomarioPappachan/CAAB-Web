@@ -34,16 +34,16 @@ function ContactUs() {
         <Navbar/>
 
         {/* contact us section  */}
-        <div className='mt-[100px] md:mt-[130px] xl:mt-[152px] w-full m-0 px-4 md:px-8 lg:px-[72px] py-20'>
+        <div className='mt-[100px] md:mt-[130px] xl:mt-[152px] w-full m-0 px-4 md:px-8 lg:px-[72px] py-20 bg-white'>
           <h1 className='text-4xl font-semibold leading-10 text-[#191C21]'>Contact Us</h1>
-          <div className='pt-8 flex flex-col lg:flex-row gap-6'>
+          <div className='pt-8 flex flex-col lg:flex-row gap-6 bg-white'>
             <div className='w-full lg:w-1/2'>
               <p className='text-base font-normal leading-10 text-[#424752]'>
                 We're here to assist you with any questions, inquiries, or concerns you may have. Feel free to reach out to us.
               </p>
               <form 
                 action=""
-                className='mt-6 flex flex-col gap-6'
+                className='mt-6 flex flex-col gap-6 bg-white'
                 onSubmit={(e) => {
                   e.preventDefault();
                   alert("Website under development.");
@@ -136,7 +136,6 @@ function ContactUs() {
         {/* End of contact us section  */}
 
         <Footer/>
-
 
     </div>
   )

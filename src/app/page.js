@@ -36,7 +36,7 @@ const Home = () => {
   }
 
   return (
-    <div className="w-screen h-screen m-0 p-0">
+    <div className="w-screen h-screen m-0 p-0 bg-white">
       <div className="m-0 p-0 w-full">
         <Navbar />
       </div>
