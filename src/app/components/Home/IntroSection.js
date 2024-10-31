@@ -3,7 +3,7 @@ import React from "react";
 
 function IntroSection() {
   return (
-    <div className="w-full py-20 px-4 md:px-8 lg:px-[72px]">
+    <div className="w-full py-20 px-4 md:px-8 lg:px-[72px] block-animation">
       <div className="w-full h-auto flex flex-col lg:flex-row">
         <div className="w-full lg:w-1/3 flex justify-center items-center gap-x-11">
           <img src="intro-section-image.jpg" alt="section2-img" className="w-96" />

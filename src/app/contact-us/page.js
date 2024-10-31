@@ -50,39 +50,39 @@ function ContactUs() {
                   name="name" 
                   id="" 
                   placeholder="Your Name"
-                  className='px-2 h-14 text-base text-[#404753] leading-6 rounded-lg outline-none border-[#707784] border-[1px] placeholder:text-[#707784]'
+                  className='px-2 h-14 text-base text-[#404753] leading-6 rounded-lg outline-none border-[#707784] border-[1px] placeholder:text-[#707784] focus:border-[#003E82] focus:border-2'
                 />
                 <input 
                   type="text" 
                   name="phoneNumber" 
                   id="" 
                   placeholder="Your Phone No."
-                  className='px-2 h-14 text-base text-[#404753] leading-6 rounded-lg outline-none border-[#707784] border-[1px] placeholder:text-[#707784]'
+                  className='px-2 h-14 text-base text-[#404753] leading-6 rounded-lg outline-none border-[#707784] border-[1px] placeholder:text-[#707784] focus:border-[#003E82] focus:border-2'
                 />
                 <input 
                   type="text" 
                   name="email" 
                   id="" 
                   placeholder="Your Email"
-                  className='px-2 h-14 text-base text-[#404753] leading-6 rounded-lg outline-none border-[#707784] border-[1px] placeholder:text-[#707784]'
+                  className='px-2 h-14 text-base text-[#404753] leading-6 rounded-lg outline-none border-[#707784] border-[1px] placeholder:text-[#707784] focus:border-[#003E82] focus:border-2'
                 />
                 <input 
                   type="text" 
                   name="subject" 
                   id="" 
                   placeholder="Subject"
-                  className='px-2 h-14 text-base text-[#404753] leading-6 rounded-lg outline-none border-[#707784] border-[1px] placeholder:text-[#707784]'
+                  className='px-2 h-14 text-base text-[#404753] leading-6 rounded-lg outline-none border-[#707784] border-[1px] placeholder:text-[#707784] focus:border-[#003E82] focus:border-2'
                 />
                 <textarea 
                   name="message" 
                   id="" 
                   placeholder="Message"
                   rows="6"
-                  className='p-2 pt-4 text-base text-[#404753] leading-6 rounded-lg outline-none border-[#707784] border-[1px] placeholder:text-[#707784]'
+                  className='p-2 pt-4 text-base text-[#404753] leading-6 rounded-lg outline-none border-[#707784] border-[1px] placeholder:text-[#707784] focus:border-[#003E82] focus:border-2'
                 ></textarea>
                 <button 
                   type="submit"
-                  className='mt-2 px-6 py-4 h-[4.5rem] rounded-2xl text-base font-semibold leading-6 text-white bg-[#2F6C00]'
+                  className='mt-2 px-6 py-4 h-[4.5rem] rounded-2xl text-base font-semibold leading-6 text-white bg-[#2F6C00] hover:bg-[#2c8835]'
                 >SEND NOW</button>
               </form>
             </div>

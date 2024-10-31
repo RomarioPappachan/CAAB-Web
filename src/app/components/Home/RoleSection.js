@@ -3,7 +3,7 @@ import React from 'react'
 
 function RoleSection() {
   return (
-    <div className='w-full bg-[#003E82] text-white px-4 md:px-8 lg:px-[72px] py-[72px] flex flex-col gap-y-10'>
+    <div className='w-full bg-[#003E82] text-white px-4 md:px-8 lg:px-[72px] py-[72px] flex flex-col gap-y-10 block-animation'>
       <div className='w-full flex flex-col gap-y-6'>
         <h2 className='font-bold text-4xl leading-10 text-white'>
           CAABScore and the role of CorpRank

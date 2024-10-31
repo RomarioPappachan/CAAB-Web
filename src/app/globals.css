@@ -21,3 +21,55 @@ body {
   background-position: center; /* Centers the image */
   
 }
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    scale: 0.5;
+  }
+  to {
+    opacity: 1;
+    scale: 1;
+  }
+}
+
+.block-animation {
+  animation: appear ease-in;
+  animation-timeline: view();
+  animation-range: entry 0% cover 40%;
+}
+
+
+@keyframes appear-from-left {
+  from {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0%);
+  }
+}
+
+.translate-left {
+  animation: appear-from-left 3s ease-in;
+  animation-timeline: view();
+  animation-range: entry 0% cover 40%;
+} 
+
+@keyframes appear-from-right {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0%);
+  }
+}
+
+.translate-right {
+  animation: appear-from-right 3s linear;
+  animation-timeline: view();
+  animation-range: entry 0% cover 40%;
+} 

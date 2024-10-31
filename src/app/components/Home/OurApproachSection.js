@@ -8,7 +8,7 @@ function OurApproachSection() {
         {/* Our approach & Expert Guidance & Advice  */}
         <div className='m-0 grid grid-cols-1 xl:grid-cols-2 gap-y-10 gap-x-8'>
 
-            <div className=''>
+            <div className='translate-left'>
                 <h1 className='h-10 text-center font-medium text-[#191C21] text-[32px]'>Our Approach</h1>
                 <div className='grid grid-cols-1 sm:grid-cols-2 gap-6 mt-10'>
                     
@@ -93,7 +93,7 @@ function OurApproachSection() {
                 </p>
             </div>
 
-            <div className=''>
+            <div className='translate-right'>
                 <h1 className='h-10 text-center font-medium text-[#191C21] text-[32px]'>Our Values</h1>
                 <div className='grid grid-cols-1 sm:grid-cols-2 gap-6 mt-10'>
                     

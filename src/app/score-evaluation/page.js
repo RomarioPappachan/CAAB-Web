@@ -71,7 +71,7 @@ function ScoreEvaluation() {
               </p>
             </div>
 
-            <div className='w-full lg:px-6 py-10'>
+            <div className='w-full lg:px-6 py-10 block-animation'>
               <div className='grid grid-cols-1 md:grid-cols-2 gap-8 xl:gap-[72px]'>
 
                 <div className='p-4 flex flex-col gap-6 text-[#404A38] bg-white border-[#BFCAB3] border-[1px] rounded-lg group transition-all duration-500 hover:bg-[#406926] hover:text-white transform hover:scale-105 hover:ease-in hover:duration-300'>
