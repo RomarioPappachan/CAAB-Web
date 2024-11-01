@@ -75,8 +75,12 @@ function OurApproachSection() {
 
             <div className=''>
                 <h1 className='xl:h-10 text-center font-medium text-[#191C21] text-[32px]'>Expert Guidance and Advice</h1>
-                <p className='text-base font-normal text-[#424752] leading-10 mt-10'>Our team of experienced compliance professionals provides tailored solutions to meet your specific needs. We leverage cutting-edge technology to streamline compliance processes and minimize risks.<br/>
-                    CAAB is more than just a corporate compliance service provider. We are a trusted advisor and partner committed to your long-term success. We understand that compliance is not a one-size-fits-all approach, and we tailor our solutions to meet your unique needs. Let us guide you towards a more compliant and confident future in your corporate navigation.
+                <p className='text-base font-normal text-[#424752] leading-10 mt-10'>
+                    Our team of experienced compliance professionals provides tailored solutions to meet your specific needs. 
+                    We leverage cutting-edge technology to streamline compliance processes and minimize risks.<br/>
+                    CAAB is more than just a corporate compliance service provider. We are a trusted advisor and partner committed to your long-term success. 
+                    We understand that compliance is not a one-size-fits-all approach, and we tailor our solutions to meet your unique needs. 
+                    Let us guide you towards a more compliant and confident future in your corporate navigation.
                 </p>
             </div>
 

@@ -8,6 +8,7 @@ import OurApproachSection from "./components/Home/OurApproachSection";
 import OurTeamSection from "./components/Home/OurTeamSection";
 import FeatureSection from "./components/Home/FeatureSection";
 import Footer from "./components/Footer";
+import TempSection from "./components/Home/TempSection";
 
 const Home = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -46,11 +47,13 @@ const Home = () => {
 
       <IntroSection/>
 
-      <RoleSection/>
+      {/* <RoleSection/> */}
 
-      <OurApproachSection/>
+      <TempSection/>
 
-      <OurTeamSection/>
+      {/* <OurApproachSection/> */}
+
+      {/* <OurTeamSection/> */}
 
       <FeatureSection/>
 

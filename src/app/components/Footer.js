@@ -45,8 +45,9 @@ function Footer() {
                         </div>
                     </div>
                     <div className='flex items-center gap-6'>
-                        <Link 
+                        <a 
                             href="/"
+                            target='_blank'
                             title='Facebook'
                             onMouseOver={() => {setIsFacebookHovered(true)}}
                             onMouseOut={() => {setIsFacebookHovered(false)}}
@@ -58,9 +59,10 @@ function Footer() {
                                 <img className='size-6' src="/facebook-icon-footer.svg" alt="Facebook Icon" />
                             }
                             {/* <BiLogoFacebookSquare className='m-0 text-3xl hover:text-[#3D5A98] hover:bg-white' />    */}
-                        </Link>
-                        <Link 
-                            href="/"
+                        </a>
+                        <a 
+                            href="https://www.instagram.com/caabscore"
+                            target='_blank'
                             title='Instagram'
                             onMouseOver={() => {setIsInstagramHovered(true)}}
                             onMouseOut={() => {setIsInstagramHovered(false)}}
@@ -72,9 +74,10 @@ function Footer() {
                                 <img className='size-6' src="/instagram-icon-footer.svg" alt="Instagram Icon" />
                             }
                             {/* <BiLogoInstagram className='text-3xl' />    */}
-                        </Link>
-                        <Link 
+                        </a>
+                        <a 
                             href="/"
+                            target='_blank'
                             title='LinkedIn'
                             onMouseOver={() => {setIsLinkedInHovered(true)}}
                             onMouseOut={() => {setIsLinkedInHovered(false)}}
@@ -86,9 +89,10 @@ function Footer() {
                                 <img className='size-6' src="/linkedin-icon-footer.svg" alt="LinkedIn Icon" />
                             }
                             {/* <BiLogoLinkedinSquare className='text-3xl hover:text-[#0A66C2] hover:bg-white' />    */}
-                        </Link>
-                        <Link 
-                            href="/"
+                        </a>
+                        <a 
+                            href="https://x.com/caabscore"
+                            target='_blank'
                             title='X'
                             onMouseOver={() => {setIsTwitterHovered(true)}}
                             onMouseOut={() => {setIsTwitterHovered(false)}}
@@ -100,7 +104,7 @@ function Footer() {
                                 <img className='size-6' src="/twitter-icon-footer.svg" alt="X Icon" />
                             }
                             {/* <BsTwitterX className='text-xl' />    */}
-                        </Link>
+                        </a>
                     </div>
                 </div>
             </div>

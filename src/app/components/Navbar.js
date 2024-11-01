@@ -33,8 +33,8 @@ const Navbar = () => {
                     className='w-full md:w-3/4 xl:w-1/2'    
                 >
                     <img    
-                        src="/caab-score-logo.svg" 
-                        alt="" 
+                        src="/CAAB-logo-new-2.png" 
+                        alt="CAAB Score Logo" 
                         className="w-full"
                     />
                 </Link>
@@ -88,7 +88,7 @@ const Navbar = () => {
                             HOME
                         </li>
                     </Link>
-                    <Link href="/score-evaluation">
+                    {/* <Link href="/score-evaluation">
                         <li 
                             className={`h-10 ps-2 py-2 text-sm font-semibold 
                               ${pathName === "/score-evaluation" 
@@ -99,7 +99,7 @@ const Navbar = () => {
                         >
                             SCORE EVALUATION
                         </li>
-                    </Link>
+                    </Link> */}
                     <Link href="/about-us">
                         <li 
                             className={`h-10 ps-2 py-2 text-sm font-semibold 
@@ -131,31 +131,31 @@ const Navbar = () => {
                             <p className='flex items-center gap-2 font-medium text-xs sm:text-sm'><MdMail className='text-xl text-[#424752]'/> <span className='text-[#191C21]'>info@caabscore.com</span></p>
                         </div>
                         <div className='mt-4 flex justify-start items-center gap-4'>
-                            <Link href="" >
+                            <a href="" target="_blank">
                                 <span>
                                     <img className='size-6' src="/facebook-icon-navbar.svg" alt="Facebook Icon" />
                                     {/* <BiLogoFacebookSquare className='text-3xl' /> */}
                                 </span>
-                            </Link>
-                            <Link href="">
+                            </a>
+                            <a href="https://www.instagram.com/caabscore" target="_blank">
                                 <span>
                                     <img className='size-6' src="/instagram-icon-navbar.svg" alt="Instagram Icon" />
                                     {/* <BiLogoInstagram className='text-3xl' /> */}
                                 </span>
-                            </Link>
+                            </a>
                                 
-                            <Link href="">
+                            <a href="" target="_blank">
                                 <span>
                                     <img className='size-6' src="/linkedin-icon-navbar.svg" alt="LinkedIn Icon" />
                                     {/* <BiLogoLinkedinSquare className='text-3xl' /> */}
                                 </span>
-                            </Link>
-                            <Link href="">
+                            </a>
+                            <a href="https://x.com/caabscore" target="_blank">
                                 <span>
                                     <img className='size-6' src="/twitter-icon-navbar.svg" alt="X Icon" />
                                     {/* <BsTwitterX className='text-2xl' /> */}
                                 </span>
-                            </Link>
+                            </a>
                         </div>
                     </div>
                   </ul>
@@ -176,8 +176,9 @@ const Navbar = () => {
                         <p className='flex items-center gap-2 font-medium text-xs sm:text-sm'><MdMail className='text-xl text-[#424752]'/> <span className='text-[#191C21]'>info@caabscore.com</span></p>
                     </div>
                     <ul className='mt-2 sm:m-0 sm:w-2/6 flex justify-end gap-4 lg:gap-8 items-center'>
-                        <Link 
+                        <a 
                             href=""
+                            target="_blank"
                             title='Facebook'
                             onMouseOver={() => {setIsFacebookHovered(true)}}
                             onMouseOut={() => {setIsFacebookHovered(false)}}
@@ -191,9 +192,10 @@ const Navbar = () => {
                                 }
                                 {/* <BiLogoFacebookSquare className='text-xl sm:text-3xl' /> */}
                             </li>
-                        </Link>
-                        <Link 
-                            href=""
+                        </a>
+                        <a 
+                            href="https://www.instagram.com/caabscore"
+                            target="_blank"
                             title='Instagram'
                             onMouseOver={() => {setIsInstagramHovered(true)}}
                             onMouseOut={() => {setIsInstagramHovered(false)}}
@@ -207,9 +209,10 @@ const Navbar = () => {
                                 }
                                 {/* <BiLogoInstagram className='text-xl sm:text-3xl' /> */}
                             </li>
-                        </Link>
-                        <Link 
+                        </a>
+                        <a 
                             href=""
+                            target="_blank"
                             title='LinkedIn'
                             onMouseOver={() => {setIsLinkedInHovered(true)}}
                             onMouseOut={() => {setIsLinkedInHovered(false)}}
@@ -223,9 +226,10 @@ const Navbar = () => {
                                 }
                                 {/* <BiLogoLinkedinSquare className='text-xl sm:text-3xl' /> */}
                             </li>
-                        </Link>
-                        <Link 
-                            href=""
+                        </a>
+                        <a 
+                            href="https://x.com/caabscore"
+                            target="_blank"
                             title='X'
                             onMouseOver={() => {setIsTwitterHovered(true)}}
                             onMouseOut={() => {setIsTwitterHovered(false)}}
@@ -239,7 +243,7 @@ const Navbar = () => {
                                 }
                                 {/* <BsTwitterX className='text-lg sm:text-2xl' /> */}
                             </li>
-                        </Link>
+                        </a>
                     </ul>
                 </div>
 
@@ -258,7 +262,7 @@ const Navbar = () => {
                                         HOME
                                     </li>
                                 </Link>
-                                <Link href="/score-evaluation">
+                                {/* <Link href="/score-evaluation">
                                     <li 
                                         className={`h-8 px-4 py-2 text-xs lg:text-sm flex font-semibold justify-center items-center 
                                           ${pathName === "/score-evaluation" 
@@ -268,7 +272,7 @@ const Navbar = () => {
                                     >
                                         SCORE EVALUATION
                                     </li>
-                                </Link>
+                                </Link> */}
                                 <Link href="/about-us">
                                     <li 
                                         className={`h-8 px-4 py-2 text-xs lg:text-sm flex font-semibold justify-center items-center 

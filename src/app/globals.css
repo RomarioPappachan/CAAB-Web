@@ -57,6 +57,12 @@ body {
   animation-range: entry 0% cover 20%;
 } 
 
+.translate-card-left {
+  animation: appear-from-left 3s ease-in;
+  animation-timeline: view();
+  animation-range: entry 0% cover 40%;
+} 
+
 @keyframes appear-from-right {
   from {
     opacity: 0;
@@ -73,3 +79,8 @@ body {
   animation-timeline: view();
   animation-range: entry 0% cover 40%;
 } 
+.translate-card-right {
+  animation: appear-from-right 3s ease-in;
+  animation-timeline: view();
+  animation-range: entry 0% cover 40%;
+}
