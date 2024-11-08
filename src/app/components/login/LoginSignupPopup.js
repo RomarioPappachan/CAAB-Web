@@ -2,7 +2,13 @@
 import React from "react";
 import { GoDotFill } from "react-icons/go";
 
-function LoginSignupPopup() {
+function LoginSignupPopup(props) {
+  function handleSubmit() {
+    props.setIsOtpPopupOpen(true);
+    props.setIsLoginSignupOpen(false);
+    props.setIsInitialDetailsOpen(false);
+  }
+
   return (
     <div className="w-full md:max-w-[854px] h-auto md:h-[509px] px-2 md:py-10 bg-white drop-shadow-xl rounded-2xl flex flex-col md:flex-row">
       {/* Image Section */}
@@ -34,7 +40,7 @@ function LoginSignupPopup() {
           <div className="w-10/12">
             <input
               type="text"
-              className="w-full h-full ps-4 outline-none text-base text-[#404753] placeholder:text-[#404753]"
+              className="w-full h-full ps-4 outline-none text-base bg-white text-[#404753] placeholder:text-[#404753]"
               placeholder="Mobile number *"
             />
           </div>
@@ -51,7 +57,10 @@ function LoginSignupPopup() {
         </div>
 
         {/* Continue Button */}
-        <button className="w-full md:w-[374px] h-[56px] mt-8 bg-[#74CE3A] text-[14px] font-semibold text-white flex justify-center items-center">
+        <button
+          className="w-full md:w-[374px] h-[56px] mt-8 bg-[#74CE3A] text-[14px] font-semibold text-white flex justify-center items-center"
+          onClick={handleSubmit}
+        >
           CONTINUE
         </button>
 

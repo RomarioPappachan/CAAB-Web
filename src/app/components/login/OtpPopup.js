@@ -2,7 +2,12 @@
 import React from "react";
 import { GoDotFill } from "react-icons/go";
 
-function OtpPopup() {
+function OtpPopup(props) {
+  function handleSubmitOtp() {
+    props.setIsOtpPopupOpen(false);
+    props.setIsLoginSignupOpen(false);
+    props.setIsInitialDetailsOpen(true);
+  }
   return (
     <div className="w-full md:max-w-[854px] h-auto md:h-[509px] py-10 bg-white drop-shadow-xl rounded-2xl flex flex-col md:flex-row">
       {/* Image Section */}
@@ -29,22 +34,22 @@ function OtpPopup() {
           <input
             type="tel"
             maxLength={1}
-            className="w-10 h-14 border-2 border-[#707784] rounded-md text-black text-xl p-3"
+            className="w-10 h-14 border-2 border-[#707784] rounded-md bg-white text-black text-xl p-3"
           />
           <input
             type="tel"
             maxLength={1}
-            className="w-10 h-14 border-2 border-[#707784] rounded-md text-black text-xl p-3"
+            className="w-10 h-14 border-2 border-[#707784] rounded-md bg-white text-black text-xl p-3"
           />
           <input
             type="tel"
             maxLength={1}
-            className="w-10 h-14 border-2 border-[#707784] rounded-md text-black text-xl p-3"
+            className="w-10 h-14 border-2 border-[#707784] rounded-md bg-white text-black text-xl p-3"
           />
           <input
             type="tel"
             maxLength={1}
-            className="w-10 h-14 border-2 border-[#707784] rounded-md text-black text-xl p-3"
+            className="w-10 h-14 border-2 border-[#707784] rounded-md bg-white text-black text-xl p-3"
           />
         </div>
 
@@ -54,6 +59,12 @@ function OtpPopup() {
         <p className="text-[#424752] text-xs mt-12">
           Have trouble logging in ?{" "}
           <span className="text-[#003E82] text-sm font-semibold">Get Help</span>
+        </p>
+        <p
+          className="bg-red-600 text-white cursor-pointer"
+          onClick={handleSubmitOtp}
+        >
+          Go
         </p>
       </div>
     </div>

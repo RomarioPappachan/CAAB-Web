@@ -1,11 +1,20 @@
 "use client";
 import React from "react";
 import { GoDotFill } from "react-icons/go";
+import { useRouter } from "next/navigation";
 
-function InitialDetails() {
+function InitialDetails(props) {
+  const router = useRouter();
+
+  function handleSubmitDetails() {
+    props.setIsOtpPopupOpen(false);
+    props.setIsLoginSignupOpen(false);
+    props.setIsInitialDetailsOpen(false);
+    router.push("/");
+  }
   return (
-    <div className="w-[854px] h-[671px] py-14 border-[1px]  border-[#e8e8e8] bg-white drop-shadow-xl rounded-2xl ">
-      <div className="md:px-24 ">
+    <div className="w-[854px] h-[671px] py-14 border-[1px] border-[#e8e8e8] bg-white drop-shadow-xl rounded-2xl ">
+      <div className="md:px-24">
         <div className="relative border-b-[1px] mx-4 lg:mx-0 border-[#C0C7D5]">
           <h1 className="text-[#191C21] font-semibold text-xl sm:text-2xl text-center pb-4 leading-7 sm:leading-10 ">
             Welcome to
@@ -28,19 +37,22 @@ function InitialDetails() {
         <input
           type="text"
           placeholder="Username *"
-          className="w-full h-[56px] px-4 placeholder:text-[#404753] border-[1px] border-[#707784] rounded-lg text-black"
+          className="w-full h-[56px] px-4 placeholder:text-[#404753] border-[1px] border-[#707784] rounded-lg text-black bg-white"
         />
         <input
           type="text"
           placeholder="Email (optional)"
-          className="w-full h-[56px] px-4 placeholder:text-[#404753] border-[1px] border-[#707784] rounded-lg text-black"
+          className="w-full h-[56px] px-4 placeholder:text-[#404753] border-[1px] border-[#707784] rounded-lg text-black bg-white"
         />
         <input
           type="text"
           placeholder="Company Name *"
-          className="w-full h-[56px] px-4 placeholder:text-[#404753] border-[1px] border-[#707784] rounded-lg text-black"
+          className="w-full h-[56px] px-4 placeholder:text-[#404753] border-[1px] border-[#707784] rounded-lg text-black bg-white"
         />
-        <button className="w-full h-[56px] mt-6 bg-[#74CE3A] text-white text-[14px] font-semibold flex justify-center items-center">
+        <button
+          className="w-full h-[56px] mt-6 bg-[#74CE3A] text-white text-[14px] font-semibold flex justify-center items-center"
+          onClick={handleSubmitDetails}
+        >
           CONTINUE
         </button>
       </div>
