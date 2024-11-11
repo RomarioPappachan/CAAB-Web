@@ -22,9 +22,7 @@ export default function RootLayout({ children }) {
           rel="stylesheet"
         />
       </head>
-      <body className="m-0 p-0 bg-white overflow-x-hidden relative">
-        {children}
-      </body>
+      <body className="m-0 p-0 bg-white overflow-x-hidden">{children}</body>
     </html>
   );
 }

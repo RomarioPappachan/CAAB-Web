@@ -21,21 +21,21 @@ function EditBranchBasicDetails(props) {
             <input
               type="text"
               placeholder="Branch / Company Name"
-              className="w-full h-14 px-2 font-base text-[#404753] outline-none border-[#707784] border-[1px] rounded-lg"
+              className="w-full h-14 px-2 font-base bg-white text-[#404753] outline-none border-[#707784] border-[1px] rounded-lg"
             />
             <input
               type="text"
               placeholder="City"
-              className="w-full h-14 px-2 font-base text-[#404753] outline-none border-[#707784] border-[1px] rounded-lg"
+              className="w-full h-14 px-2 font-base bg-white text-[#404753] outline-none border-[#707784] border-[1px] rounded-lg"
             />
             <select
               name=""
               id=""
               placeholder="Select Sector"
-              className="w-full h-14 px-2 font-base text-[#404753] outline-none border-[#707784] border-[1px] rounded-lg"
+              className="w-full h-14 px-2 font-base bg-white text-[#404753] outline-none border-[#707784] border-[1px] rounded-lg"
             >
               <option
-                className="font-base text-[#404753]"
+                className="font-base bg-white text-[#404753]"
                 value=""
                 selected
                 disabled
@@ -56,12 +56,12 @@ function EditBranchBasicDetails(props) {
             <input
               type="email"
               placeholder="Email"
-              className="w-full h-14 px-2 font-base text-[#404753] outline-none border-[#707784] border-[1px] rounded-lg"
+              className="w-full h-14 px-2 font-base bg-white text-[#404753] outline-none border-[#707784] border-[1px] rounded-lg"
             />
             <input
               type="text"
               placeholder="Mobile Number"
-              className="w-full h-14 px-2 font-base text-[#404753] outline-none border-[#707784] border-[1px] rounded-lg"
+              className="w-full h-14 px-2 font-base bg-white text-[#404753] outline-none border-[#707784] border-[1px] rounded-lg"
             />
           </div>
           <div>

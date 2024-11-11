@@ -12,28 +12,25 @@ import TempSection from "./components/Home/TempSection";
 
 const Home = () => {
   const [isLoading, setIsLoading] = useState(true);
-   
+
   useEffect(() => {
-      const timer = setTimeout(() => setIsLoading(false), 1000);
+    const timer = setTimeout(() => setIsLoading(false), 1000);
 
-      return () => clearTimeout(timer);
-   }, []);
+    return () => clearTimeout(timer);
+  }, []);
 
-
-
-
-  if(isLoading) {
+  if (isLoading) {
     return (
       <div className="w-screen h-screen flex justify-center items-center bg-[#000000c1]">
-        <div className="size-24 rounded-full animate-spin">
-            <img 
-              src="/caab-score-icon.jpg" 
-              alt="Logo"
-              className='w-full object-cover rounded-full'
-            />
+        <div className="size-24 rounded-full animate-scale-up-down">
+          <img
+            src="/caab-score-icon.jpg"
+            alt="Logo"
+            className="w-full object-cover rounded-full"
+          />
         </div>
       </div>
-    )
+    );
   }
 
   return (
@@ -42,23 +39,22 @@ const Home = () => {
         <Navbar />
       </div>
       <div className="p-0 mt-[100px] md:mt-[130px] xl:mt-[152px]">
-        <HeroSection/>
+        <HeroSection />
       </div>
 
-      <IntroSection/>
+      <IntroSection />
 
       {/* <RoleSection/> */}
 
-      <TempSection/>
+      <TempSection />
 
-      {/* <OurApproachSection/> */}
+      {/* <OurApproachSection /> */}
 
-      {/* <OurTeamSection/> */}
+      {/* <OurTeamSection /> */}
 
-      <FeatureSection/>
+      <FeatureSection />
 
-      <Footer/>
-
+      <Footer />
     </div>
   );
 };

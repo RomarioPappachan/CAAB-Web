@@ -4,13 +4,12 @@ import React from "react";
 function TempSection() {
   return (
     <div className="px-4 md:px-8 lg:px-[72px] bg-white">
-
       <div className="m-0 grid grid-cols-1 xl:grid-cols-2 gap-y-10 gap-x-8">
         <div className="">
-          <h1 className="xl:h-10 text-center font-medium text-[#191C21] text-[32px]">
+          <h1 className="xl:h-10 text-center font-medium text-[#191C21] text-[32px] block-animation">
             Expert Guidance and Advice
           </h1>
-          <p className="text-base font-normal text-[#424752] leading-10 mt-10">
+          <p className="text-base font-normal text-[#424752] leading-10 mt-10 block-animation">
             Our team of experienced compliance professionals provides tailored
             solutions to meet your specific needs. We leverage cutting-edge
             technology to streamline compliance processes and minimize risks.
@@ -24,12 +23,12 @@ function TempSection() {
           </p>
         </div>
 
-        <div className="translate-right">
-          <h1 className="h-10 text-center font-medium text-[#191C21] text-[32px]">
+        <div className="">
+          <h1 className="h-10 text-center font-medium text-[#191C21] text-[32px] block-animation">
             Our Values
           </h1>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-10">
-            <div className="w-full p-4 rounded-2xl border-[#C2C6D4] border-[1px] flex justify-center items-start shadow drop-shadow-sm">
+            <div className="w-full p-4 rounded-2xl border-[#C2C6D4] border-[1px] flex justify-center items-start shadow drop-shadow-sm translate-right">
               <div className="w-1/5 h-full">
                 <img
                   src="/transparency.svg"
@@ -48,7 +47,7 @@ function TempSection() {
               </div>
             </div>
 
-            <div className="w-full p-4 rounded-2xl border-[#C2C6D4] border-[1px] flex justify-center items-start shadow drop-shadow-sm">
+            <div className="w-full p-4 rounded-2xl border-[#C2C6D4] border-[1px] flex justify-center items-start shadow drop-shadow-sm translate-right">
               <div className="w-1/5 h-full">
                 <img src="/integrity.svg" alt="Integrity" className="size-14" />
               </div>
@@ -63,7 +62,7 @@ function TempSection() {
               </div>
             </div>
 
-            <div className="w-full p-4 rounded-2xl border-[#C2C6D4] border-[1px] flex justify-center items-start shadow drop-shadow-sm">
+            <div className="w-full p-4 rounded-2xl border-[#C2C6D4] border-[1px] flex justify-center items-start shadow drop-shadow-sm translate-right">
               <div className="w-1/5 h-full">
                 <img
                   src="/innovation.svg"
@@ -82,7 +81,7 @@ function TempSection() {
               </div>
             </div>
 
-            <div className="w-full p-4 rounded-2xl border-[#C2C6D4] border-[1px] flex justify-center items-start shadow drop-shadow-sm">
+            <div className="w-full p-4 rounded-2xl border-[#C2C6D4] border-[1px] flex justify-center items-start shadow drop-shadow-sm translate-right">
               <div className="w-1/5 h-full">
                 <img
                   src="/partnership.svg"
@@ -103,8 +102,6 @@ function TempSection() {
           </div>
         </div>
       </div>
-
-
     </div>
   );
 }

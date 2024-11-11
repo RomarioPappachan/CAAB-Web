@@ -32,7 +32,7 @@ function VerifySuperAdminOtpPopup(props) {
           <input
             type="text"
             placeholder="Enter OTP send to "
-            className="w-full h-14 px-2 font-base text-[#404753] outline-none border-[#707784] border-[1px] rounded-lg"
+            className="w-full h-14 px-2 font-base bg-white text-[#404753] outline-none border-[#707784] border-[1px] rounded-lg"
           />
 
           <button
