@@ -1,56 +1,61 @@
 "use client";
+import useAuthStore from "@/store/authStore";
 import React from "react";
 
-function CompanyBranchCard() {
+function CompanyBranchCard({ branch }) {
+  const { user } = useAuthStore();
+
   return (
-    <div className="w-full border-[1px] border-[#C0C7D5] shadow-lg  rounded-lg  p-4">
+    <div className="w-full border-[1px] border-[#C0C7D5] shadow-lg rounded-lg p-4">
       <div>
         <div>
           <table className="flex flex-col gap-y-2">
-            <tr class="pt-2">
-              <td class="text-[#424752] text-[14px] sm:text-[16px]">
+            <tr className="pt-2">
+              <td className="text-[#424752] text-[14px] sm:text-[16px]">
                 Company / Branch Name
               </td>
-              <td class="text-[#191C21] text-[14px] sm:text-[16px] ps-2">
-                : Brothers Steels and Pipes
+              <td className="text-[#191C21] text-[14px] sm:text-[16px] ps-2">
+                : {user?.company_name}
               </td>
             </tr>
             <tr>
-              <td class="text-[#424752] text-[14px] sm:text-[16px]  ">
+              <td className="text-[#424752] text-[14px] sm:text-[16px]  ">
                 Location / City
               </td>
-              <td class="text-[#191C21] text-[14px] sm:text-[16px] ps-2">
-                : Mavelikara
+              <td className="text-[#191C21] text-[14px] sm:text-[16px] ps-2">
+                : {branch?.city}
               </td>
             </tr>
-            <tr class="">
-              <td class="text-[#424752] text-[14px] sm:text-[16px]">Sector</td>
-              <td class="text-[#191C21] text-[14px] sm:text-[16px] ps-2">
-                : Iron and Steel Industry
+            <tr className="">
+              <td className="text-[#424752] text-[14px] sm:text-[16px]">
+                Business Type
+              </td>
+              <td className="text-[#191C21] text-[14px] sm:text-[16px] ps-2">
+                : {branch?.business_type}
               </td>
             </tr>
             <tr>
-              <td class="text-[#424752] text-[14px] sm:text-[16px]">
+              <td className="text-[#424752] text-[14px] sm:text-[16px]">
                 Branch Admin
               </td>
-              <td class="text-[#191C21] text-[14px] sm:text-[16px] ps-2">
-                : Joseph John
+              <td className="text-[#191C21] text-[14px] sm:text-[16px] ps-2">
+                : {branch.branch_admin_name}
               </td>
             </tr>
             <tr>
-              <td class="text-[#424752] text-[14px] sm:text-[16px]">
+              <td className="text-[#424752] text-[14px] sm:text-[16px]">
                 Admin Phone Number
               </td>
-              <td class="text-[#191C21] text-[14px] sm:text-[16px] ps-2">
-                : 8428972375
+              <td className="text-[#191C21] text-[14px] sm:text-[16px] ps-2">
+                : {branch.admin_no}
               </td>
             </tr>
             <tr>
-              <td class="text-[#424752] text-[14px] sm:text-[16px]">
+              <td className="text-[#424752] text-[14px] sm:text-[16px]">
                 Last Updated
               </td>
-              <td class="text-[#191C21] text-[14px] sm:text-[16px] ps-2">
-                : 21/10/2024
+              <td className="text-[#191C21] text-[14px] sm:text-[16px] ps-2">
+                :
               </td>
             </tr>
           </table>

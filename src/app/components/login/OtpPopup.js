@@ -1,13 +1,80 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { GoDotFill } from "react-icons/go";
+import axios from "axios";
+import { useRouter } from "next/navigation";
+import useAuthStore from "@/store/authStore";
 
-function OtpPopup(props) {
-  function handleSubmitOtp() {
-    props.setIsOtpPopupOpen(false);
-    props.setIsLoginSignupOpen(false);
-    props.setIsInitialDetailsOpen(true);
+function OtpPopup({
+  mobileNo,
+  setIsLoginSignupOpen,
+  setIsOtpPopupOpen,
+  setIsInitialDetailsOpen,
+}) {
+  const [otp, setOtp] = useState({
+    num1: "",
+    num2: "",
+    num3: "",
+    num4: "",
+  });
+
+  const router = useRouter();
+  const { login } = useAuthStore();
+
+  function handleOnChange(event) {
+    const { name, value } = event.target;
+    setOtp((prevValue) => ({
+      ...prevValue,
+      [name]: value,
+    }));
   }
+
+  async function handleSubmitOtp(e) {
+    e.preventDefault();
+    const { num1, num2, num3, num4 } = otp;
+    if (!num1 || !num2 || !num3 || !num4) {
+      alert("Enter otp fields");
+    } else {
+      const fullOtp = `${num1}${num2}${num3}${num4}`;
+      console.log(fullOtp);
+
+      // API call
+
+      try {
+        const response = await axios.post(
+          `${process.env.NEXT_PUBLIC_API_URL}/user/verify-otp`,
+          {
+            mobile: mobileNo,
+            otp: fullOtp,
+          }
+        );
+
+        console.log(response);
+        if (response.data.activeUser) {
+          // Login success and redirect
+          const userData = response.data.data;
+          login(userData);
+
+          localStorage.setItem("user", JSON.stringify(userData));
+          alert(response.data.message);
+          router.push("/company-home");
+        } else {
+          // continue to get company basic details
+          alert(response.data.message);
+          setTimeout(() => {
+            setIsOtpPopupOpen(false);
+            setIsLoginSignupOpen(false);
+            setIsInitialDetailsOpen(true);
+          }, 1000);
+        }
+      } catch (error) {
+        setIsOtpPopupOpen(true);
+        setIsLoginSignupOpen(false);
+        setIsInitialDetailsOpen(false);
+      }
+    }
+  }
+
   return (
     <div className="w-full md:max-w-[854px] h-auto md:h-[509px] py-10 bg-white drop-shadow-xl rounded-2xl flex flex-col md:flex-row">
       {/* Image Section */}
@@ -26,7 +93,7 @@ function OtpPopup(props) {
 
         <div className="mt-12 md:mt-16">
           <h1 className="w-full md:w-auto font-semibold text-2xl text-[#191C21]">
-            Verify with OTP{" "}
+            Verify with OTP
           </h1>
           <p className="text-[#424752] text-xs pt-5">Sent to 9539083486</p>
         </div>
@@ -35,21 +102,33 @@ function OtpPopup(props) {
             type="tel"
             maxLength={1}
             className="w-10 h-14 border-2 border-[#707784] rounded-md bg-white text-black text-xl p-3"
+            name="num1"
+            value={otp.num1}
+            onChange={handleOnChange}
           />
           <input
             type="tel"
             maxLength={1}
             className="w-10 h-14 border-2 border-[#707784] rounded-md bg-white text-black text-xl p-3"
+            name="num2"
+            value={otp.num2}
+            onChange={handleOnChange}
           />
           <input
             type="tel"
             maxLength={1}
             className="w-10 h-14 border-2 border-[#707784] rounded-md bg-white text-black text-xl p-3"
+            name="num3"
+            value={otp.num3}
+            onChange={handleOnChange}
           />
           <input
             type="tel"
             maxLength={1}
             className="w-10 h-14 border-2 border-[#707784] rounded-md bg-white text-black text-xl p-3"
+            name="num4"
+            value={otp.num4}
+            onChange={handleOnChange}
           />
         </div>
 

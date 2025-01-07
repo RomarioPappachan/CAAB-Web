@@ -1,7 +1,9 @@
 "use client";
 
+import ProtectedRoute from "@/components/ProtectedRoutes";
 import Navbar from "../components/Navbar";
 import SidebarSuperAdmin from "../components/super-admin/SidebarSuperAdmin";
+
 export default function SuperAdminLayout({ children }) {
   return (
     <div className="w-screen h-screen m-0 p-0 bg-white">
@@ -27,3 +29,12 @@ export default function SuperAdminLayout({ children }) {
     </div>
   );
 }
+
+// Wrapping the component with ProtectedRoute
+// const ProtectedSuperAdminLayout = () => (
+//   <ProtectedRoute allowedRoles={["admin", "manager"]}>
+//     <SuperAdminLayout />
+//   </ProtectedRoute>
+// );
+
+// export default ProtectedSuperAdminLayout;

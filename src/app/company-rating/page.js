@@ -1,8 +1,23 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
+import useAuthStore from "@/store/authStore";
+import ProtectedRoute from "@/components/ProtectedRoutes";
 
 function CompanyRating() {
+  const [userData, setUserData] = useState({});
+  const { user } = useAuthStore();
+
+  // useEffect(() => {
+  //   setUserData(user && user);
+  // }, []);
+
+  // from local storage
+  useEffect(() => {
+    const data = JSON.parse(localStorage.getItem("user"));
+    setUserData(data && data);
+  }, []);
+
   return (
     <div>
       <Navbar />
@@ -15,24 +30,23 @@ function CompanyRating() {
             <div className="w-1/2 flex flex-col gap-4">
               <h1 className="text-[#181C22] text-[24px]">Generate Rating</h1>
               <p className="text-[#707784] text-[16px]">
-                Company name :{" "}
+                Company name :
                 <span className="text-[#181C22] text-[16px]">
-                  Brothers Steel & Pipes
-                </span>{" "}
+                  {userData?.company_name}
+                </span>
               </p>
               <p className="text-[#707784] text-[16px]">
-                Sector :{" "}
+                Business Type :
                 <span className="text-[#181C22] text-[16px]">
-                  Iron & Steel Industry
-                </span>{" "}
+                  {userData?.business_type}
+                </span>
               </p>
               <div className="border-[#ABC8F6] border-[2px] p-4 rounded-2xl">
                 <p className="text-[#181C22] text-[16px]">
-                  {" "}
                   "Please upload all required documents and certificates,
                   including government-issued and other relevant certifications,
                   to enable an accurate assessment and assignment of your
-                  grade."{" "}
+                  grade."
                 </p>
               </div>
               <button className="w-full h-[64px]  bg-[#74CE3A] rounded-2xl text-white text-[16px] flex justify-center items-center">
@@ -47,7 +61,7 @@ function CompanyRating() {
             </div>
           </div>
 
-          <div className="max-h-[424px] w-full lg:w-2/5 overflow-y-auto  lg:pt-0">
+          <div className="max-h-[424px] w-full lg:w-2/5 overflow-y-auto lg:pt-0">
             <h1 className="text-[20px] text-[#404A38] pb-4">
               Updates on submitted data
             </h1>
@@ -79,7 +93,7 @@ function CompanyRating() {
                   <p>21/10/2024</p>
                   <p>10:00 AM</p>
                 </div>
-              </div>{" "}
+              </div>
               <div className="border-[2px] border-[#BFCAB3] rounded-[8px] p-6">
                 <div className="relative">
                   <p className="text-[#173B00] text-[16px]">
@@ -93,7 +107,7 @@ function CompanyRating() {
                   <p>21/10/2024</p>
                   <p>10:00 AM</p>
                 </div>
-              </div>{" "}
+              </div>
               <div className="border-[2px] border-[#BFCAB3] rounded-[8px] p-6">
                 <div className="relative">
                   <p className="text-[#173B00] text-[16px]">
@@ -107,7 +121,7 @@ function CompanyRating() {
                   <p>21/10/2024</p>
                   <p>10:00 AM</p>
                 </div>
-              </div>{" "}
+              </div>
               <div className="border-[2px] border-[#BFCAB3] rounded-[8px] p-6">
                 <div className="relative">
                   <p className="text-[#173B00] text-[16px]">
@@ -121,7 +135,7 @@ function CompanyRating() {
                   <p>21/10/2024</p>
                   <p>10:00 AM</p>
                 </div>
-              </div>{" "}
+              </div>
               <div className="border-[2px] border-[#BFCAB3] rounded-[8px] p-6">
                 <div className="relative">
                   <p className="text-[#173B00] text-[16px]">
@@ -135,7 +149,7 @@ function CompanyRating() {
                   <p>21/10/2024</p>
                   <p>10:00 AM</p>
                 </div>
-              </div>{" "}
+              </div>
               <div className="border-[2px] border-[#BFCAB3] rounded-[8px] p-6">
                 <div className="relative">
                   <p className="text-[#173B00] text-[16px]">
@@ -205,4 +219,11 @@ function CompanyRating() {
   );
 }
 
-export default CompanyRating;
+// Wrapping the component with ProtectedRoute
+const ProtectedCompanyRating = () => (
+  <ProtectedRoute allowedRoles={["admin", "manager"]}>
+    <CompanyRating />
+  </ProtectedRoute>
+);
+
+export default ProtectedCompanyRating;

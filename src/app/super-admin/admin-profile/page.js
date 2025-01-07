@@ -2,6 +2,7 @@
 import EditAdminBasicDetailsPopup from "@/app/components/super-admin/profile/EditAdminBasicDetailsPopup";
 import EditAdminLoginNumberPopup from "@/app/components/super-admin/profile/EditAdminLoginNumberPopup";
 import VerifySuperAdminOtpPopup from "@/app/components/super-admin/profile/VerifySuperAdminOtpPopup";
+import ProtectedRoute from "@/components/ProtectedRoutes";
 import React, { useState } from "react";
 import { FiEdit } from "react-icons/fi";
 
@@ -86,4 +87,11 @@ function SuperAdminProfile() {
   );
 }
 
-export default SuperAdminProfile;
+// Wrapping the component with ProtectedRoute
+const ProtectedSuperAdminProfile = () => (
+  <ProtectedRoute allowedRoles={["admin", "manager"]}>
+    <SuperAdminProfile />
+  </ProtectedRoute>
+);
+
+export default ProtectedSuperAdminProfile;

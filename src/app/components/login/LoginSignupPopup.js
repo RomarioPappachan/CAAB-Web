@@ -1,12 +1,43 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { GoDotFill } from "react-icons/go";
+import axios from "axios";
 
-function LoginSignupPopup(props) {
-  function handleSubmit() {
-    props.setIsOtpPopupOpen(true);
-    props.setIsLoginSignupOpen(false);
-    props.setIsInitialDetailsOpen(false);
+function LoginSignupPopup({
+  mobileNo,
+  setMobileNo,
+  setIsOtpPopupOpen,
+  setIsLoginSignupOpen,
+  setIsInitialDetailsOpen,
+}) {
+  async function handleSubmit(e) {
+    e.preventDefault();
+
+    if (!mobileNo) {
+      alert("Enter your mobile number.");
+    } else {
+      // API call
+      try {
+        // Add Sector API call
+
+        const response = await axios.post(
+          `${process.env.NEXT_PUBLIC_API_URL}/user/login`,
+          {
+            mobile: Number(mobileNo),
+          }
+        );
+        console.log(response);
+        alert(response.data.message);
+        setTimeout(() => {
+          setIsOtpPopupOpen(true);
+          setIsLoginSignupOpen(false);
+          setIsInitialDetailsOpen(false);
+        }, 1000);
+      } catch (error) {
+        setIsOtpPopupOpen(false);
+        setIsInitialDetailsOpen(false);
+      }
+    }
   }
 
   return (
@@ -40,8 +71,12 @@ function LoginSignupPopup(props) {
           <div className="w-10/12">
             <input
               type="text"
-              className="w-full h-full ps-4 outline-none text-base bg-white text-[#404753] placeholder:text-[#404753]"
+              className="w-full h-full ps-4 outline-none text-base bg-white text-[#404753] placeholder:text-[#404753] focus:bg-white"
               placeholder="Mobile number *"
+              name="mobileNo"
+              value={mobileNo}
+              maxLength="10"
+              onChange={(e) => setMobileNo(e.target.value)}
             />
           </div>
         </div>

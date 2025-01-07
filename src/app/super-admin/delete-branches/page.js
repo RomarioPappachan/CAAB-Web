@@ -112,4 +112,11 @@ function DeleteBranches() {
   );
 }
 
-export default DeleteBranches;
+// Wrapping the component with ProtectedRoute
+const ProtectedDeleteBranches = () => (
+  <ProtectedRoute allowedRoles={["admin", "manager"]}>
+    <DeleteBranches />
+  </ProtectedRoute>
+);
+
+export default ProtectedDeleteBranches;

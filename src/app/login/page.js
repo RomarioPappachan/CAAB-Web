@@ -5,12 +5,25 @@ import Navbar from "../components/Navbar";
 import LoginSignupPopup from "../components/login/LoginSignupPopup";
 import OtpPopup from "../components/login/OtpPopup";
 import InitialDetails from "../components/login/InitialDetails";
+import { useRouter } from "next/navigation";
 
 function Login() {
   const [isLoading, setIsLoading] = useState(true);
   const [isLoginSignupOpen, setIsLoginSignupOpen] = useState(true);
   const [isOtpPopupOpen, setIsOtpPopupOpen] = useState(false);
   const [isInitialDetailsOpen, setIsInitialDetailsOpen] = useState(false);
+
+  const [mobileNo, setMobileNo] = useState("");
+
+  const router = useRouter();
+
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("user"));
+    if (user) {
+      //if user already logged in
+      router.push("/company-home");
+    }
+  }, []);
 
   useEffect(() => {
     const timer = setTimeout(() => setIsLoading(false), 1000);
@@ -40,6 +53,8 @@ function Login() {
       <div className="bg-login-page w-full mt-[100px] md:mt-[130px] xl:mt-[152px] py-10 px-4 md:px-8 lg:px-[72px] flex justify-center items-center relative">
         {isLoginSignupOpen && (
           <LoginSignupPopup
+            mobileNo={mobileNo}
+            setMobileNo={setMobileNo}
             setIsLoginSignupOpen={setIsLoginSignupOpen}
             setIsOtpPopupOpen={setIsOtpPopupOpen}
             setIsInitialDetailsOpen={setIsInitialDetailsOpen}
@@ -48,6 +63,7 @@ function Login() {
 
         {isOtpPopupOpen && (
           <OtpPopup
+            mobileNo={mobileNo}
             setIsLoginSignupOpen={setIsLoginSignupOpen}
             setIsOtpPopupOpen={setIsOtpPopupOpen}
             setIsInitialDetailsOpen={setIsInitialDetailsOpen}
@@ -56,6 +72,7 @@ function Login() {
 
         {isInitialDetailsOpen && (
           <InitialDetails
+            mobileNo={mobileNo}
             setIsLoginSignupOpen={setIsLoginSignupOpen}
             setIsOtpPopupOpen={setIsOtpPopupOpen}
             setIsInitialDetailsOpen={setIsInitialDetailsOpen}

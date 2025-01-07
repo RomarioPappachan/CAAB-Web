@@ -526,4 +526,11 @@ function ManageBranches() {
   );
 }
 
-export default ManageBranches;
+// Wrapping the component with ProtectedRoute
+const ProtectedManageBranches = () => (
+  <ProtectedRoute allowedRoles={["admin", "manager"]}>
+    <ManageBranches />
+  </ProtectedRoute>
+);
+
+export default ProtectedManageBranches;
