@@ -1,17 +1,46 @@
 "use client";
+
+import axios from "axios";
 import EditAdminBasicDetailsPopup from "@/app/components/super-admin/profile/EditAdminBasicDetailsPopup";
 import EditAdminLoginNumberPopup from "@/app/components/super-admin/profile/EditAdminLoginNumberPopup";
 import VerifySuperAdminOtpPopup from "@/app/components/super-admin/profile/VerifySuperAdminOtpPopup";
 import ProtectedRoute from "@/components/ProtectedRoutes";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FiEdit } from "react-icons/fi";
 
 function SuperAdminProfile() {
+  const [userDetails, setUserDetails] = useState({});
+
+  const [updatedMobileNo, setUpdatedMobileNo] = useState(userDetails.mobile);
+
   const [isEditAdminBasicDetailsOpen, setIsEditAdminBasicDetailsOpen] =
     useState(false);
   const [isEditAdminLoginNumberOpen, setIsEditAdminLoginNumberOpen] =
     useState(false);
   const [isVerifyOtpOpen, setIsVerifyOtpOpen] = useState(false);
+
+  const [renderAdminProfileToggle, setRenderAdminProfileToggle] =
+    useState(false);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const caabId = JSON.parse(localStorage.getItem("user")).caab_id;
+      try {
+        const response = await axios.get(
+          `${process.env.NEXT_PUBLIC_API_URL}/user/companyInfo/${caabId}`
+        );
+
+        setUserDetails(response.data.companyInfo);
+        setUpdatedMobileNo(response.data.companyInfo.mobile);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+        // toast.error("Error fetching data.");\
+      }
+    };
+
+    fetchData();
+  }, [renderAdminProfileToggle]);
+
   return (
     <>
       <div className="w-full flex flex-col gap-y-14">
@@ -34,18 +63,20 @@ function SuperAdminProfile() {
             <p className="text-sm font-normal leading-6 text-[#404753] flex items-center">
               <span className="w-1/2">Username</span>
               <span className="w-1/2 font-medium text-[#181C22]">
-                : Sunny Joseph
+                : {userDetails.user_name}
               </span>
             </p>
             <p className="text-sm font-normal leading-6 text-[#404753] flex items-center">
               <span className="w-1/2">Company Name</span>
               <span className="w-1/2 font-medium text-[#181C22]">
-                : Brothers Pvt Ltd
+                : {userDetails.company_name}
               </span>
             </p>
             <p className="text-sm font-normal leading-6 text-[#404753] flex items-center">
               <span className="w-1/2">Email</span>
-              <span className="w-1/2 font-medium text-[#181C22]">: NA</span>
+              <span className="w-1/2 font-medium text-[#181C22]">
+                : {userDetails.email}
+              </span>
             </p>
           </div>
         </div>
@@ -63,7 +94,7 @@ function SuperAdminProfile() {
             <p className="text-sm font-normal leading-6 text-[#404753] flex items-center">
               <span className="w-1/2">Mobile Number</span>
               <span className="w-1/2 font-medium text-[#181C22]">
-                : +91 9574894889
+                : {userDetails.mobile}
               </span>
             </p>
           </div>
@@ -71,17 +102,28 @@ function SuperAdminProfile() {
       </div>
       {isEditAdminBasicDetailsOpen && (
         <EditAdminBasicDetailsPopup
+          userDetails={userDetails}
           setIsEditAdminBasicDetailsOpen={setIsEditAdminBasicDetailsOpen}
+          setRenderAdminProfileToggle={setRenderAdminProfileToggle}
         />
       )}
       {isEditAdminLoginNumberOpen && (
         <EditAdminLoginNumberPopup
+          userDetails={userDetails}
+          updatedMobileNo={updatedMobileNo}
+          setUpdatedMobileNo={setUpdatedMobileNo}
           setIsEditAdminLoginNumberOpen={setIsEditAdminLoginNumberOpen}
           setIsVerifyOtpOpen={setIsVerifyOtpOpen}
         />
       )}
       {isVerifyOtpOpen && (
-        <VerifySuperAdminOtpPopup setIsVerifyOtpOpen={setIsVerifyOtpOpen} />
+        <VerifySuperAdminOtpPopup
+          userDetails={userDetails}
+          updatedMobileNo={updatedMobileNo}
+          setUpdatedMobileNo={setUpdatedMobileNo}
+          setIsVerifyOtpOpen={setIsVerifyOtpOpen}
+          setRenderAdminProfileToggle={setRenderAdminProfileToggle}
+        />
       )}
     </>
   );

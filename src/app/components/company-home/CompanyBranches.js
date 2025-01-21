@@ -10,10 +10,9 @@ function CompanyBranches({ caabId }) {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `${process.env.NEXT_PUBLIC_API_URL}/user/branches/${caabId}`
+          `${process.env.NEXT_PUBLIC_API_URL}/user/listBranches/${caabId}`
         );
 
-        console.log(response);
         setCompanyBranches(response.data.branches);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -26,9 +25,10 @@ function CompanyBranches({ caabId }) {
 
   return (
     <div className="py-10 grid grid-cols-1 lg:grid-cols-2 gap-4">
-      {companyBranches.map((branch) => (
-        <CompanyBranchCard key={branch.id} branch={branch} />
-      ))}
+      {companyBranches[0] &&
+        companyBranches.map((branch) => (
+          <CompanyBranchCard key={branch.id} branch={branch} />
+        ))}
     </div>
   );
 }

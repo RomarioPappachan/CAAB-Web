@@ -52,10 +52,8 @@ function OtpPopup({
         console.log(response);
         if (response.data.activeUser) {
           // Login success and redirect
-          const userData = response.data.data;
+          const userData = response.data.existingUser;
           login(userData);
-
-          localStorage.setItem("user", JSON.stringify(userData));
           alert(response.data.message);
           router.push("/company-home");
         } else {

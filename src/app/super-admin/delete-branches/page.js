@@ -3,10 +3,15 @@ import React, { useState } from "react";
 import { TbAlertTriangle } from "react-icons/tb";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import BranchDeletionPopup from "@/app/components/super-admin/delete-branches/BranchDeletionPopup";
+import ProtectedRoute from "@/components/ProtectedRoutes";
+import BranchList from "@/app/components/super-admin/delete-branches/BranchList";
 
 function DeleteBranches() {
   const [isBranchDeletionPopupOpen, setIsBranchDeletionPopupOpen] =
     useState(false);
+
+  const [selectedBranchId, setSelectedBranchId] = useState(null);
+  const [renderBranchList, setRenderBranchList] = useState(false);
   return (
     <div className="w-full flex flex-col gap-y-10">
       <div className="py-2 border-[#C0C7D5] border-b-[1px]">
@@ -37,75 +42,19 @@ function DeleteBranches() {
       </div>
 
       {/* list branches  */}
-      <div className="w-full grid grid-cols-1 sm:grid-cols-2 gap-6">
-        <div className="p-6 bg-[#CBDBFF] rounded-lg flex justify-between items-center gap-2">
-          <div className="flex flex-col">
-            <span className="text-base font-medium leading-6 text-[#224167]">
-              Branch Name 1 Branch Name 1 Branch Name 1
-            </span>
-            <span className="text-xs font-medium leading-6 text-[#224167]">
-              Kochi
-            </span>
-          </div>
-          <span
-            className="cursor-pointer"
-            onClick={() => setIsBranchDeletionPopupOpen(true)}
-          >
-            <RiDeleteBin6Line className="text-xl text-[#BA1A1A]" />
-          </span>
-        </div>
-        <div className="p-6 bg-[#CBDBFF] rounded-lg flex justify-between items-center gap-2">
-          <div className="flex flex-col">
-            <span className="text-base font-medium leading-6 text-[#224167]">
-              Branch Name 1 Branch Name 1 Branch Name 1
-            </span>
-            <span className="text-xs font-medium leading-6 text-[#224167]">
-              Kochi
-            </span>
-          </div>
-          <span
-            className="cursor-pointer"
-            onClick={() => setIsBranchDeletionPopupOpen(true)}
-          >
-            <RiDeleteBin6Line className="text-xl text-[#BA1A1A]" />
-          </span>
-        </div>
-        <div className="p-6 bg-[#CBDBFF] rounded-lg flex justify-between items-center gap-2">
-          <div className="flex flex-col">
-            <span className="text-base font-medium leading-6 text-[#224167]">
-              Branch Name 1 Branch Name 1 Branch Name 1
-            </span>
-            <span className="text-xs font-medium leading-6 text-[#224167]">
-              Kochi
-            </span>
-          </div>
-          <span
-            className="cursor-pointer"
-            onClick={() => setIsBranchDeletionPopupOpen(true)}
-          >
-            <RiDeleteBin6Line className="text-xl text-[#BA1A1A]" />
-          </span>
-        </div>
-        <div className="p-6 bg-[#CBDBFF] rounded-lg flex justify-between items-center gap-2">
-          <div className="flex flex-col">
-            <span className="text-base font-medium leading-6 text-[#224167]">
-              Branch Name 1 Branch Name 1 Branch Name 1
-            </span>
-            <span className="text-xs font-medium leading-6 text-[#224167]">
-              Kochi
-            </span>
-          </div>
-          <span
-            className="cursor-pointer"
-            onClick={() => setIsBranchDeletionPopupOpen(true)}
-          >
-            <RiDeleteBin6Line className="text-xl text-[#BA1A1A]" />
-          </span>
-        </div>
-      </div>
+
+      <BranchList
+        setSelectedBranchId={setSelectedBranchId}
+        setIsBranchDeletionPopupOpen={setIsBranchDeletionPopupOpen}
+        renderBranchList={renderBranchList}
+      />
+
       {isBranchDeletionPopupOpen && (
         <BranchDeletionPopup
+          selectedBranchId={selectedBranchId}
+          setSelectedBranchId={setSelectedBranchId}
           setIsBranchDeletionPopupOpen={setIsBranchDeletionPopupOpen}
+          setRenderBranchList={setRenderBranchList}
         />
       )}
     </div>

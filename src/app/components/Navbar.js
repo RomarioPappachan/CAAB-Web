@@ -15,6 +15,8 @@ import { BsTwitterX } from "react-icons/bs";
 import { MdMail, MdPhone } from "react-icons/md";
 import { usePathname, useRouter } from "next/navigation";
 import useAuthStore from "@/store/authStore";
+import UserDropdown from "./UserDropdown";
+import LogoutComponent from "./LogoutComponent";
 
 const Navbar = () => {
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
@@ -24,22 +26,13 @@ const Navbar = () => {
   const [isLinkedInHovered, setIsLinkedInHovered] = useState(false);
   const [isTwitterHovered, setIsTwitterHovered] = useState(false);
 
-  // const { user } = useAuthStore();
+  const [isUserDropDownOpen, setIsUserDropDownOpen] = useState(false);
+
+  const { user } = useAuthStore();
   const pathName = usePathname();
   const router = useRouter();
 
-  // useEffect(() => {
-  //   if (user) {
-  //     setUserData(user);
-  //     setIsUserLoggedIn(true);
-  //   } else {
-  //     setIsUserLoggedIn(false);
-  //   }
-  // }, []);
-
   useEffect(() => {
-    const user = JSON.parse(localStorage.getItem("user"));
-
     if (user) {
       setUserData(user);
       setIsUserLoggedIn(true);
@@ -59,10 +52,7 @@ const Navbar = () => {
       {/* Nav with logo  */}
       <div className="w-full h-[100px] md:h-[130px] xl:h-[152px] flex justify-between items-center">
         <div className="w-1/4 md:w-1/5 xl:w-2/5 h-full flex justify-start items-center">
-          <Link
-            href={isUserLoggedIn ? "/company-home" : "/"}
-            className="w-full md:w-3/4 xl:w-1/2"
-          >
+          <Link href="/" className="w-full md:w-3/4 xl:w-1/2">
             <img
               src="/CAAB-logo-new-2.png"
               alt="CAAB Score Logo"
@@ -129,9 +119,27 @@ const Navbar = () => {
                               }`}
                     onClick={handleCloseDrawer}
                   >
-                    HOME
+                    {isUserLoggedIn ? "COMPANY HOME" : "HOME"}
                   </li>
                 </Link>
+
+                {isUserLoggedIn && (
+                  <>
+                    <Link href="/super-admin/admin-profile">
+                      <li
+                        className={`h-10 ps-2 py-2 text-sm font-semibold 
+                              ${
+                                pathName === "/super-admin/admin-profile"
+                                  ? "bg-[#F9F9FF] text-[#003E82] border-[#003E82] border-b-2"
+                                  : "bg-white text-[#727783] hover:text-[#424752] hover:bg-[#D9D9E1]"
+                              }`}
+                        onClick={handleCloseDrawer}
+                      >
+                        PROFILE
+                      </li>
+                    </Link>
+                  </>
+                )}
                 {/* <Link href="/score-evaluation">
                         <li 
                             className={`h-10 ps-2 py-2 text-sm font-semibold 
@@ -229,6 +237,8 @@ const Navbar = () => {
                     </a>
                   </div>
                 </div>
+
+                {isUserLoggedIn && <LogoutComponent />}
               </ul>
             </div>
           </div>
@@ -376,7 +386,7 @@ const Navbar = () => {
                                               : "bg-white text-[#727783] hover:text-[#424752] hover:bg-[#D9D9E1]"
                                           }`}
                     >
-                      HOME
+                      {isUserLoggedIn ? "COMPANY HOME" : "HOME"}
                     </li>
                   </Link>
                   {/* <Link href="/score-evaluation">
@@ -416,11 +426,13 @@ const Navbar = () => {
                   </Link>
                 </ul>
               </div>
-              <div className="w-1/4 lg:w-1/5 flex items-center justify-end">
+              <div className="w-1/4 lg:w-1/5 flex items-center justify-end select-none relative">
                 {isUserLoggedIn ? (
-                  <Link
-                    href="/super-admin/admin-profile"
-                    className="w-full flex items-center justify-between gap-1"
+                  <div
+                    onClick={() => {
+                      setIsUserDropDownOpen((prevValue) => !prevValue);
+                    }}
+                    className="w-full flex items-center justify-between gap-1 cursor-pointer"
                   >
                     <div className="w-4/5 flex flex-col justify-center">
                       <p className="h-5 font-normal text-sm text-[#2262B7]">
@@ -435,7 +447,7 @@ const Navbar = () => {
                     <div className="w-1/5 flex items-center justify-end">
                       <IoPersonCircleOutline className="text-4xl text-[#2262B7]" />
                     </div>
-                  </Link>
+                  </div>
                 ) : (
                   <button
                     className="h-8 lg:h-10 px-4 lg:py-2 bg-[#74CE3A] text-white text-sm lg:text-base font-semibold rounded-2xl"
@@ -446,6 +458,8 @@ const Navbar = () => {
                     Login / SignUp
                   </button>
                 )}
+
+                {isUserDropDownOpen && <UserDropdown />}
               </div>
             </nav>
           </div>

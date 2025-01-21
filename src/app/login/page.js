@@ -6,6 +6,7 @@ import LoginSignupPopup from "../components/login/LoginSignupPopup";
 import OtpPopup from "../components/login/OtpPopup";
 import InitialDetails from "../components/login/InitialDetails";
 import { useRouter } from "next/navigation";
+import useAuthStore from "@/store/authStore";
 
 function Login() {
   const [isLoading, setIsLoading] = useState(true);
@@ -17,8 +18,9 @@ function Login() {
 
   const router = useRouter();
 
+  const { user } = useAuthStore();
+
   useEffect(() => {
-    const user = JSON.parse(localStorage.getItem("user"));
     if (user) {
       //if user already logged in
       router.push("/company-home");

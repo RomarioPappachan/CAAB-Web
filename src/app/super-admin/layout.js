@@ -1,10 +1,10 @@
 "use client";
 
-import ProtectedRoute from "@/components/ProtectedRoutes";
+import Link from "next/link";
 import Navbar from "../components/Navbar";
 import SidebarSuperAdmin from "../components/super-admin/SidebarSuperAdmin";
 
-export default function SuperAdminLayout({ children }) {
+function SuperAdminLayout({ children }) {
   return (
     <div className="w-screen h-screen m-0 p-0 bg-white">
       <div className="m-0 p-0 w-full">
@@ -14,7 +14,8 @@ export default function SuperAdminLayout({ children }) {
       <div className="w-full mb-0 mt-[100px] md:mt-[130px] xl:mt-[152px] px-4 md:px-8 lg:px-[72px] py-14 bg-[#F8F9FF] flex flex-col gap-y-10">
         <div>
           <span className="w-full font-normal text-sm leading-6 text-[#707784]">
-            Home {">"} Profile Settings
+            <Link href={"/company-home"}>Home</Link> {">"}{" "}
+            <Link href={"/super-admin/admin-profile"}>Profile Settings</Link>
           </span>
         </div>
         <div className="w-full min-h-screen pb-16 flex flex-col md:flex-row gap-6">
@@ -30,11 +31,4 @@ export default function SuperAdminLayout({ children }) {
   );
 }
 
-// Wrapping the component with ProtectedRoute
-// const ProtectedSuperAdminLayout = () => (
-//   <ProtectedRoute allowedRoles={["admin", "manager"]}>
-//     <SuperAdminLayout />
-//   </ProtectedRoute>
-// );
-
-// export default ProtectedSuperAdminLayout;
+export default SuperAdminLayout;

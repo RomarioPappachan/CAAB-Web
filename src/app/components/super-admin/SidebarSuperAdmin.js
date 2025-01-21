@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ImTree } from "react-icons/im";
@@ -8,9 +8,13 @@ import {
   RiDeleteBin6Line,
   RiLogoutCircleLine,
 } from "react-icons/ri";
+import Logout from "../Logout";
 
 function SidebarSuperAdmin() {
+  const [isLogoutOpen, setIsLogoutOpen] = useState(false);
+
   const pathName = usePathname();
+
   return (
     <div className="w-full md:h-full bg-white">
       <ul className="flex md:flex-col overflow-x-auto">
@@ -53,7 +57,7 @@ function SidebarSuperAdmin() {
             <span>Delete Branch</span>
           </li>
         </Link>
-        <Link href="">
+        <div onClick={() => setIsLogoutOpen(true)}>
           <li
             className={`h-[72px] p-3 lg:p-6 text-xs md:text-sm font-normal flex items-center gap-2 border-[#C0C7D5] border-b-[1px] bg-white
                         ${
@@ -63,8 +67,10 @@ function SidebarSuperAdmin() {
             <RiLogoutCircleLine className="text-xl rotate-90" />
             <span>Logout</span>
           </li>
-        </Link>
+        </div>
       </ul>
+
+      {isLogoutOpen && <Logout setIsLogoutOpen={setIsLogoutOpen} />}
     </div>
   );
 }

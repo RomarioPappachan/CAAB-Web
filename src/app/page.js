@@ -9,13 +9,24 @@ import OurTeamSection from "./components/Home/OurTeamSection";
 import FeatureSection from "./components/Home/FeatureSection";
 import Footer from "./components/Footer";
 import TempSection from "./components/Home/TempSection";
+import useAuthStore from "@/store/authStore";
+import { useRouter } from "next/navigation";
 
 const Home = () => {
   const [isLoading, setIsLoading] = useState(true);
 
+  const { user } = useAuthStore();
+
+  const router = useRouter();
+
+  useEffect(() => {
+    if (!user) {
+      router.push("/");
+    }
+  }, []);
+
   useEffect(() => {
     const timer = setTimeout(() => setIsLoading(false), 1000);
-
     return () => clearTimeout(timer);
   }, []);
 

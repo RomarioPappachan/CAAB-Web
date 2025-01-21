@@ -5,12 +5,21 @@ import axios from "axios";
 import CompanyBranches from "../components/company-home/CompanyBranches";
 import { useRouter } from "next/navigation";
 import ProtectedRoute from "@/components/ProtectedRoutes";
+import useAuthStore from "@/store/authStore";
 
 function CompanyHome() {
   const [companyInfo, setCompanyInfo] = useState({});
-  const caabId = JSON.parse(localStorage.getItem("user")).caab_id;
+  // const caabId = JSON.parse(localStorage.getItem("user")).caab_id;
+
+  const { user, initializeUser } = useAuthStore();
+  const caabId = user?.caab_id;
 
   const router = useRouter();
+
+  useEffect(() => {
+    // Initialize the store when the component mounts
+    initializeUser();
+  }, [initializeUser]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -41,7 +50,7 @@ function CompanyHome() {
               className="pe-2 py-4"
             />
             <p className="text-[#424752] text-[16px]">
-              Company name
+              Company name{" "}
               <span className="text-[#191C21] text-[24px] font-semibold ps-4">
                 {companyInfo.company_name}
               </span>

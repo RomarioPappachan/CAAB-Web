@@ -3,19 +3,19 @@ import React, { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import useAuthStore from "@/store/authStore";
 import ProtectedRoute from "@/components/ProtectedRoutes";
+import useUploadDocumentStore from "@/store/uploadDocumentsStore";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 function CompanyRating() {
   const [userData, setUserData] = useState({});
   const { user } = useAuthStore();
+  const { businessType } = useUploadDocumentStore();
 
-  // useEffect(() => {
-  //   setUserData(user && user);
-  // }, []);
+  const router = useRouter();
 
-  // from local storage
   useEffect(() => {
-    const data = JSON.parse(localStorage.getItem("user"));
-    setUserData(data && data);
+    setUserData(user && user);
   }, []);
 
   return (
@@ -23,11 +23,12 @@ function CompanyRating() {
       <Navbar />
       <div className="w-full h-full mt-[100px] md:mt-[130px] xl:mt-[152px] bg-white px-4 md:px-8 lg:px-[72px]">
         <p className="text-[#707784] text-[14px] py-10">
-          Home {">"} Company or Branch name
+          <Link href={"/company-home"}>Home</Link> {">"}{" "}
+          <Link href={"/company-rating"}>{userData?.company_name}</Link>
         </p>
         <div className="flex flex-col lg:flex-row gap-y-16 lg:gap-y-0 gap-x-5">
-          <div className="w-full lg:w-3/5 border-[#707784] border-[1px] bg-[#F9F9FF] flex p-6 rounded-lg shadow-lg">
-            <div className="w-1/2 flex flex-col gap-4">
+          <div className="w-full lg:w-3/5 border-[#707784] border-[1px] bg-[#F9F9FF] flex flex-col md:flex-row gap-8 md:gap-0 p-6 rounded-lg shadow-lg">
+            <div className="w-full md:w-1/2 flex flex-col gap-4">
               <h1 className="text-[#181C22] text-[24px]">Generate Rating</h1>
               <p className="text-[#707784] text-[16px]">
                 Company name :
@@ -38,7 +39,7 @@ function CompanyRating() {
               <p className="text-[#707784] text-[16px]">
                 Business Type :
                 <span className="text-[#181C22] text-[16px]">
-                  {userData?.business_type}
+                  {businessType && businessType}
                 </span>
               </p>
               <div className="border-[#ABC8F6] border-[2px] p-4 rounded-2xl">
@@ -49,12 +50,19 @@ function CompanyRating() {
                   grade."
                 </p>
               </div>
-              <button className="w-full h-[64px]  bg-[#74CE3A] rounded-2xl text-white text-[16px] flex justify-center items-center">
+              <button
+                className="w-full h-[64px]  bg-[#74CE3A] rounded-2xl text-white text-[16px] flex justify-center items-center"
+                onClick={() => {
+                  router.push("/upload-documents");
+                }}
+              >
                 Submit Details
               </button>
             </div>
-            <div className="w-1/2">
-              <h1 className="text-[#181C22] text-[24px]">Current Rating</h1>
+            <div className="w-full md:w-1/2">
+              <h1 className="text-[#181C22] text-[24px] md:px-8 mb-4">
+                Current Rating
+              </h1>
               <div className="w-full h-full flex justify-center items-center">
                 <img src="/chart.svg" alt="" className="size-80" />
               </div>
@@ -66,7 +74,7 @@ function CompanyRating() {
               Updates on submitted data
             </h1>
             <div className="overflow-scroll flex flex-col gap-y-4">
-              <div className="border-[2px] border-[#BFCAB3] rounded-[8px] p-6">
+              {/* <div className="border-[2px] border-[#BFCAB3] rounded-[8px] p-6">
                 <div className="relative">
                   <p className="text-[#173B00] text-[16px]">
                     The document submitted on 21/10/2024 has been accepted.
@@ -163,12 +171,12 @@ function CompanyRating() {
                   <p>21/10/2024</p>
                   <p>10:00 AM</p>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
 
-        <div className="pt-20 flex flex-col gap-y-2">
+        <div className="py-20 flex flex-col gap-y-2">
           <h1 className="text-[#191C21] text-[24px] font-medium">
             Guidelines to complete rating.
           </h1>

@@ -55,8 +55,6 @@ function InitialDetails({
         console.log(response);
         const userData = response.data.data;
         login(userData);
-
-        localStorage.setItem("user", JSON.stringify(userData));
         setTimeout(() => {
           setIsOtpPopupOpen(false);
           setIsLoginSignupOpen(false);
