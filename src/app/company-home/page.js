@@ -19,7 +19,7 @@ function CompanyHome() {
   useEffect(() => {
     // Initialize the store when the component mounts
     initializeUser();
-  }, [initializeUser]);
+  }, []);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -27,6 +27,7 @@ function CompanyHome() {
         const response = await axios.get(
           `${process.env.NEXT_PUBLIC_API_URL}/user/companyInfo/${caabId}`
         );
+        // console.log(response);
 
         setCompanyInfo(response.data.companyInfo);
       } catch (error) {
@@ -52,7 +53,7 @@ function CompanyHome() {
             <p className="text-[#424752] text-[16px]">
               Company name{" "}
               <span className="text-[#191C21] text-[24px] font-semibold ps-4">
-                {companyInfo.company_name}
+                {companyInfo?.company_name}
               </span>
             </p>
           </div>
@@ -65,7 +66,7 @@ function CompanyHome() {
             <p className="text-[#424752] text-[16px]">
               No. of branches{" "}
               <span className="text-[#191C21] text-[24px] font-semibold ps-4">
-                {companyInfo.noOfBranch}
+                {companyInfo?.noOfBranch}
               </span>
             </p>
           </div>

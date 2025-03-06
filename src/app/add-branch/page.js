@@ -46,7 +46,7 @@ function AddBranch() {
 
   const [caabId, setCaabId] = useState("");
 
-  const { user } = useAuthStore();
+  const { user, initializeUser } = useAuthStore();
 
   // const user = JSON.parse(localStorage.getItem("user"));
 
@@ -60,7 +60,7 @@ function AddBranch() {
   } = useForm({
     resolver: yupResolver(validationSchema),
     defaultValues: {
-      companyName: user.company_name,
+      companyName: user?.company_name,
       location: "",
       district: "",
       businessType: "",
@@ -82,7 +82,10 @@ function AddBranch() {
         const response = await axios.get(
           `${process.env.NEXT_PUBLIC_API_URL}/admin/listBusinessType`
         );
-        const data = response.data.data;
+
+        console.log(response);
+
+        const data = response.data.businessType;
         const mappedData = data.map((type) => type.business_type);
         setBusinessTypesList(mappedData);
         setIsLoading(false);
@@ -102,6 +105,10 @@ function AddBranch() {
   useEffect(() => {
     const data = JSON.parse(localStorage.getItem("user"));
     setCaabId(data?.caab_id);
+  }, []);
+
+  useEffect(() => {
+    initializeUser();
   }, []);
 
   const onSubmit = async (data) => {
