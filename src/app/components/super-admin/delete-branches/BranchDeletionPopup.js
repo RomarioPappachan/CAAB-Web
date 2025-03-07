@@ -1,4 +1,5 @@
 "use client";
+import useAuthStore from "@/store/authStore";
 import axios from "axios";
 import React from "react";
 import { createPortal } from "react-dom";
@@ -9,12 +10,13 @@ function BranchDeletionPopup({
   setIsBranchDeletionPopupOpen,
   setRenderBranchList,
 }) {
-  console.log(selectedBranchId);
+  const { token } = useAuthStore();
 
   async function handleDeleteBranch() {
     try {
       const response = await axios.delete(
-        `${process.env.NEXT_PUBLIC_API_URL}/user/removeBranch/${selectedBranchId}`
+        `${process.env.NEXT_PUBLIC_API_URL}/user/removeBranch/${selectedBranchId}`,
+        { headers: { Authorization: `Bearer ${token}` } }
       );
       alert(response.data.message);
 

@@ -46,7 +46,7 @@ function AddBranch() {
 
   const [caabId, setCaabId] = useState("");
 
-  const { user, initializeUser } = useAuthStore();
+  const { user, token, initializeUser } = useAuthStore();
 
   // const user = JSON.parse(localStorage.getItem("user"));
 
@@ -80,7 +80,8 @@ function AddBranch() {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `${process.env.NEXT_PUBLIC_API_URL}/admin/listBusinessType`
+          `${process.env.NEXT_PUBLIC_API_URL}/admin/listBusinessType`,
+          { headers: { Authorization: `Bearer ${token}` } }
         );
 
         console.log(response);
@@ -107,9 +108,9 @@ function AddBranch() {
     setCaabId(data?.caab_id);
   }, []);
 
-  useEffect(() => {
-    initializeUser();
-  }, []);
+  // useEffect(() => {
+  //   initializeUser();
+  // }, []);
 
   const onSubmit = async (data) => {
     console.log("Form submitted successfully:", data);
@@ -150,7 +151,8 @@ function AddBranch() {
     try {
       const response = await axios.post(
         `${process.env.NEXT_PUBLIC_API_URL}/user/addBranch`,
-        dataToSend
+        dataToSend,
+        { headers: { Authorization: `Bearer ${token}` } }
       );
       alert(response.data.message);
       reset(); //reset inputFormData

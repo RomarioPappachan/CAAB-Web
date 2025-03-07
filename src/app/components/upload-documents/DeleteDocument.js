@@ -6,6 +6,7 @@ import React from "react";
 import { createPortal } from "react-dom";
 
 function DeleteDocument() {
+  const token = localStorage.getItem("token");
   const {
     setRenderDocumentList,
     setIsDeleteDocumentOpen,
@@ -22,7 +23,8 @@ function DeleteDocument() {
       // API call
       try {
         const response = await axios.delete(
-          `${process.env.NEXT_PUBLIC_API_URL}/user/deleteDocument/${selectedDocumentIdToDelete}`
+          `${process.env.NEXT_PUBLIC_API_URL}/user/deleteDocument/${selectedDocumentIdToDelete}`,
+          { headers: { Authorization: `Bearer ${token}` } }
         );
 
         console.log(response); // Handle the response

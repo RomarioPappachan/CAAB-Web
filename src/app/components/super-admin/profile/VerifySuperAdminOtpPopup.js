@@ -5,6 +5,7 @@ import { createPortal } from "react-dom";
 
 function VerifySuperAdminOtpPopup({
   userDetails,
+  token,
   updatedMobileNo,
   setUpdatedMobileNo,
   setIsVerifyOtpOpen,
@@ -31,7 +32,8 @@ function VerifySuperAdminOtpPopup({
             caab_id: userDetails.caab_id,
             mobile: Number(updatedMobileNo),
             otp: otp,
-          }
+          },
+          { headers: { Authorization: `Bearer ${token}` } }
         );
         console.log(response);
         alert(response.data.message);

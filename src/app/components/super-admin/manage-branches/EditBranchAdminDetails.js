@@ -1,5 +1,6 @@
 "use client";
-import React, { useState } from "react";
+import useAuthStore from "@/store/authStore";
+import React, { useActionState, useState } from "react";
 import { createPortal } from "react-dom";
 
 function EditBranchAdminDetails({
@@ -8,6 +9,8 @@ function EditBranchAdminDetails({
   setIsEditBranchAdminDetailsOpen,
   setBranchDetailRenderToggle,
 }) {
+  const { token } = useAuthStore();
+
   const [branchAdminData, setBranchAdminData] = useState({
     branchAdminName: "",
     branchAdminMobileNo: "",
@@ -45,7 +48,8 @@ function EditBranchAdminDetails({
     try {
       const response = await axios.put(
         `${process.env.NEXT_PUBLIC_API_URL}/user/editBranchDetails/${selectedbranchId}`,
-        dataToSend
+        dataToSend,
+        { headers: { Authorization: `Bearer ${token}` } }
       );
 
       alert(response.data.message);

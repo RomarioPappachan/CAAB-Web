@@ -8,8 +8,13 @@ import useUploadDocumentStore from "@/store/uploadDocumentsStore";
 function DepartmentWiseForm({ department }) {
   const [isInsertDocumentOpen, setIsInsertDocumentOpen] = useState(false);
 
-  const { branchDocuments, selectedDepartmentName, setSelectedDepartmentName } =
-    useUploadDocumentStore();
+  const {
+    branchDocuments = [],
+    selectedDepartmentName,
+    setSelectedDepartmentName,
+  } = useUploadDocumentStore();
+
+  console.log(branchDocuments);
 
   return (
     <div className="">
@@ -20,9 +25,11 @@ function DepartmentWiseForm({ department }) {
       <div className="p-4 md:p-8 lg:p-10 border-[1px] border-[#C2C6D4] rounded-lg bg-white">
         {/* document form div  */}
         <div>
-          {branchDocuments.some((doc) => doc.department_name === department) ? (
+          {branchDocuments?.some(
+            (doc) => doc.department_name === department
+          ) ? (
             branchDocuments
-              .filter((doc) => doc.department_name === department)
+              ?.filter((doc) => doc.department_name === department)
               .map((doc) => (
                 <SubmittedDocument
                   key={doc.id}

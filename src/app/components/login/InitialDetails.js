@@ -43,7 +43,7 @@ function InitialDetails({
     } else {
       try {
         const response = await axios.post(
-          `${process.env.NEXT_PUBLIC_API_URL}/user/addCompany`,
+          `${process.env.NEXT_PUBLIC_BASE_URL}/addCompany`,
           {
             user_name: userName,
             email: email,

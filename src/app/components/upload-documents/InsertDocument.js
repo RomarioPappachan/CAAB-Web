@@ -6,6 +6,7 @@ import useUploadDocumentStore from "@/store/uploadDocumentsStore";
 import axios from "axios";
 
 function InsertDocument({ department, setIsInsertDocumentOpen }) {
+  const token = localStorage.getItem("token");
   const [inputData, setInputData] = useState({
     description: "",
     issueDate: "",
@@ -79,7 +80,8 @@ function InsertDocument({ department, setIsInsertDocumentOpen }) {
       try {
         const response = await axios.post(
           `${process.env.NEXT_PUBLIC_API_URL}/user/newDocument`,
-          requestData
+          requestData,
+          { headers: { Authorization: `Bearer ${token}` } }
         );
 
         console.log(response.data); // Handle the response

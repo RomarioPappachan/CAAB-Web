@@ -1,3 +1,4 @@
+import AuthProvider from "@/providers/AuthProvider";
 import "./globals.css";
 
 export const metadata = {
@@ -22,7 +23,9 @@ export default function RootLayout({ children }) {
           rel="stylesheet"
         />
       </head>
-      <body className="m-0 p-0 bg-white overflow-x-hidden">{children}</body>
+      <body className="m-0 p-0 bg-white overflow-x-hidden">
+        <AuthProvider>{children}</AuthProvider>
+      </body>
     </html>
   );
 }

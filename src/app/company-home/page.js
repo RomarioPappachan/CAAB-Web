@@ -11,21 +11,22 @@ function CompanyHome() {
   const [companyInfo, setCompanyInfo] = useState({});
   // const caabId = JSON.parse(localStorage.getItem("user")).caab_id;
 
-  const { user, initializeUser } = useAuthStore();
+  const { user, token, initializeUser } = useAuthStore();
   const caabId = user?.caab_id;
 
   const router = useRouter();
 
-  useEffect(() => {
-    // Initialize the store when the component mounts
-    initializeUser();
-  }, []);
+  // useEffect(() => {
+  //   // Initialize the store when the component mounts
+  //   initializeUser();
+  // }, []);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `${process.env.NEXT_PUBLIC_API_URL}/user/companyInfo/${caabId}`
+          `${process.env.NEXT_PUBLIC_API_URL}/user/companyInfo/${caabId}`,
+          { headers: { Authorization: `Bearer ${token}` } }
         );
         // console.log(response);
 
@@ -81,7 +82,7 @@ function CompanyHome() {
           >
             + Add Branch / Company
           </button>
-          <CompanyBranches caabId={caabId} />
+          <CompanyBranches caabId={caabId} token={token} />
         </div>
       </div>
     </div>

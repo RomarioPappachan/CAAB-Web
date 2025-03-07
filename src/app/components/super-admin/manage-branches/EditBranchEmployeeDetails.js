@@ -1,4 +1,5 @@
 "use client";
+import useAuthStore from "@/store/authStore";
 import axios from "axios";
 import React, { useState } from "react";
 import { createPortal } from "react-dom";
@@ -9,6 +10,8 @@ function EditBranchEmployeeDetails({
   setIsEditBranchEmployeeDetailsOpen,
   setBranchDetailRenderToggle,
 }) {
+  const { token } = useAuthStore();
+
   const [employeeDetails, setEmployeeDetails] = useState({
     totalLabourNumber: "",
     femaleLabourNumber: "",
@@ -53,7 +56,8 @@ function EditBranchEmployeeDetails({
     try {
       const response = await axios.put(
         `${process.env.NEXT_PUBLIC_API_URL}/user/editBranchDetails/${selectedbranchId}`,
-        dataToSend
+        dataToSend,
+        { headers: { Authorization: `Bearer ${token}` } }
       );
 
       alert(response.data.message);

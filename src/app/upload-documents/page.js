@@ -13,6 +13,7 @@ function UploadDocuments() {
   const [isLoading, setIsLoading] = useState(true);
   // const [departmentList, setDepartmentList] = useState([]);
   const user = JSON.parse(localStorage.getItem("user"));
+  const token = localStorage.getItem("token");
 
   // const businessType = localStorage.getItem("businessType");
 
@@ -31,7 +32,8 @@ function UploadDocuments() {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `${process.env.NEXT_PUBLIC_API_URL}/admin/getDepartmentsByBusinessType/${businessType}`
+          `${process.env.NEXT_PUBLIC_API_URL}/admin/getDepartmentsByBusinessType/${businessType}`,
+          { headers: { Authorization: `Bearer ${token}` } }
         );
 
         // console.log(response);
@@ -56,14 +58,15 @@ function UploadDocuments() {
       const branchId = selectedBranch?.branch_id;
       try {
         const response = await axios.get(
-          `${process.env.NEXT_PUBLIC_API_URL}/user/branchDocuments/${branchId}`
+          `${process.env.NEXT_PUBLIC_API_URL}/user/branchDocuments/${branchId}`,
+          { headers: { Authorization: `Bearer ${token}` } }
         );
 
         // console.log(response);
         setBranchDocuments(response.data.data);
       } catch (error) {
         console.error("Error fetching data:", error);
-        // toast.error("Error fetching data.");\
+        // toast.error("Error fetching data.");
       }
     };
 

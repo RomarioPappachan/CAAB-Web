@@ -21,7 +21,7 @@ function LoginSignupPopup({
         // Add Sector API call
 
         const response = await axios.post(
-          `${process.env.NEXT_PUBLIC_API_URL}/user/login`,
+          `${process.env.NEXT_PUBLIC_BASE_URL}/login`,
           {
             mobile: Number(mobileNo),
           }

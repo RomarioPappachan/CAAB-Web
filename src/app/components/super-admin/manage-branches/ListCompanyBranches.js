@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import { FiEdit } from "react-icons/fi";
 import axios from "axios";
+import useAuthStore from "@/store/authStore";
 
 export default function ListCompanyBranches({
   selectedbranchId,
@@ -13,6 +14,8 @@ export default function ListCompanyBranches({
   setIsEditBranchBasicDetailsOpen,
   setIsEditBranchEmployeeDetailsOpen,
 }) {
+  const { token } = useAuthStore();
+
   const [branchList, setBranchList] = useState([]);
 
   console.log(branchList);
@@ -22,7 +25,8 @@ export default function ListCompanyBranches({
       const caabId = JSON.parse(localStorage.getItem("user")).caab_id;
       try {
         const response = await axios.get(
-          `${process.env.NEXT_PUBLIC_API_URL}/user/listBranches/${caabId}`
+          `${process.env.NEXT_PUBLIC_API_URL}/user/listBranches/${caabId}`,
+          { headers: { Authorization: `Bearer ${token}` } }
         );
         setBranchList(response.data.branches);
       } catch (error) {

@@ -263,7 +263,7 @@ function OtpPopup({
 
       try {
         const response = await axios.post(
-          `${process.env.NEXT_PUBLIC_API_URL}/user/verify-otp`,
+          `${process.env.NEXT_PUBLIC_BASE_URL}/verify-otp`,
           {
             mobile: mobileNo,
             otp: fullOtp,
@@ -274,7 +274,8 @@ function OtpPopup({
         setIsOtpError(false);
         if (response.data.activeUser) {
           const userData = response.data.existingUser;
-          login(userData);
+          const token = response.data.token;
+          login({ user: userData, token });
           alert(response.data.message);
           router.push("/company-home");
         } else {
@@ -307,7 +308,7 @@ function OtpPopup({
       // API call
       try {
         const response = await axios.post(
-          `${process.env.NEXT_PUBLIC_API_URL}/user/login`,
+          `${process.env.NEXT_PUBLIC_BASE_URL}/login`,
           {
             mobile: Number(mobileNo),
           }

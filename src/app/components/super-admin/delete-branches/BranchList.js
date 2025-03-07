@@ -1,4 +1,5 @@
 "use client";
+import useAuthStore from "@/store/authStore";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { RiDeleteBin6Line } from "react-icons/ri";
@@ -8,6 +9,8 @@ function BranchList({
   setIsBranchDeletionPopupOpen,
   renderBranchList,
 }) {
+  const { token } = useAuthStore();
+
   const [branchList, setBranchList] = useState([]);
 
   useEffect(() => {
@@ -15,7 +18,8 @@ function BranchList({
       const caabId = JSON.parse(localStorage.getItem("user")).caab_id;
       try {
         const response = await axios.get(
-          `${process.env.NEXT_PUBLIC_API_URL}/user/listBranches/${caabId}`
+          `${process.env.NEXT_PUBLIC_API_URL}/user/listBranches/${caabId}`,
+          { headers: { Authorization: `Bearer ${token}` } }
         );
         setBranchList(response.data.branches);
       } catch (error) {

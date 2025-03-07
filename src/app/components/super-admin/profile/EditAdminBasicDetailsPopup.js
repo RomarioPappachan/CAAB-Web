@@ -5,12 +5,11 @@ import { createPortal } from "react-dom";
 
 function EditAdminBasicDetailsPopup({
   userDetails,
+  token,
   setIsEditAdminBasicDetailsOpen,
   setRenderAdminProfileToggle,
 }) {
   const [updatedUserDetails, setUpdatedUserDetails] = useState(userDetails);
-
-  console.log(updatedUserDetails);
 
   function handleOnChange(event) {
     const { name, value } = event.target;
@@ -26,7 +25,8 @@ function EditAdminBasicDetailsPopup({
     try {
       const response = await axios.put(
         `${process.env.NEXT_PUBLIC_API_URL}/user/editCompany/${caabId}`,
-        updatedUserDetails
+        updatedUserDetails,
+        { headers: { Authorization: `Bearer ${token}` } }
       );
       alert(response.data.message);
 

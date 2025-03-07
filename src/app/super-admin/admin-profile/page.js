@@ -7,6 +7,7 @@ import VerifySuperAdminOtpPopup from "@/app/components/super-admin/profile/Verif
 import ProtectedRoute from "@/components/ProtectedRoutes";
 import React, { useEffect, useState } from "react";
 import { FiEdit } from "react-icons/fi";
+import useAuthStore from "@/store/authStore";
 
 function SuperAdminProfile() {
   const [userDetails, setUserDetails] = useState({});
@@ -22,12 +23,15 @@ function SuperAdminProfile() {
   const [renderAdminProfileToggle, setRenderAdminProfileToggle] =
     useState(false);
 
+  const { token } = useAuthStore();
+
   useEffect(() => {
     const fetchData = async () => {
       const caabId = JSON.parse(localStorage.getItem("user")).caab_id;
       try {
         const response = await axios.get(
-          `${process.env.NEXT_PUBLIC_API_URL}/user/companyInfo/${caabId}`
+          `${process.env.NEXT_PUBLIC_API_URL}/user/companyInfo/${caabId}`,
+          { headers: { Authorization: `Bearer ${token}` } }
         );
 
         setUserDetails(response.data.companyInfo);
@@ -103,6 +107,7 @@ function SuperAdminProfile() {
       {isEditAdminBasicDetailsOpen && (
         <EditAdminBasicDetailsPopup
           userDetails={userDetails}
+          token={token}
           setIsEditAdminBasicDetailsOpen={setIsEditAdminBasicDetailsOpen}
           setRenderAdminProfileToggle={setRenderAdminProfileToggle}
         />
@@ -110,6 +115,7 @@ function SuperAdminProfile() {
       {isEditAdminLoginNumberOpen && (
         <EditAdminLoginNumberPopup
           userDetails={userDetails}
+          token={token}
           updatedMobileNo={updatedMobileNo}
           setUpdatedMobileNo={setUpdatedMobileNo}
           setIsEditAdminLoginNumberOpen={setIsEditAdminLoginNumberOpen}
@@ -119,6 +125,7 @@ function SuperAdminProfile() {
       {isVerifyOtpOpen && (
         <VerifySuperAdminOtpPopup
           userDetails={userDetails}
+          token={token}
           updatedMobileNo={updatedMobileNo}
           setUpdatedMobileNo={setUpdatedMobileNo}
           setIsVerifyOtpOpen={setIsVerifyOtpOpen}

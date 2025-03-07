@@ -2,16 +2,26 @@
 // import { create } from "zustand";
 
 // const useAuthStore = create((set) => ({
-//   user: JSON.parse(localStorage.getItem("user")) || null, // Load from localStorage
+//   user: null, // Initialize without accessing localStorage
 //   login: (user) => {
-//     localStorage.setItem("user", JSON.stringify(user)); // Save to localStorage
+//     if (typeof window !== "undefined") {
+//       localStorage.setItem("user", JSON.stringify(user)); // Save to localStorage
+//     }
 //     set({ user });
 //   },
 //   logout: () => {
-//     localStorage.removeItem("businessType");
-//     localStorage.removeItem("selectedBranch");
-//     localStorage.removeItem("user"); // Remove from localStorage
+//     if (typeof window !== "undefined") {
+//       localStorage.removeItem("businessType");
+//       localStorage.removeItem("selectedBranch");
+//       localStorage.removeItem("user"); // Remove from localStorage
+//     }
 //     set({ user: null });
+//   },
+//   initializeUser: () => {
+//     if (typeof window !== "undefined") {
+//       const storedUser = localStorage.getItem("user");
+//       set({ user: storedUser ? JSON.parse(storedUser) : null });
+//     }
 //   },
 // }));
 
@@ -21,25 +31,35 @@
 import { create } from "zustand";
 
 const useAuthStore = create((set) => ({
-  user: null, // Initialize without accessing localStorage
-  login: (user) => {
+  user: null,
+  token: null,
+
+  login: ({ user, token }) => {
     if (typeof window !== "undefined") {
-      localStorage.setItem("user", JSON.stringify(user)); // Save to localStorage
+      localStorage.setItem("user", JSON.stringify(user)); // Save user data
+      localStorage.setItem("token", token); // Save token
     }
-    set({ user });
+    set({ user, token });
   },
+
   logout: () => {
     if (typeof window !== "undefined") {
+      localStorage.removeItem("user");
+      localStorage.removeItem("token");
       localStorage.removeItem("businessType");
       localStorage.removeItem("selectedBranch");
-      localStorage.removeItem("user"); // Remove from localStorage
     }
-    set({ user: null });
+    set({ user: null, token: null });
   },
+
   initializeUser: () => {
     if (typeof window !== "undefined") {
       const storedUser = localStorage.getItem("user");
-      set({ user: storedUser ? JSON.parse(storedUser) : null });
+      const storedToken = localStorage.getItem("token");
+      set({
+        user: storedUser ? JSON.parse(storedUser) : null,
+        token: storedToken || null,
+      });
     }
   },
 }));

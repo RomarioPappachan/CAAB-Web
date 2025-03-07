@@ -3,14 +3,15 @@ import React, { useEffect, useState } from "react";
 import CompanyBranchCard from "./CompanyBranchCard";
 import axios from "axios";
 
-function CompanyBranches({ caabId }) {
+function CompanyBranches({ caabId, token }) {
   const [companyBranches, setCompanyBranches] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `${process.env.NEXT_PUBLIC_API_URL}/user/listBranches/${caabId}`
+          `${process.env.NEXT_PUBLIC_API_URL}/user/listBranches/${caabId}`,
+          { headers: { Authorization: `Bearer ${token}` } }
         );
 
         setCompanyBranches(response.data.branches);

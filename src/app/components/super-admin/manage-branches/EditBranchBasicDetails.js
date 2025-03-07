@@ -1,4 +1,5 @@
 "use client";
+import useAuthStore from "@/store/authStore";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
@@ -10,6 +11,8 @@ function EditBranchBasicDetails({
   setIsEditBranchBasicDetailsOpen,
   setBranchDetailRenderToggle,
 }) {
+  const { token } = useAuthStore();
+
   const [businessTypeList, setBusinessTypeList] = useState([]);
   const [basicDetails, setBasicDetails] = useState({
     companyName: "",
@@ -23,7 +26,8 @@ function EditBranchBasicDetails({
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `${process.env.NEXT_PUBLIC_API_URL}/admin/listBusinessType`
+          `${process.env.NEXT_PUBLIC_API_URL}/admin/listBusinessType`,
+          { headers: { Authorization: `Bearer ${token}` } }
         );
         const data = response.data.data;
         const mappedData = data.map((type) => type.business_type);
@@ -66,7 +70,8 @@ function EditBranchBasicDetails({
     try {
       const response = await axios.put(
         `${process.env.NEXT_PUBLIC_API_URL}/user/editBranchDetails/${selectedbranchId}`,
-        dataToSend
+        dataToSend,
+        { headers: { Authorization: `Bearer ${token}` } }
       );
 
       alert(response.data.message);

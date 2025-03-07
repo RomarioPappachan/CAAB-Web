@@ -6,6 +6,8 @@ import React, { useState } from "react";
 import { MdOutlineFileUpload } from "react-icons/md";
 
 function EditDocument({ doc, department, setIsEditOpen }) {
+  const token = localStorage.getItem("token");
+
   const [newDocumentData, setNewDocumentData] = useState({
     description: "",
     issueDate: "",
@@ -82,7 +84,8 @@ function EditDocument({ doc, department, setIsEditOpen }) {
       try {
         const response = await axios.put(
           `${process.env.NEXT_PUBLIC_API_URL}/user/editDocument/${doc.id}`,
-          updatedData
+          updatedData,
+          { headers: { Authorization: `Bearer ${token}` } }
         );
 
         console.log(response); // Handle the response
