@@ -64,13 +64,46 @@
 
 // export default ProtectedRoute;
 
+// "use client";
+// import { useEffect, useState } from "react";
+// import { useRouter } from "next/navigation";
+// import useAuthStore from "@/store/authStore";
+
+// const ProtectedRoute = ({ children, allowedRoles = [] }) => {
+//   const { user, token, initializeUser } = useAuthStore();
+//   const router = useRouter();
+//   const [loading, setLoading] = useState(true);
+
+//   useEffect(() => {
+//     initializeUser();
+//   }, []);
+
+//   useEffect(() => {
+//     if (!user || !token) {
+//       router.push("/login");
+//       // } else if (allowedRoles.length > 0 && !allowedRoles.includes(user.role)) {
+//       //   router.push("/unauthorized"); // Redirect if the user doesn't have the correct role
+//     } else {
+//       setLoading(false);
+//     }
+//   }, [user, token, allowedRoles, router]);
+
+//   if (loading) return null;
+
+//   return children;
+// };
+
+// export default ProtectedRoute;
+
 "use client";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import useAuthStore from "@/store/authStore";
+import useUploadDocumentStore from "@/store/uploadDocumentsStore";
 
 const ProtectedRoute = ({ children, allowedRoles = [] }) => {
-  const { user, token, initializeUser } = useAuthStore();
+  const { user, token, initializeUser, logout } = useAuthStore();
+  const { setBusinessType, setSelectedBranch } = useUploadDocumentStore();
   const router = useRouter();
   const [loading, setLoading] = useState(true);
 
@@ -79,10 +112,17 @@ const ProtectedRoute = ({ children, allowedRoles = [] }) => {
   }, []);
 
   useEffect(() => {
+    if (user === undefined || token === undefined) {
+      return; // Wait until user and token are initialized
+    }
+
     if (!user || !token) {
+      // Clear both auth store and upload document store
+      logout();
+      setBusinessType(null);
+      setSelectedBranch({});
+
       router.push("/login");
-      // } else if (allowedRoles.length > 0 && !allowedRoles.includes(user.role)) {
-      //   router.push("/unauthorized"); // Redirect if the user doesn't have the correct role
     } else {
       setLoading(false);
     }

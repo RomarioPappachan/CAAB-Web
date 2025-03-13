@@ -1,13 +1,21 @@
 "use client";
 import useAuthStore from "@/store/authStore";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import useUploadDocumentStore from "@/store/uploadDocumentsStore";
+import axios from "axios";
 
 function CompanyBranchCard({ branch }) {
-  const { user, initializeUser } = useAuthStore();
-  const { setBusinessType, setSelectedBranch, initializeStore } =
-    useUploadDocumentStore();
+  const { user, token, initializeUser } = useAuthStore();
+  const {
+    setBusinessType,
+    selectedBranch,
+    setSelectedBranch,
+    initializeStore,
+  } = useUploadDocumentStore();
+
+  const [rating, setRating] = useState("");
+
   const router = useRouter();
 
   useEffect(() => {
@@ -15,10 +23,26 @@ function CompanyBranchCard({ branch }) {
     initializeUser();
   }, [initializeUser]);
 
+  console.log(selectedBranch);
+
   useEffect(() => {
-    // Initialize the store when the component mounts
-    initializeStore();
-  }, [initializeStore]);
+    const fetchData = async () => {
+      try {
+        const response = await axios.post(
+          `${process.env.NEXT_PUBLIC_API_URL}/admin/grading`,
+          { branch_id: branch.branch_id },
+          { headers: { Authorization: `Bearer ${token}` } }
+        );
+        console.log(response);
+        setRating(response.data.gravityPercentage);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+        // toast.error("Error fetching data.");\
+      }
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <div
@@ -86,9 +110,22 @@ function CompanyBranchCard({ branch }) {
         </div>
       </div>
 
-      <div className="flex justify-end">
-        <img src="chart.svg" alt="chart" />
-      </div>
+      {rating ? (
+        <div className="flex justify-end relative">
+          <img src="chart.svg" alt="chart" />
+          <span className="absolute bottom-2 right-12 font-bold text-[#404753] text-base">
+            {rating}
+          </span>
+        </div>
+      ) : (
+        <div className="flex justify-end relative">
+          <img src="chart.svg" alt="chart" />
+
+          <span className="absolute bottom-2 right-9 font-semibold text-gray-400 text-[10px]">
+            Not Rated
+          </span>
+        </div>
+      )}
     </div>
   );
 }

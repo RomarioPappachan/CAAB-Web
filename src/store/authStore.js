@@ -56,9 +56,16 @@ const useAuthStore = create((set) => ({
     if (typeof window !== "undefined") {
       const storedUser = localStorage.getItem("user");
       const storedToken = localStorage.getItem("token");
+
       set({
-        user: storedUser ? JSON.parse(storedUser) : null,
-        token: storedToken || null,
+        user:
+          storedUser && storedUser !== "undefined" && storedUser !== ""
+            ? JSON.parse(storedUser)
+            : null,
+        token:
+          storedToken && storedToken !== "undefined" && storedToken !== ""
+            ? storedToken
+            : null,
       });
     }
   },

@@ -6,16 +6,38 @@ import ProtectedRoute from "@/components/ProtectedRoutes";
 import useUploadDocumentStore from "@/store/uploadDocumentsStore";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import axios from "axios";
 
 function CompanyRating() {
   const [userData, setUserData] = useState({});
-  const { user } = useAuthStore();
-  const { businessType } = useUploadDocumentStore();
+  const { user, token } = useAuthStore();
+  const { businessType, selectedBranch } = useUploadDocumentStore();
+
+  const [rating, setRating] = useState("");
 
   const router = useRouter();
 
   useEffect(() => {
     setUserData(user && user);
+  }, []);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.post(
+          `${process.env.NEXT_PUBLIC_API_URL}/admin/grading`,
+          { branch_id: selectedBranch.branch_id },
+          { headers: { Authorization: `Bearer ${token}` } }
+        );
+        console.log(response);
+        setRating(response.data.gravityPercentage);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+        // toast.error("Error fetching data.");\
+      }
+    };
+
+    fetchData();
   }, []);
 
   return (
@@ -63,8 +85,17 @@ function CompanyRating() {
               <h1 className="text-[#181C22] text-[24px] md:px-8 mb-4">
                 Current Rating
               </h1>
-              <div className="w-full h-full flex justify-center items-center">
+              <div className="w-full h-full flex justify-center items-center relative">
                 <img src="/chart.svg" alt="" className="size-80" />
+                {rating ? (
+                  <span className="absolute bottom-10 right-1/2 translate-x-7 font-bold text-[#404753] text-[40px]">
+                    {rating}
+                  </span>
+                ) : (
+                  <span className="absolute bottom-14 right-1/2 translate-x-7 font-bold text-[#404753] text-sm">
+                    Not Rated
+                  </span>
+                )}
               </div>
             </div>
           </div>

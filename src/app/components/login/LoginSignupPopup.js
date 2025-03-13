@@ -30,6 +30,7 @@ function LoginSignupPopup({
         alert(response.data.message);
         setTimeout(() => {
           setIsOtpPopupOpen(true);
+          alert(`Your Otp is : ${response.data.otp}`);
           setIsLoginSignupOpen(false);
           setIsInitialDetailsOpen(false);
         }, 1000);

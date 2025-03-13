@@ -6,6 +6,8 @@ import axios from "axios";
 function CompanyBranches({ caabId, token }) {
   const [companyBranches, setCompanyBranches] = useState([]);
 
+  console.log(companyBranches);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -26,7 +28,8 @@ function CompanyBranches({ caabId, token }) {
 
   return (
     <div className="py-10 grid grid-cols-1 lg:grid-cols-2 gap-4">
-      {companyBranches[0] &&
+      {Array.isArray(companyBranches) &&
+        companyBranches.length > 0 &&
         companyBranches.map((branch) => (
           <CompanyBranchCard key={branch.id} branch={branch} />
         ))}
