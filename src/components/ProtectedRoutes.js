@@ -99,34 +99,31 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import useAuthStore from "@/store/authStore";
-import useUploadDocumentStore from "@/store/uploadDocumentsStore";
 
 const ProtectedRoute = ({ children, allowedRoles = [] }) => {
-  const { user, token, initializeUser, logout } = useAuthStore();
-  const { setBusinessType, setSelectedBranch } = useUploadDocumentStore();
+  const { user, token, initializeUser } = useAuthStore();
   const router = useRouter();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    initializeUser();
+    const fetchUser = async () => {
+      await initializeUser(); // Ensure user is initialized before proceeding
+      setLoading(false);
+    };
+    fetchUser();
   }, []);
 
   useEffect(() => {
-    if (user === undefined || token === undefined) {
-      return; // Wait until user and token are initialized
+    if (!loading) {
+      if (!user || !token) {
+        router.push("/login");
+      }
+      // Uncomment this if role-based access is needed
+      // else if (allowedRoles.length > 0 && !allowedRoles.includes(user.role)) {
+      //   router.push("/unauthorized");
+      // }
     }
-
-    if (!user || !token) {
-      // Clear both auth store and upload document store
-      logout();
-      setBusinessType(null);
-      setSelectedBranch({});
-
-      router.push("/login");
-    } else {
-      setLoading(false);
-    }
-  }, [user, token, allowedRoles, router]);
+  }, [user, token, allowedRoles, router, loading]);
 
   if (loading) return null;
 

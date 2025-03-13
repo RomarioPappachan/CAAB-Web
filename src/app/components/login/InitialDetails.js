@@ -11,6 +11,8 @@ function InitialDetails({
   setIsLoginSignupOpen,
   setIsInitialDetailsOpen,
 }) {
+  const { login } = useAuthStore();
+
   const [companyDetails, setCompanyDetails] = useState({
     userName: "",
     email: "",
@@ -18,7 +20,6 @@ function InitialDetails({
     employerCategory: "",
   });
 
-  const { login } = useAuthStore();
   const router = useRouter();
 
   function handleOnChange(event) {
@@ -53,8 +54,9 @@ function InitialDetails({
           }
         );
         console.log(response);
-        const userData = response.data.data;
-        login(userData);
+        const userData = await response.data.data;
+        const token = await response.data.token;
+        login({ user: userData, token });
         setTimeout(() => {
           setIsOtpPopupOpen(false);
           setIsLoginSignupOpen(false);
