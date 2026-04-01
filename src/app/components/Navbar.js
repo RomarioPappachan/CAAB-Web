@@ -71,6 +71,7 @@ const Navbar = () => {
               onClick={() => {
                 router.push("/login");
               }}
+              type="button"
             >
               Login / SignUp
             </button>
@@ -454,6 +455,7 @@ const Navbar = () => {
                     onClick={() => {
                       router.push("/login");
                     }}
+                    type="button"
                   >
                     Login / SignUp
                   </button>

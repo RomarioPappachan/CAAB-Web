@@ -26,8 +26,8 @@ function EditBranchBasicDetails({
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `${process.env.NEXT_PUBLIC_API_URL}/admin/listBusinessType`,
-          { headers: { Authorization: `Bearer ${token}` } }
+          `${process.env.NEXT_PUBLIC_API_URL}/user/listBusinessType`,
+          { headers: { Authorization: `Bearer ${token}` } },
         );
         const data = response.data.data;
         const mappedData = data.map((type) => type.business_type);
@@ -71,7 +71,7 @@ function EditBranchBasicDetails({
       const response = await axios.put(
         `${process.env.NEXT_PUBLIC_API_URL}/user/editBranchDetails/${selectedbranchId}`,
         dataToSend,
-        { headers: { Authorization: `Bearer ${token}` } }
+        { headers: { Authorization: `Bearer ${token}` } },
       );
 
       alert(response.data.message);
@@ -183,7 +183,7 @@ function EditBranchBasicDetails({
         </div>
       </div>
     </div>,
-    document.body
+    document.body,
   );
 }
 

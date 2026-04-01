@@ -44,14 +44,14 @@ function InitialDetails({
     } else {
       try {
         const response = await axios.post(
-          `${process.env.NEXT_PUBLIC_BASE_URL}/addCompany`,
+          `${process.env.NEXT_PUBLIC_API_URL}/auth/addCompany`,
           {
             user_name: userName,
             email: email,
             company_name: companyName,
             employer_category: employerCategory,
             mobile: mobileNo,
-          }
+          },
         );
         console.log(response);
         const userData = await response.data.data;

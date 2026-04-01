@@ -21,10 +21,10 @@ function LoginSignupPopup({
         // Add Sector API call
 
         const response = await axios.post(
-          `${process.env.NEXT_PUBLIC_BASE_URL}/login`,
+          `${process.env.NEXT_PUBLIC_API_URL}/auth/login`,
           {
             mobile: Number(mobileNo),
-          }
+          },
         );
         console.log(response);
         alert(response.data.message);
@@ -96,6 +96,7 @@ function LoginSignupPopup({
         <button
           className="w-full md:w-[374px] h-[56px] mt-8 bg-[#74CE3A] text-[14px] font-semibold text-white flex justify-center items-center"
           onClick={handleSubmit}
+          type="button"
         >
           CONTINUE
         </button>

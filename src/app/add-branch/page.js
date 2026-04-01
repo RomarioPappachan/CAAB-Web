@@ -80,8 +80,8 @@ function AddBranch() {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `${process.env.NEXT_PUBLIC_API_URL}/admin/listBusinessType`,
-          { headers: { Authorization: `Bearer ${token}` } }
+          `${process.env.NEXT_PUBLIC_API_URL}/user/listBusinessType`,
+          { headers: { Authorization: `Bearer ${token}` } },
         );
 
         console.log(response);
@@ -152,7 +152,7 @@ function AddBranch() {
       const response = await axios.post(
         `${process.env.NEXT_PUBLIC_API_URL}/user/addBranch`,
         dataToSend,
-        { headers: { Authorization: `Bearer ${token}` } }
+        { headers: { Authorization: `Bearer ${token}` } },
       );
       alert(response.data.message);
       reset(); //reset inputFormData

@@ -32,8 +32,8 @@ function UploadDocuments() {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `${process.env.NEXT_PUBLIC_API_URL}/admin/getDepartmentsByBusinessType/${businessType}`,
-          { headers: { Authorization: `Bearer ${token}` } }
+          `${process.env.NEXT_PUBLIC_API_URL}/user/getDepartmentsByBusinessType/${businessType}`,
+          { headers: { Authorization: `Bearer ${token}` } },
         );
 
         // console.log(response);
@@ -59,7 +59,7 @@ function UploadDocuments() {
       try {
         const response = await axios.get(
           `${process.env.NEXT_PUBLIC_API_URL}/user/branchDocuments/${branchId}`,
-          { headers: { Authorization: `Bearer ${token}` } }
+          { headers: { Authorization: `Bearer ${token}` } },
         );
 
         // console.log(response);

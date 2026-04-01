@@ -224,7 +224,7 @@ function OtpPopup({
     setIsOtpError(false);
     const { name, value } = event.target;
     const nextInput = document.querySelector(
-      `input[name=num${parseInt(name.slice(-1)) + 1}]`
+      `input[name=num${parseInt(name.slice(-1)) + 1}]`,
     );
 
     setOtp((prevValue) => ({
@@ -241,7 +241,7 @@ function OtpPopup({
   function handleKeyDown(event) {
     const { name, value } = event.target;
     const prevInput = document.querySelector(
-      `input[name=num${parseInt(name.slice(-1)) - 1}]`
+      `input[name=num${parseInt(name.slice(-1)) - 1}]`,
     );
 
     if (event.key === "Backspace" && !value && prevInput) {
@@ -263,11 +263,11 @@ function OtpPopup({
 
       try {
         const response = await axios.post(
-          `${process.env.NEXT_PUBLIC_BASE_URL}/verify-otp`,
+          `${process.env.NEXT_PUBLIC_API_URL}/auth/verify-otp`,
           {
             mobile: mobileNo,
             otp: fullOtp,
-          }
+          },
         );
 
         console.log(response);
@@ -308,10 +308,10 @@ function OtpPopup({
       // API call
       try {
         const response = await axios.post(
-          `${process.env.NEXT_PUBLIC_BASE_URL}/login`,
+          `${process.env.NEXT_PUBLIC_API_URL}/auth/login`,
           {
             mobile: Number(mobileNo),
-          }
+          },
         );
         console.log(response);
         alert(response.data.message);
