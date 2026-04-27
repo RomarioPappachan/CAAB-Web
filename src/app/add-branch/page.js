@@ -195,7 +195,7 @@ function AddBranch() {
               <input
                 type="text"
                 placeholder="Branch / Company name *"
-                className={`w-full h-[56px] px-4 placeholder:text-[#404753] rounded-lg text-black ${
+                className={`w-full h-[56px] px-4 bg-white placeholder:text-[#404753] rounded-lg text-black ${
                   errors.companyName
                     ? "border-2 border-red-500 "
                     : "border-[1px]  border-[#707784]"
@@ -208,7 +208,7 @@ function AddBranch() {
               <input
                 type="text"
                 placeholder="City or Location *"
-                className={`w-full h-[56px] px-4 placeholder:text-[#404753] rounded-lg text-black ${
+                className={`w-full h-[56px] px-4 bg-white placeholder:text-[#404753] rounded-lg text-black ${
                   errors.location
                     ? "border-2 border-red-500 "
                     : "border-[1px]  border-[#707784]"
@@ -218,7 +218,7 @@ function AddBranch() {
               <p className="text-red-500 text-xs">{errors.location?.message}</p>
               <select
                 placeholder="Select District *"
-                className={`w-full h-[56px] px-4 placeholder:text-[#404753] rounded-lg text-black ${
+                className={`w-full h-[56px] px-4 bg-white placeholder:text-[#404753] rounded-lg text-black ${
                   errors.district
                     ? "border-2 border-red-500 "
                     : "border-[1px]  border-[#707784]"
@@ -237,7 +237,7 @@ function AddBranch() {
               <p className="text-red-500 text-xs">{errors.district?.message}</p>
               <select
                 placeholder="Select Buisness Type *"
-                className={`w-full h-[56px] px-4 placeholder:text-[#404753] rounded-lg text-black ${
+                className={`w-full h-[56px] px-4 bg-white placeholder:text-[#404753] rounded-lg text-black ${
                   errors.businessType
                     ? "border-2 border-red-500 "
                     : "border-[1px]  border-[#707784]"
@@ -259,14 +259,14 @@ function AddBranch() {
               <input
                 type="email"
                 placeholder="Email"
-                className="w-full h-[56px] px-4 placeholder:text-[#404753] border-[1px] border-[#707784] rounded-lg text-black"
+                className="w-full h-[56px] px-4 bg-white placeholder:text-[#404753] border-[1px] border-[#707784] rounded-lg text-black"
                 {...register("email")}
               />
               <input
                 type="tel"
                 maxLength={10}
                 placeholder="Mobile Number"
-                className="w-full h-[56px] px-4 placeholder:text-[#404753] border-[1px] border-[#707784] rounded-lg text-black"
+                className="w-full h-[56px] px-4 bg-white placeholder:text-[#404753] border-[1px] border-[#707784] rounded-lg text-black"
                 {...register("mobileNo")}
               />
             </div>
@@ -281,7 +281,7 @@ function AddBranch() {
               <input
                 type="text"
                 placeholder="Name of Branch Admin *"
-                className={`w-full h-[56px] px-4 placeholder:text-[#404753] rounded-lg text-black ${
+                className={`w-full h-[56px] px-4 bg-white placeholder:text-[#404753] rounded-lg text-black ${
                   errors.branchAdminName
                     ? "border-2 border-red-500 "
                     : "border-[1px]  border-[#707784]"
@@ -295,7 +295,7 @@ function AddBranch() {
                 type="tel"
                 maxLength={10}
                 placeholder="Mobile Number of Branch Admin *"
-                className={`w-full h-[56px] px-4 placeholder:text-[#404753] rounded-lg text-black ${
+                className={`w-full h-[56px] px-4 bg-white placeholder:text-[#404753] rounded-lg text-black ${
                   errors.branchAdminMobileNo
                     ? "border-2 border-red-500 "
                     : "border-[1px]  border-[#707784]"
@@ -308,7 +308,7 @@ function AddBranch() {
               <input
                 type="email"
                 placeholder="Email of Branch Admin "
-                className="w-full h-[56px] px-4 placeholder:text-[#404753] border-[1px] border-[#707784] rounded-lg text-black"
+                className="w-full h-[56px] px-4 bg-white placeholder:text-[#404753] border-[1px] border-[#707784] rounded-lg text-black"
                 {...register("branchAdminEmail")}
               />
             </div>
@@ -323,26 +323,26 @@ function AddBranch() {
               <input
                 type="tel"
                 placeholder="Total number of labours"
-                className="w-full h-[56px] px-4 placeholder:text-[#404753] border-[1px] border-[#707784] rounded-lg text-black"
+                className="w-full h-[56px] px-4 bg-white placeholder:text-[#404753] border-[1px] border-[#707784] rounded-lg text-black"
                 {...register("totalLabourNumber")}
               />
               <input
                 type="tel"
                 placeholder="Number of  female labours"
-                className="w-full h-[56px] px-4 placeholder:text-[#404753] border-[1px] border-[#707784] rounded-lg text-black"
+                className="w-full h-[56px] px-4 bg-white placeholder:text-[#404753] border-[1px] border-[#707784] rounded-lg text-black"
                 {...register("femaleLabourNumber")}
               />
 
               <input
                 type="tel"
                 placeholder="Number of  contract labours"
-                className="w-full h-[56px] px-4 placeholder:text-[#404753] border-[1px] border-[#707784] rounded-lg text-black"
+                className="w-full h-[56px] px-4 bg-white placeholder:text-[#404753] border-[1px] border-[#707784] rounded-lg text-black"
                 {...register("contractLabourNumber")}
               />
               <input
                 type="tel"
                 placeholder="Number of  migrant labours"
-                className="w-full h-[56px] px-4 placeholder:text-[#404753] border-[1px] border-[#707784] rounded-lg text-black"
+                className="w-full h-[56px] px-4 bg-white placeholder:text-[#404753] border-[1px] border-[#707784] rounded-lg text-black"
                 {...register("migrantLabourNumber")}
               />
 

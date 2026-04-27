@@ -25,7 +25,12 @@ function UploadDocuments() {
     setDepartmentList,
     renderDocumentList,
     isDeleteDocumentOpen,
+    initializeStore,
   } = useUploadDocumentStore();
+
+  useEffect(() => {
+    initializeStore();
+  }, []);
 
   //Initial Department list api
   useEffect(() => {
@@ -37,7 +42,9 @@ function UploadDocuments() {
         );
 
         // console.log(response);
-        const departments = response.data;
+        // const departments = response.data;
+
+        const departments = response.data.split(",").map((item) => item.trim());
 
         // console.log(departments);
         setDepartmentList(departments);
@@ -50,7 +57,7 @@ function UploadDocuments() {
     };
 
     fetchData();
-  }, []);
+  }, [businessType]);
 
   // submitted documents api
   useEffect(() => {
@@ -71,7 +78,9 @@ function UploadDocuments() {
     };
 
     fetchData();
-  }, [renderDocumentList]);
+  }, [renderDocumentList, selectedBranch]);
+
+  console.log(departmentList);
 
   return (
     <div>
@@ -85,8 +94,8 @@ function UploadDocuments() {
 
         <BranchDocsStatusBanner />
 
-        {departmentList.length > 0 &&
-          departmentList.map((department) => (
+        {departmentList?.length > 0 &&
+          departmentList?.map((department) => (
             <DepartmentWiseForm key={department} department={department} />
           ))}
       </div>

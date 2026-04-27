@@ -26,7 +26,7 @@ export default function ListCompanyBranches({
       try {
         const response = await axios.get(
           `${process.env.NEXT_PUBLIC_API_URL}/user/listBranches/${caabId}`,
-          { headers: { Authorization: `Bearer ${token}` } }
+          { headers: { Authorization: `Bearer ${token}` } },
         );
         setBranchList(response.data.branches);
       } catch (error) {
@@ -40,7 +40,7 @@ export default function ListCompanyBranches({
 
   return (
     <div className="">
-      {branchList[0] ? (
+      {branchList?.length > 0 ? (
         branchList.map((branch) => (
           <div className="" key={branch.branch_id}>
             <div className="px-10 py-6 flex justify-between items-center gap-2 text-white bg-[#003E82] rounded-lg border-[#C0C7D5] border-[1px]">

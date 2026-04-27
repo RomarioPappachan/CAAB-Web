@@ -11,11 +11,16 @@ import axios from "axios";
 function CompanyRating() {
   const [userData, setUserData] = useState({});
   const { user, token } = useAuthStore();
-  const { businessType, selectedBranch } = useUploadDocumentStore();
+  const { businessType, selectedBranch, initializeStore } =
+    useUploadDocumentStore();
 
   const [rating, setRating] = useState("");
 
   const router = useRouter();
+
+  useEffect(() => {
+    initializeStore();
+  }, []);
 
   useEffect(() => {
     setUserData(user && user);
@@ -23,11 +28,13 @@ function CompanyRating() {
 
   useEffect(() => {
     const fetchData = async () => {
+      if (!selectedBranch?.branch_id) return;
+
       try {
         const response = await axios.post(
           `${process.env.NEXT_PUBLIC_API_URL}/admin/grading`,
           { branch_id: selectedBranch.branch_id },
-          { headers: { Authorization: `Bearer ${token}` } }
+          { headers: { Authorization: `Bearer ${token}` } },
         );
         console.log(response);
         setRating(response.data.gravityPercentage);
@@ -38,7 +45,7 @@ function CompanyRating() {
     };
 
     fetchData();
-  }, []);
+  }, [selectedBranch]);
 
   return (
     <div>

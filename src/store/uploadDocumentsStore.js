@@ -85,7 +85,7 @@ const useUploadDocumentStore = create((set) => ({
     set({ selectedBranch: branch });
   },
 
-  setDepartmentList: (depts) => set({ departmentList: depts }),
+  setDepartmentList: (depts) => set({ departmentList: depts || [] }),
   setBranchDocuments: (docs) => set({ branchDocuments: docs }),
   setSelectedDepartmentName: (name) => set({ selectedDepartmentName: name }),
   setSelectedDocumentId: (id) => set({ selectedDocumentId: id }),

@@ -272,7 +272,7 @@ function OtpPopup({
 
         console.log(response);
         setIsOtpError(false);
-        if (response.data.activeUser) {
+        if (response?.data?.activeUser) {
           const userData = response.data.existingUser;
           const token = response.data.token;
           login({ user: userData, token });
