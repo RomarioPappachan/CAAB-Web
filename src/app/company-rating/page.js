@@ -15,6 +15,7 @@ function CompanyRating() {
     useUploadDocumentStore();
 
   const [rating, setRating] = useState("");
+  const [report, setReport] = useState([]);
 
   const router = useRouter();
 
@@ -38,6 +39,7 @@ function CompanyRating() {
         );
         console.log(response);
         setRating(response.data.gravityPercentage);
+        setReport(response.data.Report);
       } catch (error) {
         console.error("Error fetching data:", error);
         // toast.error("Error fetching data.");\
@@ -112,6 +114,34 @@ function CompanyRating() {
               Updates on submitted data
             </h1>
             <div className="overflow-scroll flex flex-col gap-y-4">
+              <div className="mt-6">
+                <h3 className="mb-3 text-[16px] font-semibold text-[#181C22]">
+                  Improvement Needed
+                </h3>
+
+                {report.length > 0 ? (
+                  <div className="divide-y divide-[#D8DDE8] overflow-hidden rounded-lg border border-[#D8DDE8]">
+                    {report.map((item, index) => (
+                      <div
+                        key={`${item.section}-${index}`}
+                        className="grid grid-cols-1 gap-2 bg-[#F8F9FF] px-4 py-3 text-sm md:grid-cols-[180px_1fr]"
+                      >
+                        <p className="font-semibold text-[#782A99]">
+                          {item.section || "-"}
+                        </p>
+                        <p className="text-[#181C22]">
+                          {item.questions || "-"}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <p className="rounded-lg border border-[#D8DDE8] bg-[#F8F9FF] px-4 py-3 text-sm text-[#707784]">
+                    No improvement items found.
+                  </p>
+                )}
+              </div>
+
               {/* <div className="border-[2px] border-[#BFCAB3] rounded-[8px] p-6">
                 <div className="relative">
                   <p className="text-[#173B00] text-[16px]">
