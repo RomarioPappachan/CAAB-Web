@@ -58,15 +58,15 @@ function InitialDetails({
         const token = await response.data.token;
         login({ user: userData, token });
         setTimeout(() => {
-          // setIsOtpPopupOpen(false);
-          // setIsLoginSignupOpen(false);
-          // setIsInitialDetailsOpen(true);
+          setIsOtpPopupOpen(false);
+          setIsLoginSignupOpen(false);
+          setIsInitialDetailsOpen(true);
           // router.push("/company-home");
 
           logout();
           setTimeout(() => {
             window.location.reload("/login");
-          }, 500);
+          }, 2000);
         }, 1000);
       } catch (error) {
         alert(error.response.data.message);
