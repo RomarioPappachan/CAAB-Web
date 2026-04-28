@@ -64,7 +64,9 @@ function InitialDetails({
           // router.push("/company-home");
 
           logout();
-          window.location.reload("/login");
+          setTimeout(() => {
+            window.location.reload("/login");
+          }, 500);
         }, 1000);
       } catch (error) {
         alert(error.response.data.message);
