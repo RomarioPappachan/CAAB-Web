@@ -38,8 +38,8 @@ function CompanyRating() {
           { headers: { Authorization: `Bearer ${token}` } },
         );
         console.log(response);
-        setRating(response.data.gravityPercentage);
-        setReport(response.data.Report);
+        setRating(response?.data?.gravityPercentage);
+        setReport(response?.data?.Report || []);
       } catch (error) {
         console.error("Error fetching data:", error);
         // toast.error("Error fetching data.");\
@@ -119,9 +119,9 @@ function CompanyRating() {
                   Improvement Needed
                 </h3>
 
-                {report.length > 0 ? (
+                {report?.length > 0 ? (
                   <div className="divide-y divide-[#D8DDE8] overflow-hidden rounded-lg border border-[#D8DDE8]">
-                    {report.map((item, index) => (
+                    {report?.map((item, index) => (
                       <div
                         key={`${item.section}-${index}`}
                         className="grid grid-cols-1 gap-2 bg-[#F8F9FF] px-4 py-3 text-sm md:grid-cols-[180px_1fr]"
