@@ -65,6 +65,7 @@ function InitialDetails({
 
           logout();
           setTimeout(() => {
+            alert("Please login again using the registered number");
             window.location.reload("/login");
           }, 2000);
         }, 1000);
