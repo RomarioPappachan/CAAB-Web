@@ -11,7 +11,7 @@ function InitialDetails({
   setIsLoginSignupOpen,
   setIsInitialDetailsOpen,
 }) {
-  const { login } = useAuthStore();
+  const { login, logout } = useAuthStore();
 
   const [companyDetails, setCompanyDetails] = useState({
     userName: "",
@@ -61,7 +61,10 @@ function InitialDetails({
           setIsOtpPopupOpen(false);
           setIsLoginSignupOpen(false);
           setIsInitialDetailsOpen(true);
-          router.push("/company-home");
+          // router.push("/company-home");
+
+          logout();
+          router.push("/login");
         }, 1000);
       } catch (error) {
         alert(error.response.data.message);
@@ -100,7 +103,7 @@ function InitialDetails({
         />
         <input
           type="text"
-          placeholder="Email (optional)"
+          placeholder="Email"
           className="w-full h-[56px] px-4 placeholder:text-[#404753] border-[1px] border-[#707784] rounded-lg text-black bg-white"
           name="email"
           value={companyDetails.email}
