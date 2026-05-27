@@ -26,7 +26,7 @@ function EditAdminBasicDetailsPopup({
       const response = await axios.put(
         `${process.env.NEXT_PUBLIC_API_URL}/user/editCompany/${caabId}`,
         updatedUserDetails,
-        { headers: { Authorization: `Bearer ${token}` } }
+        { headers: { Authorization: `Bearer ${token}` } },
       );
       alert(response.data.message);
 
@@ -42,7 +42,7 @@ function EditAdminBasicDetailsPopup({
 
   return createPortal(
     <div className="w-screen h-screen px-4 md:px-8 lg:px-[72px] py-14 bg-[#000000c1] fixed top-0 left-0 z-50 flex justify-center items-center">
-      <div className="w-[560px] h-[552px] flex flex-col gap-10 bg-white">
+      <div className="w-[560px] min-h-max flex flex-col gap-10 bg-white pb-6">
         <div className="p-6 bg-[#003E82] text-white text-xl font-semibold relative">
           <h3>Admin Basic Details</h3>
           <button
@@ -53,44 +53,61 @@ function EditAdminBasicDetailsPopup({
           </button>
         </div>
         <form
-          className="px-2 sm:px-6 flex flex-col gap-[72px]"
+          className="px-2 sm:px-6 flex flex-col gap-6"
           onSubmit={handleSubmit}
         >
-          <div className="flex flex-col gap-6">
-            <input
-              type="text"
-              placeholder="Username"
-              className="w-full h-14 px-2 font-base bg-white text-[#404753] outline-none border-[#707784] border-[1px] rounded-lg"
-              name="user_name"
-              value={updatedUserDetails.user_name}
-              onChange={handleOnChange}
-            />
-            <input
-              type="text"
-              placeholder="Company Name"
-              className="w-full h-14 px-2 font-base bg-white text-[#404753] outline-none border-[#707784] border-[1px] rounded-lg"
-              name="company_name"
-              value={updatedUserDetails.company_name}
-              onChange={handleOnChange}
-            />
-            <input
-              type="email"
-              placeholder="Email"
-              className="w-full h-14 px-2 font-base bg-white text-[#404753] outline-none border-[#707784] border-[1px] rounded-lg"
-              name="email"
-              value={updatedUserDetails.email}
-              onChange={handleOnChange}
-            />
+          <div className="flex flex-col gap-2">
+            <div>
+              <label id="user-name" className="text-[#404753] text-xs">
+                Username
+              </label>
+              <input
+                type="text"
+                placeholder="Username"
+                className="w-full h-11 px-3 text-sm bg-white text-[#404753] outline-none border-[#707784] border-[1px] rounded-lg"
+                name="user_name"
+                value={updatedUserDetails.user_name}
+                onChange={handleOnChange}
+              />
+            </div>
+
+            <div>
+              <label id="company_name-name" className="text-[#404753] text-xs">
+                Company Name
+              </label>
+              <input
+                type="text"
+                placeholder="Company Name"
+                className="w-full h-11 px-3 text-sm bg-white text-[#404753] outline-none border-[#707784] border-[1px] rounded-lg"
+                name="company_name"
+                value={updatedUserDetails.company_name}
+                onChange={handleOnChange}
+              />
+            </div>
+
+            <div>
+              <label id="email" className="text-[#404753] text-xs">
+                Username
+              </label>
+              <input
+                type="email"
+                placeholder="Email"
+                className="w-full h-11 px-3 text-sm bg-white text-[#404753] outline-none border-[#707784] border-[1px] rounded-lg"
+                name="email"
+                value={updatedUserDetails.email}
+                onChange={handleOnChange}
+              />
+            </div>
           </div>
           <div>
-            <button className="w-full px-4 py-6 bg-[#74CE3A] text-white text-base font-semibold rounded-2xl">
+            <button className="w-full h-12 px-4 py-6 bg-[#74CE3A] text-white text-base font-semibold rounded-xl flex justify-center items-center">
               Update
             </button>
           </div>
         </form>
       </div>
     </div>,
-    document.body
+    document.body,
   );
 }
 

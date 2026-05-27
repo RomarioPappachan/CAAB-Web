@@ -73,9 +73,9 @@ export default function ListCompanyBranches({
               }`}
             >
               {/* grid  */}
-              <div className="w-full grid grid-cols-1 xl:grid-cols-2 gap-y-[72px]">
+              <div className="w-full grid grid-cols-1 xl:grid-cols-2 gap-10">
                 {/* group 1  */}
-                <div className="w-[317px] flex flex-col gap-y-6">
+                <div className="min-w-[317px] flex flex-col gap-y-6">
                   <h5 className="text-[#404753] text-base font-semibold flex items-center gap-6">
                     <span>Basic Details</span>
                     <span
@@ -89,7 +89,7 @@ export default function ListCompanyBranches({
                       <FiEdit className="text-xl text-[#782A99]" />
                     </span>
                   </h5>
-                  <div className="ps-10 flex flex-col gap-y-6">
+                  <div className="ps-10 flex flex-col gap-y-3">
                     <p className="text-sm font-normal leading-6 text-[#404753] flex items-center">
                       <span className="w-1/2">Company Name</span>
                       <span className="w-1/2 font-medium text-[#181C22]">
@@ -124,7 +124,7 @@ export default function ListCompanyBranches({
                 </div>
 
                 {/* group 2  */}
-                <div className="w-[317px] flex flex-col gap-y-6">
+                <div className="min-w-[317px] flex flex-col gap-y-6">
                   <h5 className="text-[#404753] text-base font-semibold flex items-center gap-6">
                     <span>Branch Admin Details</span>
                     <span
@@ -138,7 +138,7 @@ export default function ListCompanyBranches({
                       <FiEdit className="text-xl text-[#782A99]" />
                     </span>
                   </h5>
-                  <div className="ps-10 flex flex-col gap-y-6">
+                  <div className="ps-10 flex flex-col gap-y-3">
                     <p className="text-sm font-normal leading-6 text-[#404753] flex items-center">
                       <span className="w-1/2">Admin Name</span>
                       <span className="w-1/2 font-medium text-[#181C22]">
@@ -161,7 +161,7 @@ export default function ListCompanyBranches({
                 </div>
 
                 {/* group 3  */}
-                <div className="w-[317px] flex flex-col gap-y-6">
+                <div className="min-w-[317px] flex flex-col gap-y-6">
                   <h5 className="text-[#404753] text-base font-semibold flex items-center gap-6">
                     <span>Labour / Employee Details</span>
                     <span
@@ -175,7 +175,7 @@ export default function ListCompanyBranches({
                       <FiEdit className="text-xl text-[#782A99]" />
                     </span>
                   </h5>
-                  <div className="ps-10 flex flex-col gap-y-6">
+                  <div className="ps-10 flex flex-col gap-y-3">
                     <p className="text-sm font-normal leading-6 text-[#404753] flex items-center">
                       <span className="w-1/2">Total number of labours</span>
                       <span className="w-1/2 font-medium text-[#181C22]">

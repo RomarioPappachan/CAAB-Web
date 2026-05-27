@@ -26,7 +26,7 @@ function CompanyHome() {
       try {
         const response = await axios.get(
           `${process.env.NEXT_PUBLIC_API_URL}/user/companyInfo/${caabId}`,
-          { headers: { Authorization: `Bearer ${token}` } }
+          { headers: { Authorization: `Bearer ${token}` } },
         );
         // console.log(response);
 
@@ -43,8 +43,8 @@ function CompanyHome() {
   return (
     <div>
       <Navbar />
-      <div className="w-full h-full mt-[100px] md:mt-[130px] xl:mt-[152px] bg-[#F9F9FF] px-4 md:px-8 lg:px-[72px] pb-10">
-        <div className="flex flex-col py-16">
+      <div className="w-full min-h-screen mt-[100px] md:mt-[130px] xl:mt-[152px] bg-[#F9F9FF] px-4 md:px-8 lg:px-[72px] pb-10">
+        <div className="flex flex-col py-6">
           <div className="flex items-center">
             <img
               src="/company-img.svg"
@@ -73,7 +73,7 @@ function CompanyHome() {
           </div>
         </div>
         <div className="w-full bg-white border-[2px] border-[#003E82] rounded-lg px-4 sm:px-8">
-          <h1 className="text-[#404753] text-[20px] font-semibold py-10">
+          <h1 className="text-[#404753] text-[20px] font-semibold py-8">
             Manage Branch / Company
           </h1>
           <button

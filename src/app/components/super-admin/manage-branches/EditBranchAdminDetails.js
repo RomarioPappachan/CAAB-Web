@@ -49,7 +49,7 @@ function EditBranchAdminDetails({
       const response = await axios.put(
         `${process.env.NEXT_PUBLIC_API_URL}/user/editBranchDetails/${selectedbranchId}`,
         dataToSend,
-        { headers: { Authorization: `Bearer ${token}` } }
+        { headers: { Authorization: `Bearer ${token}` } },
       );
 
       alert(response.data.message);
@@ -71,7 +71,7 @@ function EditBranchAdminDetails({
 
   return createPortal(
     <div className="w-screen h-screen px-4 md:px-8 lg:px-[72px] py-20 bg-[#000000c1] fixed top-0 left-0 z-50 flex justify-center items-start overflow-y-auto">
-      <div className="w-[560px] h-[552px] flex flex-col gap-10 bg-white">
+      <div className="w-[560px] min-h-max flex flex-col gap-10 bg-white pb-6">
         <div className="p-6 bg-[#003E82] text-white text-xl font-semibold relative">
           <h3>Branch Admin Details</h3>
           <button
@@ -81,36 +81,47 @@ function EditBranchAdminDetails({
             +
           </button>
         </div>
-        <div className="px-2 sm:px-6 flex flex-col gap-[72px]">
-          <div className="flex flex-col gap-6">
-            <input
-              type="text"
-              placeholder="Name"
-              className="w-full h-14 px-2 font-base bg-white text-[#404753] outline-none border-[#707784] border-[1px] rounded-lg"
-              name="branchAdminName"
-              value={branchAdminData.branchAdminName}
-              onChange={handleChange}
-            />
-            <input
-              type="text"
-              placeholder="Mobile Number"
-              className="w-full h-14 px-2 font-base bg-white text-[#404753] outline-none border-[#707784] border-[1px] rounded-lg"
-              name="branchAdminMobileNo"
-              value={branchAdminData.branchAdminMobileNo}
-              onChange={handleChange}
-            />
-            <input
-              type="email"
-              placeholder="Email"
-              className="w-full h-14 px-2 font-base bg-white text-[#404753] outline-none border-[#707784] border-[1px] rounded-lg"
-              name="branchAdminEmail"
-              value={branchAdminData.branchAdminEmail}
-              onChange={handleChange}
-            />
+        <div className="px-4 sm:px-6 flex flex-col gap-6">
+          <div className="flex flex-col gap-2">
+            <div>
+              <label className="text-xs text-[#404753]">Name</label>
+              <input
+                type="text"
+                placeholder="Name"
+                className="w-full h-10 px-3 text-sm bg-white text-[#404753] outline-none border-[#707784] border-[1px] rounded-lg"
+                name="branchAdminName"
+                value={branchAdminData.branchAdminName}
+                onChange={handleChange}
+              />
+            </div>
+
+            <div>
+              <label className="text-xs text-[#404753]">Mobile Number</label>
+              <input
+                type="text"
+                placeholder="Mobile Number"
+                className="w-full h-10 px-3 text-sm bg-white text-[#404753] outline-none border-[#707784] border-[1px] rounded-lg"
+                name="branchAdminMobileNo"
+                value={branchAdminData.branchAdminMobileNo}
+                onChange={handleChange}
+              />
+            </div>
+
+            <div>
+              <label className="text-xs text-[#404753]">Email</label>
+              <input
+                type="email"
+                placeholder="Email"
+                className="w-full h-10 px-3 text-sm bg-white text-[#404753] outline-none border-[#707784] border-[1px] rounded-lg"
+                name="branchAdminEmail"
+                value={branchAdminData.branchAdminEmail}
+                onChange={handleChange}
+              />
+            </div>
           </div>
           <div>
             <button
-              className="w-full px-4 py-6 bg-[#74CE3A] text-white text-base font-semibold rounded-2xl"
+              className="w-full h-12 px-4 py-2 bg-[#74CE3A] text-white text-base font-semibold rounded-xl"
               onClick={handleUpdate}
             >
               Update
@@ -119,7 +130,7 @@ function EditBranchAdminDetails({
         </div>
       </div>
     </div>,
-    document.body
+    document.body,
   );
 }
 

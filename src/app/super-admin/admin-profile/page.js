@@ -31,7 +31,7 @@ function SuperAdminProfile() {
       try {
         const response = await axios.get(
           `${process.env.NEXT_PUBLIC_API_URL}/user/companyInfo/${caabId}`,
-          { headers: { Authorization: `Bearer ${token}` } }
+          { headers: { Authorization: `Bearer ${token}` } },
         );
 
         setUserDetails(response.data.companyInfo);
@@ -47,13 +47,13 @@ function SuperAdminProfile() {
 
   return (
     <>
-      <div className="w-full flex flex-col gap-y-14">
-        <div className="py-2 border-[#C0C7D5] border-b-[1px]">
+      <div className="w-full flex flex-col gap-y-10">
+        <div className=" border-[#C0C7D5] border-b-[1px]">
           <h2 className="font-medium text-xl leading-6 text-[#404753]">
             Admin Profile
           </h2>
         </div>
-        <div className="w-[317px] flex flex-col gap-y-6">
+        <div className="w-[317px] lg:w-96 flex flex-col gap-y-6">
           <h5 className="text-[#404753] text-base font-semibold flex items-center gap-6">
             <span>Admin Basic Details</span>
             <span
@@ -63,7 +63,7 @@ function SuperAdminProfile() {
               <FiEdit className="text-xl text-[#782A99]" />
             </span>
           </h5>
-          <div className="ps-10 flex flex-col gap-y-6">
+          <div className="ps-10 flex flex-col gap-y-4">
             <p className="text-sm font-normal leading-6 text-[#404753] flex items-center">
               <span className="w-1/2">Username</span>
               <span className="w-1/2 font-medium text-[#181C22]">

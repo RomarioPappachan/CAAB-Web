@@ -11,7 +11,7 @@ function SuperAdminLayout({ children }) {
         <Navbar />
       </div>
 
-      <div className="w-full mb-0 mt-[100px] md:mt-[130px] xl:mt-[152px] px-4 md:px-8 lg:px-[72px] py-14 bg-[#F8F9FF] flex flex-col gap-y-10">
+      <div className="w-full mb-0 mt-[100px] md:mt-[130px] xl:mt-[152px] px-4 md:px-8 lg:px-[72px] py-6 bg-[#F8F9FF] flex flex-col gap-y-6">
         <div>
           <span className="w-full font-normal text-sm leading-6 text-[#707784]">
             <Link href={"/company-home"}>Home</Link> {">"}{" "}

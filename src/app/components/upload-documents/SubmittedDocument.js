@@ -3,15 +3,20 @@ import React, { useState } from "react";
 import DisplayDocument from "./DisplayDocument";
 import EditDocument from "./EditDocument";
 
-function SubmittedDocument({ doc, department }) {
+function SubmittedDocument({ index, doc, department }) {
   const [isEditOpen, setIsEditOpen] = useState(false);
 
   return (
     <div>
       {!isEditOpen ? (
-        <DisplayDocument doc={doc} setIsEditOpen={setIsEditOpen} />
+        <DisplayDocument
+          index={index}
+          doc={doc}
+          setIsEditOpen={setIsEditOpen}
+        />
       ) : (
         <EditDocument
+          index={index}
           doc={doc}
           department={department}
           setIsEditOpen={setIsEditOpen}

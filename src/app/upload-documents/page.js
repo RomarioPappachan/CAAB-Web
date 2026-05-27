@@ -85,8 +85,8 @@ function UploadDocuments() {
   return (
     <div>
       <Navbar />
-      <div className="w-full h-full mt-[100px] md:mt-[130px] xl:mt-[152px] bg-[#F9F9FF] px-4 md:px-8 lg:px-[72px] pb-20">
-        <p className="text-[#707784] text-[14px] py-10">
+      <div className="w-full min-h-screen mt-[100px] md:mt-[130px] xl:mt-[152px] bg-[#F9F9FF] px-4 md:px-8 lg:px-[72px] pb-20">
+        <p className="text-[#707784] text-[14px] py-6">
           <Link href={"/company-home"}>Home</Link> {">"}{" "}
           <Link href={"/company-rating"}>{user?.company_name}</Link> {">"}{" "}
           Update Documents

@@ -85,7 +85,7 @@ function EditDocument({ doc, department, setIsEditOpen }) {
         const response = await axios.put(
           `${process.env.NEXT_PUBLIC_API_URL}/user/editDocument/${doc.id}`,
           updatedData,
-          { headers: { Authorization: `Bearer ${token}` } }
+          { headers: { Authorization: `Bearer ${token}` } },
         );
 
         console.log(response); // Handle the response
@@ -104,55 +104,75 @@ function EditDocument({ doc, department, setIsEditOpen }) {
     <div className="ps-8 py-6 border-b-[1px] border-[#C2C6D4] flex flex-col lg:flex-row gap-6 relative">
       <span className="absolute top-10 left-0">1{")"}</span>
       <div className="w-full lg:w-2/3 xl:w-3/4 grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <input
-          type="text"
-          className="sm:col-span-2 h-14 p-4 text-base leading-6 font-normal text-black bg-white rounded-lg border-[1px] border-[#707784] outline-none focus:border-2 focus:border-[#782A99] placeholder:text-[#404753]"
-          placeholder="Description of Document or Certificate"
-          name="description"
-          value={newDocumentData.description}
-          onChange={handleOnChange}
-        />
-        <input
-          type={isIssueFocus ? "date" : "text"}
-          className="h-14 p-4 text-base leading-6 font-normal text-black bg-white rounded-lg border-[1px] border-[#707784] outline-none focus:border-2 focus:border-[#782A99] placeholder:text-[#404753]"
-          placeholder="Issue Date"
-          onFocus={() => setIsIssueFocus(true)}
-          onBlur={() => setIsIssueFocus(false)}
-          name="issueDate"
-          value={newDocumentData.issueDate}
-          onChange={handleOnChange}
-        />
-        <input
-          type="text"
-          className="h-14 p-4 text-base leading-6 font-normal text-black bg-white rounded-lg border-[1px] border-[#707784] outline-none focus:border-2 focus:border-[#782A99] placeholder:text-[#404753]"
-          placeholder="License No"
-          name="licenceNo"
-          value={newDocumentData.licenceNo}
-          onChange={handleOnChange}
-        />
+        <div className="flex flex-col">
+          <label className="text-xs text-[#404753]">
+            Description of Document or Certificate
+          </label>
+          <input
+            type="text"
+            className="sm:col-span-2 h-10 px-3 text-sm leading-6 font-normal text-black bg-white rounded-lg border-[1px] border-[#707784] outline-none focus:border-2 focus:border-[#782A99] placeholder:text-[#404753]"
+            placeholder="Description of Document or Certificate"
+            name="description"
+            value={newDocumentData.description}
+            onChange={handleOnChange}
+          />
+        </div>
 
-        <input
-          type={isExpiryFocus ? "date" : "text"}
-          className="row-start-3 h-14 p-4 text-base leading-6 font-normal text-black bg-white rounded-lg border-[1px] border-[#707784] outline-none focus:border-2 focus:border-[#782A99] placeholder:text-[#404753]"
-          placeholder="Expiry Date"
-          onFocus={() => setIsExpiryFocus(true)}
-          onBlur={() => setIsExpiryFocus(false)}
-          name="expiryDate"
-          value={newDocumentData.expiryDate}
-          onChange={handleOnChange}
-        />
-        <select
-          className="h-14 p-4 text-base leading-6 font-normal text-black bg-white rounded-lg border-[1px] border-[#707784] outline-none focus:border-2 focus:border-[#003E82] placeholder:text-[#404753]"
-          placeholder="Licence Authority"
-          name="licenceAuthority"
-          value={newDocumentData.licenceAuthority}
-          onChange={handleOnChange}
-        >
-          <option className="text-[#404753]" value="" selected disabled>
-            Licence Authority
-          </option>
-          <option value={department}>{department}</option>
-        </select>
+        <div className="flex flex-col">
+          <label className="text-xs text-[#404753]">Issue Date</label>
+          <input
+            type={isIssueFocus ? "date" : "text"}
+            className="h-10 px-3 text-sm leading-6 font-normal text-black bg-white rounded-lg border-[1px] border-[#707784] outline-none focus:border-2 focus:border-[#782A99] placeholder:text-[#404753]"
+            placeholder="Issue Date"
+            onFocus={() => setIsIssueFocus(true)}
+            onBlur={() => setIsIssueFocus(false)}
+            name="issueDate"
+            value={newDocumentData.issueDate}
+            onChange={handleOnChange}
+          />
+        </div>
+
+        <div className="flex flex-col">
+          <label className="text-xs text-[#404753]">License No</label>
+          <input
+            type="text"
+            className="h-10 px-3 text-sm leading-6 font-normal text-black bg-white rounded-lg border-[1px] border-[#707784] outline-none focus:border-2 focus:border-[#782A99] placeholder:text-[#404753]"
+            placeholder="License No"
+            name="licenceNo"
+            value={newDocumentData.licenceNo}
+            onChange={handleOnChange}
+          />
+        </div>
+
+        <div className="flex flex-col">
+          <label className="text-xs text-[#404753]">Expiry Date</label>
+          <input
+            type={isExpiryFocus ? "date" : "text"}
+            className="row-start-3 h-10 px-3 text-sm leading-6 font-normal text-black bg-white rounded-lg border-[1px] border-[#707784] outline-none focus:border-2 focus:border-[#782A99] placeholder:text-[#404753]"
+            placeholder="Expiry Date"
+            onFocus={() => setIsExpiryFocus(true)}
+            onBlur={() => setIsExpiryFocus(false)}
+            name="expiryDate"
+            value={newDocumentData.expiryDate}
+            onChange={handleOnChange}
+          />{" "}
+        </div>
+
+        <div className="flex flex-col">
+          <label className="text-xs text-[#404753]">Licence Authority</label>
+          <select
+            className="h-10 px-3 text-sm leading-6 font-normal text-black bg-white rounded-lg border-[1px] border-[#707784] outline-none focus:border-2 focus:border-[#003E82] placeholder:text-[#404753]"
+            placeholder="Licence Authority"
+            name="licenceAuthority"
+            value={newDocumentData.licenceAuthority}
+            onChange={handleOnChange}
+          >
+            <option className="text-[#404753]" value="" selected disabled>
+              Licence Authority
+            </option>
+            <option value={department}>{department}</option>
+          </select>
+        </div>
       </div>
       <div className="w-full lg:w-1/3 xl:w-1/4 flex flex-col sm:flex-row gap-6 relative pb-14 sm:pb-0">
         <label

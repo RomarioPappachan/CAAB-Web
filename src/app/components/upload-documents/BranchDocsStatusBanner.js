@@ -8,29 +8,27 @@ function BranchDocsStatusBanner() {
   const { businessType } = useUploadDocumentStore();
 
   return (
-    <div className="p-6 bg-white rounded-lg border-[#C0C7D5] border-[1px] flex flex-col gap-6 lg:flex-row lg:items-center ">
+    <div className="px-6 py-2 bg-white rounded-lg border-[#C0C7D5] border-[1px] flex flex-col gap-6 lg:flex-row lg:items-center ">
       {/*   div1   */}
-      <div className="w-full lg:w-2/5 flex flex-col gap-6">
+      <div className="w-full lg:w-2/5 flex flex-col gap-3">
         <div className="flex items-center">
           <div className="w-1/3">
-            <span className="text-base font-normal text-[#404753]">
-              Company
-            </span>
+            <span className="text-sm font-normal text-[#404753]">Company</span>
           </div>
           <div className="w-2/3">
-            <span className="text-base font-medium text-[#181C22]">
+            <span className="text-sm font-medium text-[#181C22]">
               : {user?.company_name}
             </span>
           </div>
         </div>
         <div className="flex items-center">
           <div className="w-1/3">
-            <span className="text-base font-normal text-[#404753]">
+            <span className="text-sm font-normal text-[#404753]">
               Business Type
             </span>
           </div>
           <div className="w-2/3">
-            <span className="text-base font-medium text-[#181C22]">
+            <span className="text-sm font-medium text-[#181C22]">
               : {businessType && businessType}
             </span>
           </div>
@@ -38,27 +36,27 @@ function BranchDocsStatusBanner() {
       </div>
 
       {/* div2  */}
-      <div className="w-full lg:w-2/5 flex flex-col gap-6">
+      <div className="w-full lg:w-2/5 flex flex-col gap-3">
         <div className="flex items-center">
           <div className="w-1/3 lg:w-1/2 xl:w-1/3">
-            <span className="text-base font-normal text-[#404753]">
+            <span className="text-sm font-normal text-[#404753]">
               Status on rating
             </span>
           </div>
           <div className="w-1/3 lg:w-1/2 xl:w-2/3">
-            <span className="text-base font-medium text-[#181C22]">
+            <span className="text-sm font-medium text-[#181C22]">
               : Processing
             </span>
           </div>
         </div>
         <div className="flex items-center">
           <div className="w-1/3 lg:w-1/2 xl:w-1/3">
-            <span className="text-base font-normal text-[#404753]">
+            <span className="text-sm font-normal text-[#404753]">
               Status updated on
             </span>
           </div>
           <div className="w-1/3 lg:w-1/2 xl:w-2/3">
-            <span className="text-base font-medium text-[#181C22]">
+            <span className="text-sm font-medium text-[#181C22]">
               : -{/* : 18/01/2025 */}
             </span>
           </div>
@@ -69,22 +67,20 @@ function BranchDocsStatusBanner() {
       <div className="w-full lg:w-1/5 flex flex-col gap-6">
         <div className="flex items-center">
           <div className="w-1/3 lg:w-1/2 xl:w-1/3">
-            <span className="text-base font-normal text-[#404753]">
-              Sections
-            </span>
+            <span className="text-sm font-normal text-[#404753]">Sections</span>
           </div>
           <div className="w-1/3 lg:w-1/2 xl:w-2/3">
-            <span className="text-base font-medium text-[#181C22]">
+            <span className="text-sm font-medium text-[#181C22]">
               : -{/* : 17 / 25 */}
             </span>
           </div>
         </div>
         <div className="flex items-center">
           <div className="w-1/3 lg:w-1/2 xl:w-1/3">
-            <span className="text-base font-normal text-[#404753]">Error</span>
+            <span className="text-sm font-normal text-[#404753]">Error</span>
           </div>
           <div className="w-1/3 lg:w-1/2 xl:w-2/3">
-            <span className="text-base font-medium text-[#181C22]">
+            <span className="text-sm font-medium text-[#181C22]">
               : -{/* : 1 */}
             </span>
           </div>

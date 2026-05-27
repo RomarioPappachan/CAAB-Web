@@ -33,11 +33,27 @@ const validationSchema = yup.object().shape({
   location: yup.string().required("Location is required"),
   district: yup.string().required("District is required"),
   businessType: yup.string().required("Business type is required"),
+  email: yup.string().required("Email is required"),
+  mobileNo: yup.string().required("Mobile Number is required"),
+
   branchAdminName: yup.string().required("Branch admin name is required"),
   branchAdminMobileNo: yup
     .string()
     .required("Branch admin mobile number is required")
     .matches(/^\d{10}$/, "Mobile number must be exactly 10 digits"),
+
+  branchAdminEmail: yup.string().required("Branch admin email is required"),
+
+  totalLabourNumber: yup.string().required("Total labour number is required"),
+  femaleLabourNumber: yup
+    .string()
+    .required("Number of Female labours is required"),
+  contractLabourNumber: yup
+    .string()
+    .required("Number of Contract labours is required"),
+  migrantLabourNumber: yup
+    .string()
+    .required("Number of Migrant labours is required"),
 });
 
 function AddBranch() {
@@ -172,179 +188,293 @@ function AddBranch() {
     <div>
       <Navbar />
       <div className="w-full h-full mt-[100px] md:mt-[130px] xl:mt-[152px] bg-[#F9F9FF] px-4 md:px-8 lg:px-[72px] pb-10">
-        <div className="pt-14">
+        <div className="pt-6">
           <p className="text-[#707784] text-[14px]">
             <Link href={"/company-home"}>Home</Link>
             {">"} <Link href={"/add-branch"}>Add branch or company</Link>
           </p>
 
-          <p className="text-[#181C22] text-[24px] font-semibold pt-8 ">
+          <p className="text-[#181C22] text-[24px] font-semibold mt-4">
             Add Branch / Company
           </p>
         </div>
         <form
-          className="w-full bg-white border-[1px] py-14 border-[#C2C6D4] rounded-lg px-4 my-10  sm:px-8 grid grid-cols-1 md:grid-cols-2 gap-8"
+          className="w-full bg-white border-[1px] py-6 border-[#C2C6D4] rounded-lg px-4 mb-10  sm:px-8 grid grid-cols-1 md:grid-cols-2 gap-8"
           onSubmit={handleSubmit(onSubmit)}
         >
           <div className="">
-            <h1 className="text-[#404753] text-[16px] border-b-[1px] border-[#C0C7D5] py-2">
+            <h1 className="text-[#404753] text-[16px] border-b-[1px] border-[#C0C7D5]">
               Basic details
             </h1>
 
-            <div className=" lg:ps-20   pt-8 flex flex-col gap-y-4">
-              <input
-                type="text"
-                placeholder="Branch / Company name *"
-                className={`w-full h-[56px] px-4 bg-white placeholder:text-[#404753] rounded-lg text-black ${
-                  errors.companyName
-                    ? "border-2 border-red-500 "
-                    : "border-[1px]  border-[#707784]"
-                }`}
-                {...register("companyName")}
-              />
-              <p className="text-red-500 text-xs">
-                {errors.companyName?.message}
-              </p>
-              <input
-                type="text"
-                placeholder="City or Location *"
-                className={`w-full h-[56px] px-4 bg-white placeholder:text-[#404753] rounded-lg text-black ${
-                  errors.location
-                    ? "border-2 border-red-500 "
-                    : "border-[1px]  border-[#707784]"
-                }`}
-                {...register("location")}
-              />
-              <p className="text-red-500 text-xs">{errors.location?.message}</p>
-              <select
-                placeholder="Select District *"
-                className={`w-full h-[56px] px-4 bg-white placeholder:text-[#404753] rounded-lg text-black ${
-                  errors.district
-                    ? "border-2 border-red-500 "
-                    : "border-[1px]  border-[#707784]"
-                }`}
-                {...register("district")}
-              >
-                <option value="" selected disabled className="text-[#404753]">
-                  Select District *
-                </option>
-                {districts.map((district) => (
-                  <option key={district} value={district}>
-                    {district}
+            <div className=" lg:ps-10 pt-4 flex flex-col gap-y-2">
+              <div>
+                <label className="text-[#404753] text-xs">Company Name</label>
+                <input
+                  type="text"
+                  placeholder="Branch / Company name *"
+                  className={`w-full h-11 px-3 text-sm bg-white placeholder:text-[#404753] rounded-lg text-black focus:outline-none focus:border-[#74CE3A] ${
+                    errors.companyName
+                      ? "border-2 border-red-500 "
+                      : "border-[1px]  border-[#707784] "
+                  }`}
+                  {...register("companyName")}
+                />
+                <p className="text-red-500 text-xs">
+                  {errors.companyName?.message || " "}
+                </p>
+              </div>
+
+              <div>
+                <label className="text-[#404753] text-xs">
+                  City / Location
+                </label>
+                <input
+                  type="text"
+                  placeholder="City or Location *"
+                  className={`w-full h-11 px-3 text-sm bg-white placeholder:text-[#404753] rounded-lg text-black focus:outline-none focus:border-[#74CE3A] ${
+                    errors.location
+                      ? "border-2 border-red-500 "
+                      : "border-[1px]  border-[#707784]"
+                  }`}
+                  {...register("location")}
+                />
+                <p className="text-red-500 text-xs">
+                  {errors.location?.message}
+                </p>
+              </div>
+
+              <div>
+                <label className="text-[#404753] text-xs">District</label>
+                <select
+                  placeholder="Select District *"
+                  className={`w-full h-11 px-3 text-sm bg-white placeholder:text-[#404753] rounded-lg text-black focus:outline-none focus:border-[#74CE3A] ${
+                    errors.district
+                      ? "border-2 border-red-500 "
+                      : "border-[1px]  border-[#707784]"
+                  }`}
+                  {...register("district")}
+                >
+                  <option value="" selected disabled className="text-[#404753]">
+                    Select District *
                   </option>
-                ))}
-              </select>
-              <p className="text-red-500 text-xs">{errors.district?.message}</p>
-              <select
-                placeholder="Select Buisness Type *"
-                className={`w-full h-[56px] px-4 bg-white placeholder:text-[#404753] rounded-lg text-black ${
-                  errors.businessType
-                    ? "border-2 border-red-500 "
-                    : "border-[1px]  border-[#707784]"
-                }`}
-                {...register("businessType")}
-              >
-                <option value="" selected disabled className="text-[#404753]">
-                  Select Buisness Type *
-                </option>
-                {businessTypeList.map((type) => (
-                  <option key={type} value={type}>
-                    {type}
+                  {districts.map((district) => (
+                    <option key={district} value={district}>
+                      {district}
+                    </option>
+                  ))}
+                </select>
+                <p className="text-red-500 text-xs">
+                  {errors.district?.message}
+                </p>
+              </div>
+
+              <div>
+                <label className="text-[#404753] text-xs">Business Type</label>
+                <select
+                  placeholder="Select Buisness Type *"
+                  className={`w-full h-11 px-3 text-sm bg-white placeholder:text-[#404753] rounded-lg text-black focus:outline-none focus:border-[#74CE3A] ${
+                    errors.businessType
+                      ? "border-2 border-red-500 "
+                      : "border-[1px]  border-[#707784]"
+                  }`}
+                  {...register("businessType")}
+                >
+                  <option value="" selected disabled className="text-[#404753]">
+                    Select Buisness Type *
                   </option>
-                ))}
-              </select>
-              <p className="text-red-500 text-xs">
-                {errors.businessType?.message}
-              </p>
-              <input
-                type="email"
-                placeholder="Email"
-                className="w-full h-[56px] px-4 bg-white placeholder:text-[#404753] border-[1px] border-[#707784] rounded-lg text-black"
-                {...register("email")}
-              />
-              <input
-                type="tel"
-                maxLength={10}
-                placeholder="Mobile Number"
-                className="w-full h-[56px] px-4 bg-white placeholder:text-[#404753] border-[1px] border-[#707784] rounded-lg text-black"
-                {...register("mobileNo")}
-              />
+                  {businessTypeList.map((type) => (
+                    <option key={type} value={type}>
+                      {type}
+                    </option>
+                  ))}
+                </select>
+                <p className="text-red-500 text-xs">
+                  {errors.businessType?.message}
+                </p>
+              </div>
+
+              <div>
+                <label className="text-[#404753] text-xs">Email</label>
+                <input
+                  type="email"
+                  placeholder="Email"
+                  className={`w-full h-11 px-3 text-sm bg-white placeholder:text-[#404753] rounded-lg text-black focus:outline-none focus:border-[#74CE3A] ${
+                    errors.email
+                      ? "border-2 border-red-500 "
+                      : "border-[1px]  border-[#707784]"
+                  }`}
+                  {...register("email")}
+                />
+                <p className="text-red-500 text-xs">{errors.email?.message}</p>
+              </div>
+
+              <div>
+                <label className="text-[#404753] text-xs">Mobile Number</label>
+                <input
+                  type="tel"
+                  maxLength={10}
+                  placeholder="Mobile Number"
+                  className={`w-full h-11 px-3 text-sm bg-white placeholder:text-[#404753] rounded-lg text-black focus:outline-none focus:border-[#74CE3A] ${
+                    errors.mobileNo
+                      ? "border-2 border-red-500 "
+                      : "border-[1px]  border-[#707784]"
+                  }`}
+                  {...register("mobileNo")}
+                />
+                <p className="text-red-500 text-xs">
+                  {errors.mobileNo?.message}
+                </p>
+              </div>
             </div>
           </div>
 
           <div className="">
-            <h1 className="text-[#404753] text-[16px] border-b-[1px] border-[#C0C7D5] py-2 ">
+            <h1 className="text-[#404753] text-[16px] border-b-[1px] border-[#C0C7D5] ">
               Branch Admin details
             </h1>
 
-            <div className=" lg:ps-20   pt-8 flex flex-col gap-y-4">
-              <input
-                type="text"
-                placeholder="Name of Branch Admin *"
-                className={`w-full h-[56px] px-4 bg-white placeholder:text-[#404753] rounded-lg text-black ${
-                  errors.branchAdminName
-                    ? "border-2 border-red-500 "
-                    : "border-[1px]  border-[#707784]"
-                }`}
-                {...register("branchAdminName")}
-              />
-              <p className="text-red-500 text-xs">
-                {errors.branchAdminName?.message}
-              </p>
-              <input
-                type="tel"
-                maxLength={10}
-                placeholder="Mobile Number of Branch Admin *"
-                className={`w-full h-[56px] px-4 bg-white placeholder:text-[#404753] rounded-lg text-black ${
-                  errors.branchAdminMobileNo
-                    ? "border-2 border-red-500 "
-                    : "border-[1px]  border-[#707784]"
-                }`}
-                {...register("branchAdminMobileNo")}
-              />
-              <p className="text-red-500 text-xs">
-                {errors.branchAdminMobileNo?.message}
-              </p>
-              <input
-                type="email"
-                placeholder="Email of Branch Admin "
-                className="w-full h-[56px] px-4 bg-white placeholder:text-[#404753] border-[1px] border-[#707784] rounded-lg text-black"
-                {...register("branchAdminEmail")}
-              />
+            <div className=" lg:ps-10 pt-3 flex flex-col gap-y-2">
+              <div>
+                <label className="text-[#404753] text-xs">
+                  Branch admin name
+                </label>
+                <input
+                  type="text"
+                  placeholder="Name of Branch Admin *"
+                  className={`w-full h-11 px-3 text-sm bg-white placeholder:text-[#404753] rounded-lg text-black focus:outline-none focus:border-[#74CE3A] ${
+                    errors.branchAdminName
+                      ? "border-2 border-red-500 "
+                      : "border-[1px]  border-[#707784]"
+                  }`}
+                  {...register("branchAdminName")}
+                />
+                <p className="text-red-500 text-xs">
+                  {errors.branchAdminName?.message}
+                </p>
+              </div>
+
+              <div>
+                <label className="text-[#404753] text-xs">
+                  Branch Admin Mobile Number
+                </label>
+                <input
+                  type="tel"
+                  maxLength={10}
+                  placeholder="Mobile Number of Branch Admin *"
+                  className={`w-full h-11 px-3 text-sm bg-white placeholder:text-[#404753] rounded-lg text-black focus:outline-none focus:border-[#74CE3A] ${
+                    errors.branchAdminMobileNo
+                      ? "border-2 border-red-500 "
+                      : "border-[1px]  border-[#707784]"
+                  }`}
+                  {...register("branchAdminMobileNo")}
+                />
+                <p className="text-red-500 text-xs">
+                  {errors.branchAdminMobileNo?.message}
+                </p>
+              </div>
+
+              <div>
+                <label className="text-[#404753] text-xs">
+                  Email (Branch Admin)
+                </label>
+                <input
+                  type="email"
+                  placeholder="Email of Branch Admin"
+                  className={`w-full h-11 px-3 text-sm bg-white placeholder:text-[#404753] rounded-lg text-black focus:outline-none focus:border-[#74CE3A] ${
+                    errors.branchAdminEmail
+                      ? "border-2 border-red-500 "
+                      : "border-[1px]  border-[#707784]"
+                  }`}
+                  {...register("branchAdminEmail")}
+                />
+                <p className="text-red-500 text-xs">
+                  {errors.branchAdminEmail?.message}
+                </p>
+              </div>
             </div>
           </div>
 
           <div className="">
-            <h1 className="text-[#404753] text-[16px] border-b-[1px] border-[#C0C7D5] py-2">
+            <h1 className="text-[#404753] text-[16px] border-b-[1px] border-[#C0C7D5]">
               Labour / Employee details
             </h1>
 
-            <div className=" lg:ps-20   pt-8 flex flex-col gap-y-4">
-              <input
-                type="tel"
-                placeholder="Total number of labours"
-                className="w-full h-[56px] px-4 bg-white placeholder:text-[#404753] border-[1px] border-[#707784] rounded-lg text-black"
-                {...register("totalLabourNumber")}
-              />
-              <input
-                type="tel"
-                placeholder="Number of  female labours"
-                className="w-full h-[56px] px-4 bg-white placeholder:text-[#404753] border-[1px] border-[#707784] rounded-lg text-black"
-                {...register("femaleLabourNumber")}
-              />
+            <div className=" lg:ps-10 pt-3 flex flex-col gap-y-2">
+              <div>
+                <label className="text-[#404753] text-xs">
+                  Total number of labours
+                </label>
+                <input
+                  type="tel"
+                  placeholder="Total number of labours"
+                  className={`w-full h-11 px-3 text-sm bg-white placeholder:text-[#404753] rounded-lg text-black focus:outline-none focus:border-[#74CE3A] ${
+                    errors.totalLabourNumber
+                      ? "border-2 border-red-500 "
+                      : "border-[1px]  border-[#707784]"
+                  }`}
+                  {...register("totalLabourNumber")}
+                />
+                <p className="text-red-500 text-xs">
+                  {errors.totalLabourNumber?.message}
+                </p>
+              </div>
+              <div>
+                <label className="text-[#404753] text-xs">
+                  Number of female labours
+                </label>
+                <input
+                  type="tel"
+                  placeholder="Number of  female labours"
+                  className={`w-full h-11 px-3 text-sm bg-white placeholder:text-[#404753] rounded-lg text-black focus:outline-none focus:border-[#74CE3A] ${
+                    errors.femaleLabourNumber
+                      ? "border-2 border-red-500 "
+                      : "border-[1px]  border-[#707784]"
+                  }`}
+                  {...register("femaleLabourNumber")}
+                />
+                <p className="text-red-500 text-xs">
+                  {errors.femaleLabourNumber?.message}
+                </p>
+              </div>
 
-              <input
-                type="tel"
-                placeholder="Number of  contract labours"
-                className="w-full h-[56px] px-4 bg-white placeholder:text-[#404753] border-[1px] border-[#707784] rounded-lg text-black"
-                {...register("contractLabourNumber")}
-              />
-              <input
-                type="tel"
-                placeholder="Number of  migrant labours"
-                className="w-full h-[56px] px-4 bg-white placeholder:text-[#404753] border-[1px] border-[#707784] rounded-lg text-black"
-                {...register("migrantLabourNumber")}
-              />
+              <div>
+                <label className="text-[#404753] text-xs">
+                  Number of contract labours
+                </label>
+                <input
+                  type="tel"
+                  placeholder="Number of  contract labours"
+                  className={`w-full h-11 px-3 text-sm bg-white placeholder:text-[#404753] rounded-lg text-black focus:outline-none focus:border-[#74CE3A] ${
+                    errors.contractLabourNumber
+                      ? "border-2 border-red-500 "
+                      : "border-[1px]  border-[#707784]"
+                  }`}
+                  {...register("contractLabourNumber")}
+                />
+                <p className="text-red-500 text-xs">
+                  {errors.contractLabourNumber?.message}
+                </p>
+              </div>
+
+              <div>
+                <label className="text-[#404753] text-xs">
+                  Number of migrant labours
+                </label>
+                <input
+                  type="tel"
+                  placeholder="Number of  migrant labours"
+                  className={`w-full h-11 px-3 text-sm bg-white placeholder:text-[#404753] rounded-lg text-black focus:outline-none focus:border-[#74CE3A] ${
+                    errors.migrantLabourNumber
+                      ? "border-2 border-red-500 "
+                      : "border-[1px]  border-[#707784]"
+                  }`}
+                  {...register("migrantLabourNumber")}
+                />
+                <p className="text-red-500 text-xs">
+                  {errors.migrantLabourNumber?.message}
+                </p>
+              </div>
 
               <button
                 className="w-full h-[56px] mt-6 bg-[#74CE3A] text-white text-[14px] font-semibold flex justify-center items-center"

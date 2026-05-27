@@ -25,7 +25,7 @@ function EditAdminLoginNumberPopup({
           {
             mobile: Number(updatedMobileNo),
           },
-          { headers: { Authorization: `Bearer ${token}` } }
+          { headers: { Authorization: `Bearer ${token}` } },
         );
         console.log(response);
         alert(response.data.message);
@@ -43,7 +43,7 @@ function EditAdminLoginNumberPopup({
 
   return createPortal(
     <div className="w-screen h-screen px-4 md:px-8 lg:px-[72px] py-14 bg-[#000000c1] fixed top-0 left-0 z-50 flex justify-center items-center">
-      <div className="w-[560px] h-[472px] flex flex-col gap-10 bg-white">
+      <div className="w-[560px] min-h-max flex flex-col gap-10 bg-white pb-6">
         <div className="p-6 bg-[#003E82] text-white text-xl font-semibold relative">
           <h3>Admin Login Number</h3>
           <button
@@ -55,24 +55,24 @@ function EditAdminLoginNumberPopup({
         </div>
 
         <div className="px-2 sm:px-6">
-          <p>
+          <p className="text-sm">
             An OTP will be sent to the new number for verification when you
             update or change your mobile number for login.
           </p>
         </div>
 
-        <div className="px-2 sm:px-6 flex flex-col gap-[72px]">
+        <div className="px-2 sm:px-6 flex flex-col gap-y-6">
           <input
             type="text"
             placeholder="Mobile Number"
-            className="w-full h-14 px-2 font-base bg-white text-[#404753] outline-none border-[#707784] border-[1px] rounded-lg"
+            className="w-full h-11 px-3 text-sm bg-white text-[#404753] outline-none border-[#707784] border-[1px] rounded-lg"
             name="updatedMobileNo"
             value={updatedMobileNo}
             onChange={(e) => setUpdatedMobileNo(e.target.value)}
           />
 
           <button
-            className="w-full px-4 py-6 bg-[#74CE3A] text-white text-base font-semibold rounded-2xl"
+            className="w-full h-12 px-4 py-2 bg-[#74CE3A] text-white text-base font-semibold rounded-xl"
             onClick={handleSubmit}
           >
             Update
@@ -80,7 +80,7 @@ function EditAdminLoginNumberPopup({
         </div>
       </div>
     </div>,
-    document.body
+    document.body,
   );
 }
 
