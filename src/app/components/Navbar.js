@@ -41,7 +41,7 @@ const Navbar = () => {
     }
   }, []);
 
-  console.log(userData);
+  // console.log(userData);
 
   function handleCloseDrawer() {
     document.getElementById("my-drawer-4").checked = false;
@@ -438,11 +438,19 @@ const Navbar = () => {
                     <div className="w-4/5 flex flex-col justify-center">
                       <p className="h-5 font-normal text-sm text-[#2262B7]">
                         {/* Johnson */}
-                        {userData.user_name}
+                        {userData.user_name
+                          ? userData.user_name
+                          : userData.branch_admin_name
+                            ? userData.branch_admin_name
+                            : ""}
                       </p>
                       <p className="h-5 font-normal text-sm text-[#2262B7]">
                         {/* 6478397998087 */}
-                        {userData.mobile}
+                        {userData.mobile
+                          ? userData.mobile
+                          : userData.branch_mobile_no
+                            ? userData.branch_mobile_no
+                            : ""}
                       </p>
                     </div>
                     <div className="w-1/5 flex items-center justify-end">

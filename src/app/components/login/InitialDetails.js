@@ -61,13 +61,13 @@ function InitialDetails({
           setIsOtpPopupOpen(false);
           setIsLoginSignupOpen(false);
           setIsInitialDetailsOpen(true);
-          // router.push("/company-home");
+          router.push("/company-home");
 
-          logout();
-          alert("Please login again using the registered number");
-          setTimeout(() => {
-            window.location.reload("/login");
-          }, 2000);
+          // logout();
+          // alert("Please login again using the registered number");
+          // setTimeout(() => {
+          //   window.location.reload("/login");
+          // }, 2000);
         }, 1000);
       } catch (error) {
         alert(error.response.data.message);

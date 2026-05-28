@@ -31,7 +31,7 @@ function CompanyBranchCard({ branch }) {
         const response = await axios.post(
           `${process.env.NEXT_PUBLIC_API_URL}/admin/grading`,
           { branch_id: branch.branch_id },
-          { headers: { Authorization: `Bearer ${token}` } }
+          { headers: { Authorization: `Bearer ${token}` } },
         );
         console.log(response);
         setRating(response.data.gravityPercentage);
@@ -91,7 +91,7 @@ function CompanyBranchCard({ branch }) {
               </tr>
               <tr>
                 <td className="text-[#424752] text-[14px] sm:text-[16px]">
-                  Admin Phone Number
+                  Phone Number
                 </td>
                 <td className="text-[#191C21] text-[14px] sm:text-[16px] ps-2">
                   : {branch.admin_no}
